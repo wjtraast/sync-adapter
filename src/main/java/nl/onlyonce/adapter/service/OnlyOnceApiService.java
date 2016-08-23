@@ -1,7 +1,7 @@
 package nl.onlyonce.adapter.service;
 
 import nl.onlyonce.adapter.model.Activity;
-import nl.onlyonce.adapter.type.AdapterType;
+import nl.onlyonce.adapter.model.type.AdapterType;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ package nl.onlyonce.adapter.endpoint;
 import nl.onlyonce.adapter.model.Activity;
 import nl.onlyonce.adapter.service.OnlyOnceApiService;
 import nl.onlyonce.adapter.service.SalesforceOutboundService;
-import nl.onlyonce.adapter.type.AdapterType;
+import nl.onlyonce.adapter.model.type.AdapterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
