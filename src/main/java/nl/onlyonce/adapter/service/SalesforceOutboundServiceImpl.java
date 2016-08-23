@@ -24,10 +24,10 @@ public class SalesforceOutboundServiceImpl implements SalesforceOutboundService 
 
         if (api == null) {
             api = new ForceApi(new ApiConfig()
-                    .setUsername("user@domain.com")
-                    .setPassword("password")
-                    .setClientId("longclientidalphanumstring")
-                    .setClientSecret("notsolongnumeric"));
+                    .setUsername("gerben@gvsolutions.nl")
+                    .setPassword("geheim24dyjl0Uiiv6bV6zKvxrLghvcd5")
+                    .setClientId("3MVG98_Psg5cppyZ8HzJdKCMf2dd4MQL0mXrX31HnEvKNFBOMa82TqXLuAe7XkFeqVawckbpprAAzA.LkJxUu")
+                    .setClientSecret("6835814486539135895"));
         }
         return api;
 
