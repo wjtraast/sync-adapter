@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface OnlyOnceApiService {
 
-     List<Activity> getActivityList(AdapterType type);
+     List<Activity> getActivities(AdapterType type);
 
 }

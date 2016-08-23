@@ -5,12 +5,14 @@ import com.force.api.ApiConfig;
 import com.force.api.ForceApi;
 import nl.onlyonce.adapter.model.Activity;
 import nl.onlyonce.adapter.model.salesforce.Account;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author: Gerben
  */
+@Service
 public class SalesforceOutboundServiceImpl implements SalesforceOutboundService {
 
     private ForceApi api;
@@ -39,5 +41,10 @@ public class SalesforceOutboundServiceImpl implements SalesforceOutboundService 
         a.setName("Test account");
         String id = getForceApi().createSObject("account", a);
 
+    }
+
+    @Override
+    public List<Activity> prepareData(List<Activity> activities) {
+        return null;
     }
 }

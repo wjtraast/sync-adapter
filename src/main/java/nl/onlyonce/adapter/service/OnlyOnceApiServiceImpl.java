@@ -14,7 +14,7 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
 
 
     @Override
-    public List<Activity> getActivityList(final AdapterType type) {
+    public List<Activity> getActivities(final AdapterType type) {
 
         return null;
 

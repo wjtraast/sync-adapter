@@ -12,4 +12,5 @@ public interface SalesforceOutboundService {
     void process(List<Activity> activities);
 
 
+    List<Activity> prepareData(List<Activity> activities);
 }
