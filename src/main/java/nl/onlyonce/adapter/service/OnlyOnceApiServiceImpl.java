@@ -1,7 +1,22 @@
 package nl.onlyonce.adapter.service;
 
+import nl.onlyonce.adapter.model.Activity;
+import nl.onlyonce.adapter.type.AdapterType;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 /**
  * @author: Gerben
  */
-public class OnlyOnceApiServiceImpl {
+@Service
+public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
+
+
+    @Override
+    public List<Activity> getActivityList(final AdapterType type) {
+
+        return null;
+
+    }
 }
