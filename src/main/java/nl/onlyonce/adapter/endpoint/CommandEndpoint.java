@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 
 /**
@@ -30,8 +31,16 @@ public class CommandEndpoint {
     @Autowired
     Configuration configuration;
 
+    @RequestMapping("/command/status/{id}")
+    void getId(@PathVariable String id, HttpServletResponse response) {
+
+        // ophalen van status van command.
+    }
+
+
+
     @RequestMapping("/command/{commandString}")
-    void process(@PathVariable String commandString, HttpServletResponse response) {
+    void process(@PathVariable String commandString, HttpServletResponse response) throws Exception {
 
 
         if (StringUtils.isEmpty(commandString)) {
@@ -50,10 +59,16 @@ public class CommandEndpoint {
             log.info("adapter type could not be determined");
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-        AdapterCommandMessage message = AdapterCommandMessage.builder().adapterCommand(command).adapterType(type).build();
+        AdapterCommandMessage message = AdapterCommandMessage.builder()
+                .id(UUID.randomUUID().toString())
+                .adapterCommand(command)
+                .adapterType(type).build();
         adapterCommandQueueProviderService.addMessage(message);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
-    }
+        response.getWriter().write(message.getId());
+        response.getWriter().flush();
+        response.getWriter().close();
 
+    }
 
 }

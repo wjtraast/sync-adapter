@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Builder
 public class AdapterCommandMessage implements Serializable {
 
+    private String id;
     private AdapterCommand adapterCommand;
     private AdapterType adapterType;
 
