@@ -45,7 +45,7 @@ public class AdapterEndPoint {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
-        AdapterType type = AdapterType.asAdapterType(configuration.name);
+        AdapterType type = AdapterType.asAdapterType(configuration.getName());
         if (type == null) {
             log.info("adapter type could not be determined");
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

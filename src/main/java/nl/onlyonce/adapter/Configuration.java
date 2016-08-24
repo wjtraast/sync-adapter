@@ -1,5 +1,6 @@
 package nl.onlyonce.adapter;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -8,8 +9,9 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@Data
 public class Configuration {
 
     @Value("${name}")
-    public String name;
+    private String name;
 }
