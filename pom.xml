@@ -3,11 +3,15 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nl.onlyonce</groupId>
   <artifactId>adapter</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>sync-adapter</name>
-  <url>http://maven.apache.org</url>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <amq.version>5.4.2</amq.version>
+    </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -16,13 +20,6 @@
 
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
@@ -33,11 +30,27 @@
           <!--<artifactId>spring-boot-starter-security</artifactId>-->
       <!--</dependency>-->
 
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-jms</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>activemq-core</artifactId>
+          <version>${amq.version}</version>
+      </dependency>
+
 
       <dependency>
           <groupId>com.frejo</groupId>
           <artifactId>force-rest-api</artifactId>
           <version>0.0.31</version>
+      </dependency>
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.16.6</version>
       </dependency>
 
       <!--<dependency>-->
@@ -52,4 +65,13 @@
       <!--</dependency>-->
 
   </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
