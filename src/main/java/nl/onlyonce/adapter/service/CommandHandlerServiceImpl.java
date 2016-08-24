@@ -36,7 +36,7 @@ public class CommandHandlerServiceImpl implements CommandHandlerService {
                 salesforceSyncService.execute();
                 break;
             case SOHO:
-                salesforceSyncService.execute();
+                sohoSyncService.execute();
                 break;
         }
     }
