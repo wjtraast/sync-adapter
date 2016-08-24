@@ -3,7 +3,7 @@ package nl.onlyonce.adapter.service.sync;
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.Activity;
 import nl.onlyonce.adapter.model.type.AdapterType;
-import nl.onlyonce.adapter.service.CarerixOutboundService;
+import nl.onlyonce.adapter.service.outbound.CarerixOutboundService;
 import nl.onlyonce.adapter.service.OnlyOnceApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

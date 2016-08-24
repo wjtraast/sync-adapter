@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.outbound;
 
 
 import com.force.api.ApiConfig;

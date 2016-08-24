@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.outbound;
 
 import nl.onlyonce.adapter.model.api.Message;
 import org.springframework.beans.factory.annotation.Autowired;

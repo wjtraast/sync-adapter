@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.queue;
 
 /**
  * @author: Gerben

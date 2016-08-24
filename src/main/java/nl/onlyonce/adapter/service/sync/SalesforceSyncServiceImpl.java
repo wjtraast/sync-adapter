@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.Activity;
 import nl.onlyonce.adapter.model.type.AdapterType;
 import nl.onlyonce.adapter.service.OnlyOnceApiService;
-import nl.onlyonce.adapter.service.SalesforceOutboundService;
+import nl.onlyonce.adapter.service.outbound.SalesforceOutboundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

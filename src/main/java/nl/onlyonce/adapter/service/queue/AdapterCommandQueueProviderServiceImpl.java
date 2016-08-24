@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.queue;
 
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import nl.onlyonce.adapter.model.type.QueueName;

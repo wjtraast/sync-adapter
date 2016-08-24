@@ -6,7 +6,7 @@ import nl.onlyonce.adapter.Configuration;
 import nl.onlyonce.adapter.model.AdapterCommand;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import nl.onlyonce.adapter.model.type.AdapterType;
-import nl.onlyonce.adapter.service.AdapterCommandQueueProviderService;
+import nl.onlyonce.adapter.service.queue.AdapterCommandQueueProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;

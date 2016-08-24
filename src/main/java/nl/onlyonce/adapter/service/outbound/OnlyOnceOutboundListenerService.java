@@ -1,6 +1,7 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.outbound;
 
 import nl.onlyonce.adapter.model.api.Message;
+import nl.onlyonce.adapter.service.OnlyOnceApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

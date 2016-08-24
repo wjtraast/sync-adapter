@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.outbound;
 
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.Activity;

@@ -1,7 +1,8 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.queue;
 
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
+import nl.onlyonce.adapter.service.CommandHandlerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
