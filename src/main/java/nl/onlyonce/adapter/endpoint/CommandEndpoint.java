@@ -2,7 +2,7 @@ package nl.onlyonce.adapter.endpoint;
 
 
 import lombok.extern.java.Log;
-import nl.onlyonce.adapter.Configuration;
+import nl.onlyonce.adapter.system.Configuration;
 import nl.onlyonce.adapter.model.AdapterCommand;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import nl.onlyonce.adapter.model.type.AdapterType;

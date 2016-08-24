@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter;
+package nl.onlyonce.adapter.system;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

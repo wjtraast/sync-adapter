@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter;
+package nl.onlyonce.adapter.system;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
