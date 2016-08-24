@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @Log
-public class AdapterEndPoint {
+public class CommandEndpoint {
 
     @Autowired
     AdapterCommandQueueProviderService adapterCommandQueueProviderService;
