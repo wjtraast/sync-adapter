@@ -18,15 +18,21 @@ public class CommandHandlerServiceImpl implements CommandHandlerService {
     @Autowired
     SohoSyncService sohoSyncService;
 
+    @Autowired
+    CarerixSyncService carerixSyncService;
+
     @Override
     public void processCommand(final AdapterCommandMessage command) {
 
 
         switch (command.getAdapterType()) {
-            case SALESFORCE_ADAPTER:
+            case CARERIX:
+                carerixSyncService.execute();
+                break;
+            case SALESFORCE:
                 salesforceSyncService.execute();
                 break;
-            case SOHO_ADAPTER:
+            case SOHO:
                 salesforceSyncService.execute();
                 break;
         }

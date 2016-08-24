@@ -14,21 +14,21 @@ import java.util.List;
 
 @Service
 @Log
-public class SalesforceSyncServiceImpl implements SalesforceSyncService {
+public class CarerixSyncServiceImpl implements CarerixSyncService {
 
     @Autowired
     OnlyOnceApiService onlyOnceApiService;
 
     @Autowired
-    SalesforceOutboundService salesforceOutboundService;
+    CarerixOutboundService carerixOutboundService;
 
     @Override
     public void execute() {
 
-        log.info("execute salesforce Sync service");
+        log.info("execute CARERIX Sync service");
         List<Activity> activities = onlyOnceApiService.getActivities(AdapterType.SALESFORCE);
-        activities = salesforceOutboundService.prepareData(activities);
-        salesforceOutboundService.process(activities);
+        activities = carerixOutboundService.prepareData(activities);
+        carerixOutboundService.process(activities);
 
     }
 }

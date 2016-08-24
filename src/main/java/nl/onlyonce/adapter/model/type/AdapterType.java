@@ -5,5 +5,5 @@ package nl.onlyonce.adapter.model.type;
  */
 public enum AdapterType {
 
-    SALESFORCE_ADAPTER, SOHO_ADAPTER;
+    SALESFORCE, SOHO, CARERIX;
 }

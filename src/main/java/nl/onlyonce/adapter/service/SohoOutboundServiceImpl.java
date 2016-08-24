@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class SohoOutboundServiceImpl implements OutboundService {
+public class SohoOutboundServiceImpl implements SohoOutboundService {
 
 
     @Override

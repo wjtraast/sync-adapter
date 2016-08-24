@@ -37,7 +37,7 @@ public class AdapterEndPoint {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
-        AdapterType type = AdapterType.SALESFORCE_ADAPTER; // read from environment
+        AdapterType type = AdapterType.CARERIX; // read from environment
         AdapterCommandMessage message = AdapterCommandMessage.builder().adapterCommand(command).adapterType(type).build();
         adapterCommandQueueProviderService.addMessage(message);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
