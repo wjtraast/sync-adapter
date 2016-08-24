@@ -5,8 +5,7 @@ import nl.onlyonce.adapter.model.type.AdapterType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,13 +15,12 @@ import java.util.List;
 public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
 
 
-    @Resource
-    RestTemplate restTemplate;
-
 
     @Override
     public List<Activity> getActivities(final AdapterType type) {
-        Activity[] activityArray = restTemplate.getForObject("http://demo.onlyonce.nl/api/", Activity[].class);
-        return Arrays.asList(activityArray);
+        RestTemplate restTemplate = new RestTemplate();
+       // Activity[] activityArray = restTemplate.getForObject("http://demo.onlyonce.nl/api/", Activity[].class);
+        return Collections.EMPTY_LIST;
+       // return Arrays.asList(activityArray);
     }
 }

@@ -1,5 +1,6 @@
 package nl.onlyonce.adapter;
 
+import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,11 +18,10 @@ import javax.jms.ConnectionFactory;
 @SpringBootApplication
 public class Application {
 
-    private static final String JMS_BROKER_URL = "vm://embedded?broker.persistent=false,useShutdownHook=false";
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        return new ActiveMQConnectionFactory(JMS_BROKER_URL);
+        return new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_BROKER_URL);
     }
 
     public static void main(String[] args) {

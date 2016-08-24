@@ -1,5 +1,6 @@
 package nl.onlyonce.adapter.service;
 
+import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
@@ -11,14 +12,15 @@ import org.springframework.stereotype.Component;
 
 
 @Component
+@Log
 public class AdapterCommandQueueListenerServiceImpl implements AdapterCommandQueueListenerService {
 
     @Autowired
-    CommandHandlerService commandProcessService;
+    CommandHandlerService commandHandlerService;
 
-    @JmsListener(destination = "commandQueue")
-
+    @JmsListener(destination = "CommandQueue")
     public void receiveCommand(AdapterCommandMessage command) {
-        commandProcessService.processCommand(command);
+        log.info("command received " + command.getAdapterCommand().toString());
+        commandHandlerService.processCommand(command);
     }
 }

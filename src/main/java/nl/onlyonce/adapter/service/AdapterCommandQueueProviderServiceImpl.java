@@ -25,8 +25,8 @@ public class AdapterCommandQueueProviderServiceImpl implements AdapterCommandQue
 //    }
 
     @Override
-    public void addMessage(AdapterCommandMessage message) {
-        jmsTemplate.convertAndSend(QUEUE.toString().toLowerCase(), message);
+    public void addMessage(final AdapterCommandMessage message) {
+        jmsTemplate.convertAndSend(QUEUE.toString(), message);
     }
 
 }
