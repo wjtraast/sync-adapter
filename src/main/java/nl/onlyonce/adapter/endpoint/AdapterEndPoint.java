@@ -1,6 +1,8 @@
 package nl.onlyonce.adapter.endpoint;
 
 
+import lombok.extern.java.Log;
+import nl.onlyonce.adapter.Configuration;
 import nl.onlyonce.adapter.model.AdapterCommand;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import nl.onlyonce.adapter.model.type.AdapterType;
@@ -19,25 +21,36 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @RestController
+@Log
 public class AdapterEndPoint {
 
     @Autowired
     AdapterCommandQueueProviderService adapterCommandQueueProviderService;
+
+    @Autowired
+    Configuration configuration;
 
     @RequestMapping("/command/{commandString}")
     void process(@PathVariable String commandString, HttpServletResponse response) {
 
 
         if (StringUtils.isEmpty(commandString)) {
+            log.info("command could not be determined");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
         AdapterCommand command = AdapterCommand.asAdapterComand(commandString.toUpperCase());
         if (command == null) {
+            log.info("command could not be determined");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
-        AdapterType type = AdapterType.CARERIX; // read from environment
+        AdapterType type = AdapterType.asAdapterType(configuration.name);
+        if (type == null) {
+            log.info("adapter type could not be determined");
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+        //AdapterType type = AdapterType.CARERIX; // read from environment
         AdapterCommandMessage message = AdapterCommandMessage.builder().adapterCommand(command).adapterType(type).build();
         adapterCommandQueueProviderService.addMessage(message);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
