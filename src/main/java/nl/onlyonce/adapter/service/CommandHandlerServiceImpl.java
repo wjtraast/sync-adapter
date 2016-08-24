@@ -2,6 +2,9 @@ package nl.onlyonce.adapter.service;
 
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
+import nl.onlyonce.adapter.service.sync.CarerixSyncService;
+import nl.onlyonce.adapter.service.sync.SalesforceSyncService;
+import nl.onlyonce.adapter.service.sync.SohoSyncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

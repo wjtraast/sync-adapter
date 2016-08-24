@@ -1,4 +1,4 @@
-package nl.onlyonce.adapter.service;
+package nl.onlyonce.adapter.service.sync;
 
 import org.springframework.stereotype.Service;
 
