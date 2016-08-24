@@ -2,11 +2,11 @@ package nl.onlyonce.adapter.endpoint;
 
 
 import lombok.extern.java.Log;
-import nl.onlyonce.adapter.system.Configuration;
 import nl.onlyonce.adapter.model.AdapterCommand;
 import nl.onlyonce.adapter.model.AdapterCommandMessage;
 import nl.onlyonce.adapter.model.type.AdapterType;
 import nl.onlyonce.adapter.service.queue.AdapterCommandQueueProviderService;
+import nl.onlyonce.adapter.system.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,21 +23,13 @@ import java.util.UUID;
 
 @RestController
 @Log
-public class CommandEndpoint {
+public class CommandEndPoint {
 
     @Autowired
     AdapterCommandQueueProviderService adapterCommandQueueProviderService;
 
     @Autowired
     Configuration configuration;
-
-    @RequestMapping("/command/status/{id}")
-    void getId(@PathVariable String id, HttpServletResponse response) {
-
-        // ophalen van status van command.
-    }
-
-
 
     @RequestMapping("/command/{commandString}")
     void process(@PathVariable String commandString, HttpServletResponse response) throws Exception {
