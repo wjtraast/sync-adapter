@@ -50,7 +50,6 @@ public class AdapterEndPoint {
             log.info("adapter type could not be determined");
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-        //AdapterType type = AdapterType.CARERIX; // read from environment
         AdapterCommandMessage message = AdapterCommandMessage.builder().adapterCommand(command).adapterType(type).build();
         adapterCommandQueueProviderService.addMessage(message);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
