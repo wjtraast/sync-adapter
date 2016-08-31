@@ -18,7 +18,6 @@ import javax.jms.ConnectionFactory;
 @SpringBootApplication
 public class Application {
 
-
     @Bean
     public ConnectionFactory connectionFactory() {
         return new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_BROKER_URL);

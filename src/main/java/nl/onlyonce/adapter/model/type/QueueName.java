@@ -5,5 +5,5 @@ package nl.onlyonce.adapter.model.type;
  */
 public enum QueueName {
 
-    CommandQueue;
+    CommandQueue,SyncQueue
 }
