@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class BatchRequestListenerServiceImpl implements BatchRequestListenerService {
+public class BatchRequestQueueListenerServiceImpl implements BatchRequestQueueListenerService {
 
     @Autowired
-    BatchRequestService syncBatchRequestService;
+    BatchRequestService batchRequestService;
 
-    @JmsListener(destination = "SyncBatchRequestQueue")
+    @JmsListener(destination = "BatchRequestQueue")
     public void receiveCommand(BatchRequestMessage message) {
         log.info("request received ");
-        syncBatchRequestService.processRequest(message);
+        batchRequestService.processRequest(message);
     }
 }

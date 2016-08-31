@@ -9,5 +9,5 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Meta {
+public class MetaData {
 }

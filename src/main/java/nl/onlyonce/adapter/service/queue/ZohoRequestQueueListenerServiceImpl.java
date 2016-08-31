@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class ZohoRequestListenerServiceImpl implements BatchRequestListenerService {
+public class ZohoRequestQueueListenerServiceImpl implements BatchRequestQueueListenerService {
 
     @Autowired
     ZohoOutService zohoOutboundService;

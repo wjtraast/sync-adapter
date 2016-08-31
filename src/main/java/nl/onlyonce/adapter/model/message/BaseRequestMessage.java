@@ -3,5 +3,5 @@ package nl.onlyonce.adapter.model.message;
 /**
  * @author: Gerben
  */
-public class ZohoRequestMessage extends BaseRequestMessage {
+public class BaseRequestMessage {
 }

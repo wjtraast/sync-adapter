@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class CarerixRequestListenerServiceImpl implements BatchRequestListenerService {
+public class CarerixRequestQueueListenerServiceImpl implements BatchRequestQueueListenerService {
 
     @Autowired
     BatchRequestService syncBatchRequestService;

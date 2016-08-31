@@ -5,7 +5,7 @@ package nl.onlyonce.adapter.model.type;
  */
 public enum TargetType {
 
-    SALESFORCE, SOHO, CARERIX;
+    SALESFORCE, ZOHO, CARERIX;
 
     public static TargetType asTargetType(final String str) {
         for (TargetType me : TargetType.values()) {
