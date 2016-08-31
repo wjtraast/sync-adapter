@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class ZohoServiceImpl implements ZohoOutService {
+public class ZohoServiceImpl implements ZohoService {
 
     @Autowired
     private ZohoApiService zohoApiService;

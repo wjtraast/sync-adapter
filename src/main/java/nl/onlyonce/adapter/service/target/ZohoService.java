@@ -5,7 +5,7 @@ import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 /**
  * @author: Gerben
  */
-public interface ZohoOutService {
+public interface ZohoService {
 
     void processMessage(ZohoRequestMessage message);
 }
