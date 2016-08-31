@@ -13,7 +13,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class BatchRequestMessage {
+public class BatchRequestMessage extends BaseRequestMessage {
 
     private MetaData metaData;
     private String messageId;
