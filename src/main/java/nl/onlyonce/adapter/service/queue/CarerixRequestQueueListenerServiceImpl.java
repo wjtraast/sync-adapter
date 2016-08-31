@@ -1,8 +1,8 @@
 package nl.onlyonce.adapter.service.queue;
 
 import lombok.extern.java.Log;
-import nl.onlyonce.adapter.model.message.BatchRequestMessage;
-import nl.onlyonce.adapter.service.batch.BatchRequestService;
+import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
+import nl.onlyonce.adapter.service.target.CarerixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class CarerixRequestQueueListenerServiceImpl implements BatchRequestQueueListenerService {
+public class CarerixRequestQueueListenerServiceImpl implements CarerixRequestQueueListenerService {
 
     @Autowired
-    BatchRequestService syncBatchRequestService;
+    CarerixService carerixService;
 
     @JmsListener(destination = "CarerixRequestQueue")
-    public void receiveCommand(BatchRequestMessage message) {
-        log.info("request received ");
-        syncBatchRequestService.processRequest(message);
+    public void receiveMessage(final CarerixRequestMessage message) {
+        log.info("CarerixRequestMessage received ");
+        carerixService.processMessage(message);
     }
 }

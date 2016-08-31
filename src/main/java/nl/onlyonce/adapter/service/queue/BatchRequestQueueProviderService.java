@@ -1,15 +1,12 @@
-package nl.onlyonce.adapter.service.batch;
+package nl.onlyonce.adapter.service.queue;
 
 import nl.onlyonce.adapter.model.message.BatchRequestMessage;
 
 /**
  * @author: Gerben
  */
-public interface BatchRequestService {
-
-    void processRequest(BatchRequestMessage message);
+public interface BatchRequestQueueProviderService {
 
     void addMessage(BatchRequestMessage message);
-
 
 }

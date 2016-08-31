@@ -24,7 +24,10 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     @Override
     public void addEmployee() {
 
+        log.info("calling CarerixAPI with addEmployee");
         RestTemplate restTemplate = new RestTemplate();
+
+
     }
 
     @Override

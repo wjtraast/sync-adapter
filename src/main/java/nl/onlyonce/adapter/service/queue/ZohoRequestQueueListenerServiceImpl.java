@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class ZohoRequestQueueListenerServiceImpl implements BatchRequestQueueListenerService {
+public class ZohoRequestQueueListenerServiceImpl implements ZohoRequestQueueListenerService {
 
     @Autowired
-    ZohoService zohoOutboundService;
+    ZohoService zohoService;
 
     @JmsListener(destination = "ZohoRequestQueue")
-    public void receiveCommand(ZohoRequestMessage message) {
+    public void receiveMessage(ZohoRequestMessage message) {
         log.info("request received ");
-        zohoOutboundService.processMessage(message);
+        zohoService.processMessage(message);
     }
 }

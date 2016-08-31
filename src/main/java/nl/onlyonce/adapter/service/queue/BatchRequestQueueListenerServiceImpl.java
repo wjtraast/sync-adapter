@@ -19,8 +19,8 @@ public class BatchRequestQueueListenerServiceImpl implements BatchRequestQueueLi
     BatchRequestService batchRequestService;
 
     @JmsListener(destination = "BatchRequestQueue")
-    public void receiveCommand(BatchRequestMessage message) {
-        log.info("request received ");
+    public void receiveMessage(BatchRequestMessage message) {
+        log.info("BatchRequestMessage received ");
         batchRequestService.processRequest(message);
     }
 }

@@ -3,8 +3,9 @@ package nl.onlyonce.adapter.model.message;
 import lombok.Builder;
 import lombok.Data;
 import nl.onlyonce.adapter.model.MetaData;
-import nl.onlyonce.adapter.model.type.TargetType;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,19 +18,25 @@ public class BatchRequestMessage extends BaseRequestMessage {
 
     private MetaData metaData;
     private String messageId;
+    private List<CarerixRequestMessage> carerixMessages;
+    private List<ZohoRequestMessage> zohoMessages;
 
 
 
-    public List<BaseRequestMessage> getRequests(TargetType targetType) {
+    public List<CarerixRequestMessage> getCarerixRequests() {
 
-        switch (targetType) {
-            case CARERIX:;
-            case ZOHO: break;
-            default:break;
-        }
-
-        return null;
+        List<CarerixRequestMessage> returnValue = new ArrayList<CarerixRequestMessage>();
+        CarerixRequestMessage message = new CarerixRequestMessage();
+        returnValue.add(message);
+        return returnValue;
 
 
     }
+
+    public List<ZohoRequestMessage> getZohoRequests() {
+        return Collections.EMPTY_LIST;
+    }
+
+
+
 }
