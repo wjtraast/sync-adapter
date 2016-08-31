@@ -1,7 +1,7 @@
 package nl.onlyonce.adapter.service.queue;
 
 import lombok.extern.java.Log;
-import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
+import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 import nl.onlyonce.adapter.model.type.QueueName;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Log
-public class CarerixRequestQueueProviderServiceImpl implements CarerixRequestQueueProviderService {
+public class ZohoRequestQueueProviderServiceImpl implements ZohoRequestQueueProviderService {
 
-    private static final QueueName QUEUE = QueueName.CarerixRequestQueue;
+    private static final QueueName QUEUE = QueueName.ZohoRequestQueue;
 
     @Override
-    public void addMessage(final CarerixRequestMessage message) {
+    public void addMessage(final ZohoRequestMessage message) {
 
         JmsTemplate jmsTemplate = new JmsTemplate();
         jmsTemplate.convertAndSend(QUEUE.toString(), message);

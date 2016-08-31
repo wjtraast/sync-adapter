@@ -3,6 +3,7 @@ package nl.onlyonce.adapter;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
@@ -29,6 +30,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @SpringBootApplication
 @ComponentScan
 @EnableSwagger2
+@EnableAutoConfiguration
 public class Application {
 
     private Set<ErrorPage> pageHandlers;

@@ -7,6 +7,6 @@ import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
  */
 public interface CarerixRequestQueueProviderService {
 
-    public void addMessage(CarerixRequestMessage message);
+    void addMessage(CarerixRequestMessage message);
 
 }
