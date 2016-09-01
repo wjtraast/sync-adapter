@@ -25,7 +25,13 @@ public class BatchRequestMessage extends BaseRequestMessage {
 
     public List<CarerixRequestMessage> getCarerixRequests() {
 
-        List<CarerixRequestMessage> returnValue = new ArrayList<CarerixRequestMessage>();
+        List<CarerixRequestMessage> returnValue = new ArrayList<>();
+
+        /*
+        TODO verder uitwerken,
+
+         */
+
         CarerixRequestMessage message = new CarerixRequestMessage();
         returnValue.add(message);
         return returnValue;
