@@ -5,13 +5,13 @@ import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 import nl.onlyonce.adapter.service.target.ZohoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author: Gerben
  */
 
-@Component
+@Service
 @Log
 public class ZohoRequestQueueListenerServiceImpl implements ZohoRequestQueueListenerService {
 

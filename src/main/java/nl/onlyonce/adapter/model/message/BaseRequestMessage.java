@@ -12,10 +12,10 @@ import java.util.Map;
 @Data
 public class BaseRequestMessage implements Serializable {
 
-    private String id;
-    private String firstname;
-    private String lastname;
-    private String emailAddress;
+    String id;
+    String firstname;
+    String lastname;
+    String emailAddress;
 
-    private Map<String, FieldValue> customFields;
+    Map<String, FieldValue> customFields;
 }

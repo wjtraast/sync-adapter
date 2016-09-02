@@ -79,6 +79,21 @@ https://crm.zoho.com/crm/private/xml/Contacts/insertRecords?authtoken=Auth Token
     public static ZohoContact create() {
         return new ZohoContact();
     }
+
+    @Override
+    public String toString() {
+
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(ZohoContact.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+            StringWriter sw = new StringWriter();
+            jaxbMarshaller.marshal(this, sw);
+            return sw.toString();
+        } catch (JAXBException e) {
+            return null;
+        }
+    }
 }
 
 

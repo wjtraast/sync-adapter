@@ -2,7 +2,7 @@ package nl.onlyonce.adapter.model.data;
 
 import lombok.Data;
 import nl.onlyonce.adapter.model.type.MessageStatusType;
-import org.mapstruct.TargetType;
+import nl.onlyonce.adapter.model.type.TargetType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,10 +14,10 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Message implements Serializable {
+public class SyncMessage implements Serializable {
 
 
-    protected Message() {
+    protected SyncMessage() {
         // no-args constructor required by JPA spec
         // this one is protected since it shouldn't be used directly
     }
