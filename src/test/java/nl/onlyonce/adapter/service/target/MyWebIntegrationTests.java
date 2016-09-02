@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author: Gerben
  */
@@ -19,9 +21,9 @@ public class MyWebIntegrationTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void exampleTest() {
-        String body = this.restTemplate.getForObject("/", String.class);
-       // assertThat(body).isEqualTo("running");
+    public void testSyncEndPoint() {
+        String body = this.restTemplate.getForObject("/sync-adapter/sync", String.class);
+        assertThat(body).isEqualTo("running");
     }
 
 

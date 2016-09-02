@@ -5,5 +5,5 @@ package nl.onlyonce.adapter.model.type;
  */
 public enum MessageStatusType {
 
-    PENDING, READY, FAILED
+    PENDING, PROCESSED, FAILED
 }

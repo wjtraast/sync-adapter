@@ -18,9 +18,11 @@ public class ZohoServiceImplTest {
     @Test
     public void testTransformContact() {
 
-        String EXPECTED_VALUE = "<Contacts><row no=\"1\"><FL val=\"First Name\"/><FL val=\"Date of Birth\">20/02/1972</FL></row></Contacts>";
+        String EXPECTED_VALUE = "<Contacts><row no=\"1\"><FL val=\"First Name\">Jan</FL><FL val=\"Last Name\">Jansen</FL></row></Contacts>";
         service = new ZohoServiceImpl();
-        ZohoRequestMessage requestMessage = ZohoRequestMessage.builder().birthDateAsString("20/02/1972").build();
+        ZohoRequestMessage requestMessage = new ZohoRequestMessage();
+        requestMessage.setFirstname("Jan");
+        requestMessage.setLastname("Jansen");
         ZohoContact contact = service.tranform(requestMessage);
         String zohoContactXml = contact.toString();
         Assert.assertEquals(EXPECTED_VALUE, zohoContactXml);

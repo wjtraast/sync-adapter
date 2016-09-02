@@ -2,7 +2,6 @@ package nl.onlyonce.adapter.model.data;
 
 import lombok.Data;
 import nl.onlyonce.adapter.model.type.MessageStatusType;
-import nl.onlyonce.adapter.model.type.TargetType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,11 +12,12 @@ import java.util.Date;
  */
 
 @Entity
+@Table(name = "syncmessage")
 @Data
 public class SyncMessage implements Serializable {
 
 
-    protected SyncMessage() {
+    public SyncMessage() {
         // no-args constructor required by JPA spec
         // this one is protected since it shouldn't be used directly
     }
@@ -26,22 +26,25 @@ public class SyncMessage implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "messageid",nullable = false)
     private String messageId;
 
-    @Column(nullable = false)
+    @Column(name = "messagetype" ,nullable = false)
     @Enumerated(EnumType.STRING)
-    private TargetType targetType;
+    private MessageType messageType;
 
-    @Column
+    @Column(name = "requestdate")
     private Date requestDate;
 
-    @Column(nullable = false)
+    @Column(name = "messagestatus", nullable = false)
     @Enumerated(EnumType.STRING)
     private MessageStatusType messageStatus;
 
-    @Column
+    @Column(name = "errormessage")
     private String errorMessage;
+
+    @Column(name="message")
+    private String message;
 
 
 

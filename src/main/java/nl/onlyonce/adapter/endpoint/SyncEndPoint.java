@@ -3,18 +3,20 @@ package nl.onlyonce.adapter.endpoint;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import nl.onlyonce.adapter.model.message.BatchRequestMessage;
+import nl.onlyonce.adapter.model.data.MessageType;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
-import nl.onlyonce.adapter.model.type.TargetType;
+import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
+import nl.onlyonce.adapter.service.SyncMessageStoreService;
 import nl.onlyonce.adapter.service.batch.BatchRequestService;
+import nl.onlyonce.adapter.service.queue.CarerixRequestQueueProviderService;
+import nl.onlyonce.adapter.service.queue.ZohoRequestQueueProviderService;
+import nl.onlyonce.adapter.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 /**
  * @author: Gerben
@@ -24,6 +26,15 @@ public class SyncEndPoint {
 
     @Autowired
     BatchRequestService batchRequestService;
+
+    @Autowired
+    ZohoRequestQueueProviderService zohoRequestQueueProviderService;
+
+    @Autowired
+    SyncMessageStoreService syncMessageStoreService;
+
+    @Autowired
+    CarerixRequestQueueProviderService carerixRequestQueueProviderService;
 
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "/sync", nickname = "syncPost")
@@ -44,23 +55,47 @@ public class SyncEndPoint {
         return "running";
     }
 
-    @RequestMapping(value = "/sync/test/{targetString}", method = RequestMethod.GET)
-    String test(@PathVariable String targetString) {
 
+    @RequestMapping(value = "/sync/zoho", method = RequestMethod.POST)
+    void syncZoho(@RequestBody ZohoRequestMessage message, HttpServletResponse response) throws Exception {
 
+        message.setId(UUID.randomUUID().toString());
 
-        TargetType targetType = TargetType.asTargetType(targetString.toUpperCase());
-
-        CarerixRequestMessage message = CarerixRequestMessage.builder().build();
-        List<CarerixRequestMessage> carerixRequestMessageList = new ArrayList<CarerixRequestMessage>();
-        carerixRequestMessageList.add(message);
-
-        BatchRequestMessage batchRequestMessage =
-                BatchRequestMessage.builder().carerixMessages(carerixRequestMessageList).build();
-
-        batchRequestService.addMessage(batchRequestMessage);
-        return "done";
-
+        validateMessage(message, response);
+        syncMessageStoreService.save(message.getId(), MessageType.ZOHO_REQUEST_MESSAGE, JsonUtil.convertToString(message));
+        zohoRequestQueueProviderService.addMessage(message);
     }
+
+    private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {
+        if (StringUtils.isEmpty(message.getFirstname()) || StringUtils.isEmpty(message.getLastname())) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+
+
+
+    @RequestMapping(value = "/sync/carerix", method = RequestMethod.POST)
+    void syncCarerix(@RequestBody CarerixRequestMessage message) {
+        carerixRequestQueueProviderService.addMessage(message);
+    }
+//
+//    @RequestMapping(value = "/sync/test/{targetString}", method = RequestMethod.GET)
+//    String test(@PathVariable String targetString) {
+//
+//
+//
+//        TargetType targetType = TargetType.asTargetType(targetString.toUpperCase());
+//
+//        CarerixRequestMessage message = CarerixRequestMessage.builder().build();
+//        List<CarerixRequestMessage> carerixRequestMessageList = new ArrayList<CarerixRequestMessage>();
+//        carerixRequestMessageList.add(message);
+//
+//        BatchRequestMessage batchRequestMessage =
+//                BatchRequestMessage.builder().carerixMessages(carerixRequestMessageList).build();
+//
+//        batchRequestService.addMessage(batchRequestMessage);
+//        return "done";
+//
+//    }
 
 }

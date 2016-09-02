@@ -12,10 +12,9 @@ import java.util.Map;
 @Data
 public class BaseRequestMessage implements Serializable {
 
-    String id;
-    String firstname;
-    String lastname;
-    String emailAddress;
+
+    String id; // messageId
+
 
     Map<String, FieldValue> customFields;
 }

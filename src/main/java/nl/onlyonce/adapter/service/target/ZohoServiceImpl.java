@@ -6,9 +6,11 @@ import nl.onlyonce.adapter.model.zoho.ZohoAccount;
 import nl.onlyonce.adapter.model.zoho.ZohoContact;
 import nl.onlyonce.adapter.model.zoho.ZohoFieldNames;
 import nl.onlyonce.adapter.repository.SyncMessageRepository;
+import nl.onlyonce.adapter.service.SyncMessageStoreService;
 import nl.onlyonce.adapter.service.api.ZohoApiException;
 import nl.onlyonce.adapter.service.api.ZohoApiService;
 import org.apache.commons.httpclient.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,29 +21,36 @@ import org.springframework.stereotype.Service;
 @Log
 public class ZohoServiceImpl implements ZohoService {
 
+    @Autowired
     private ZohoApiService zohoApiService;
 
+    @Autowired
+    private SyncMessageStoreService syncMessageStoreService;
+
+    @Autowired
     private SyncMessageRepository messageRepository;
 
-    public ZohoServiceImpl() {
-
-    }
-
-    public ZohoServiceImpl(SyncMessageRepository messageRepository, ZohoApiService zohoApiService) {
-        this.messageRepository = messageRepository;
-        this.zohoApiService = zohoApiService;
-    }
+//    public ZohoServiceImpl() {
+//
+//    }
+//
+//    public ZohoServiceImpl(SyncMessageRepository messageRepository, ZohoApiService zohoApiService) {
+//        this.messageRepository = messageRepository;
+//        this.zohoApiService = zohoApiService;
+//    }
 
     @Override
     public void processMessage(ZohoRequestMessage message) {
 
-        switch (message.getType()) {
-            case ACCOUNT:
-                processZohoAccount(message);
-                break;
-            case CONTACT:
-                processZohoContact(message);
-                break;
+        if (message.getType() != null) {
+            switch (message.getType().toLowerCase()) {
+                case "account":
+                    processZohoAccount(message);
+                    break;
+                case "contact":
+                    processZohoContact(message);
+                    break;
+            }
         }
     }
 
@@ -50,10 +59,10 @@ public class ZohoServiceImpl implements ZohoService {
         try {
             ZohoAccount account = transform(message);
             zohoApiService.insertAccount(account);
-            messageRepository.markAsProcessed(message.getId());
+            syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {
             log.info(e.getMessage()); // must be error logging !
-            messageRepository.markAsFailed(message.getId(), e.getMessage());
+            syncMessageStoreService.markAsFailed(message.getId(), e.getMessage());
         }
     }
 
@@ -62,10 +71,10 @@ public class ZohoServiceImpl implements ZohoService {
         try {
             ZohoContact contact = tranform(message);
             zohoApiService.insertContact(contact);
-            messageRepository.markAsProcessed(message.getId());
+            syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {
             log.info(e.getMessage());// must be error logging !
-            messageRepository.markAsFailed(message.getId(), e.getMessage());
+            syncMessageStoreService.markAsFailed(message.getId(), e.getMessage());
         }
     }
 
@@ -73,7 +82,7 @@ public class ZohoServiceImpl implements ZohoService {
     static ZohoAccount transform(final ZohoRequestMessage message) {
         return ZohoAccount.create()
                 .withField(ZohoFieldNames.Account.FIRSTNAME, message.getFirstname())
-                .withField(ZohoFieldNames.Account.DATE_OF_BIRTH, message.getBirthDateAsString());
+                .withField(ZohoFieldNames.Account.LASTNAME, message.getLastname());
         /*
 
         etc...
@@ -84,7 +93,7 @@ public class ZohoServiceImpl implements ZohoService {
     static ZohoContact tranform(final ZohoRequestMessage message) {
         return ZohoContact.create()
                 .withField(ZohoFieldNames.Contact.FIRSTNAME, message.getFirstname())
-                .withField(ZohoFieldNames.Contact.DATE_OF_BIRTH, message.getBirthDateAsString());
+                .withField(ZohoFieldNames.Contact.LASTNAME, message.getLastname());
 
 
          /*

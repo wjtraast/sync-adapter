@@ -1,21 +1,35 @@
 package nl.onlyonce.adapter.model.message;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import nl.onlyonce.adapter.model.zoho.ZohoType;
+import lombok.ToString;
+
+import java.util.Date;
 
 /**
  * @author: Gerben
  */
 @Data
-@Builder
+@ToString
 public class ZohoRequestMessage extends BaseRequestMessage {
 
-    private ZohoType type;
-    private String birthDateAsString;
+    @JsonProperty
+    private String type;
+    @JsonProperty
+    private Date dateOfBirth;
+    @JsonProperty
+    private String firstname;
+    @JsonProperty
+    private String lastname;
+    @JsonProperty
+    private String gender;
+    @JsonProperty
+    private String title;
+    @JsonProperty
+    private String emailAddress;
 
+    public ZohoRequestMessage() {
 
-    public String getBirthDateAsString() {
-        return birthDateAsString;
     }
+
 }
