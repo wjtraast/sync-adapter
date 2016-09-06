@@ -12,7 +12,6 @@ import nl.onlyonce.adapter.service.queue.CarerixRequestQueueProviderService;
 import nl.onlyonce.adapter.service.queue.ZohoRequestQueueProviderService;
 import nl.onlyonce.adapter.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -67,7 +66,7 @@ public class SyncEndPoint {
     }
 
     private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {
-        if (StringUtils.isEmpty(message.getFirstname()) || StringUtils.isEmpty(message.getLastname())) {
+        if (message.validate()) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }

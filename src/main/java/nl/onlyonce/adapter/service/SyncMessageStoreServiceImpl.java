@@ -24,17 +24,6 @@ public class SyncMessageStoreServiceImpl implements SyncMessageStoreService {
     @Autowired
     private SyncMessageRepository syncMessageRepository;
 
-//    public SyncMessageStoreServiceImpl() {
-//
-//    }
-//
-//    @Autowired
-//    public SyncMessageStoreServiceImpl(SyncMessageRepository syncMessageRepository) {
-//        this.syncMessageRepository = syncMessageRepository;
-//
-//    }
-
-
     public SyncMessage save(String messageId, MessageType messageType, String message) {
 
         SyncMessage syncMessage = new SyncMessage();

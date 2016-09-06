@@ -1,6 +1,7 @@
 package nl.onlyonce.adapter.model.zoho;
 
 import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
+import org.springframework.util.StringUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -73,6 +74,15 @@ https://crm.zoho.com/crm/private/xml/Contacts/insertRecords?authtoken=Auth Token
 
     public ZohoContact withField(String label, String value) {
         this.addField(label, value);
+        return this;
+    }
+
+    public ZohoContact withField(String label, String value, String defaultWhenNull) {
+        if (StringUtils.isEmpty(value)) {
+            this.addField(label, defaultWhenNull);
+        } else {
+            this.addField(label, value);
+        }
         return this;
     }
 
