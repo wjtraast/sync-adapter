@@ -84,10 +84,29 @@ public class ZohoServiceImpl implements ZohoService {
     static ZohoAccount transform(final ZohoRequestMessage message) {
         return ZohoAccount.create()
                 .withField(ZohoFieldNames.Account.FIRSTNAME, message.getFirstname())
-                .withField(ZohoFieldNames.Account.LASTNAME, message.getLastname());
+                .withField(ZohoFieldNames.Account.LASTNAME, message.getLastname())
+                .withField(ZohoFieldNames.Account.BILLING_STREET, message.getStreetname())
+                .withField(ZohoFieldNames.Account.BILLING_CODE, message.getPostalcode())
+                .withField(ZohoFieldNames.Account.BILLING_STATE, message.getRegion())
+                .withField(ZohoFieldNames.Account.BILLING_COUNTRY, message.getCountry());
+
         /*
 
-        etc...
+			"trade_name": "",
+			"company_communication_mobtel1": "Phone",
+			"company_communication_mobtel2": "Phone",
+			"company_communication_mobtel2": "Phone",
+			"company_communication_landline1": "Phone",
+			"company_communication_landline2": "Phone",
+			"company_communication_landline3": "Phone",
+			"company_communication_email1": "E-mail",
+			"company_communication_email2": "E-mail",
+			"company_communication_email3": "E-mail",
+			"company_street_name": "Billing Street",
+			"company_postal_code": "Billing Code",
+			"company_city": "Billing City",
+			"company_region": "Billing State",
+			"company_country": "Billing Country"
          */
 
     }

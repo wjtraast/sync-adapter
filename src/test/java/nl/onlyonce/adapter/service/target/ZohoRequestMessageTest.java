@@ -9,19 +9,21 @@ import org.junit.Test;
  */
 public class ZohoRequestMessageTest {
 
-
-
     @Test
-    public void testZohoRequestMessage() throws Exception {
+    public void testContactZohoRequestMessage() throws Exception {
 
-        ZohoRequestMessage message = Fixtures.getFullZohoRequstMessage();
+        ZohoRequestMessage message = Fixtures.getContactZohoRequestMessage();
         String messageAsString = JsonUtil.convertToString(message);
         //assertThat(messageAsString).isEqualTo(expectedValue);
-
         System.out.println(messageAsString);
+    }
 
+    @Test
+    public void testAccountZohoRequestMessage() throws Exception {
 
-
-
+        ZohoRequestMessage message = Fixtures.getAccountZohoRequestMessage();
+        String messageAsString = JsonUtil.convertToString(message);
+        //assertThat(messageAsString).isEqualTo(expectedValue);
+        System.out.println(messageAsString);
     }
 }
