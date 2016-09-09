@@ -2,25 +2,20 @@ package nl.onlyonce.adapter.service.target;
 
 import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 
-import java.util.Date;
-
 /**
  * @author: Gerben
  */
 public class Fixtures {
 
-    public static final Date SYNC_DATE = new Date();
-
 
     public static ZohoRequestMessage getContactZohoRequestMessage() {
-
-
 
         ZohoRequestMessage message = new ZohoRequestMessage();
         message.setCardname("My Card");
         message.setFirstname("Jan");
         message.setLastname("Jansen");
         message.setInitials("JJ");
+        message.setGender("De heer");
         message.setSalutation("Male");
         message.setAcademicTitle("Ing.");
         message.setType("pds");
@@ -83,6 +78,7 @@ public class Fixtures {
         message.setHourlyRate("100");
         message.setMinHourRate("100");
         message.setSkills("Software|Engineering");
+
 
         message.setSkypeId("gerbenvis");
         message.setLinkedin("http://www.linkedin/in/gerbenvis");

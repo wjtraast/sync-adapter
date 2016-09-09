@@ -16,6 +16,10 @@ public class ZohoFieldNames {
         public static final String BILLING_COUNTRY = "Billing Country";
     }
 
+    /*
+    https://www.zoho.com/crm/help/api/modules-fields.html#Contacts
+     */
+
     public class Contact {
         public static final String FIRSTNAME = "First Name";
         public static final String LASTNAME = "Last Name";
@@ -23,9 +27,22 @@ public class ZohoFieldNames {
 
 
         public static final String MAILING_STREET = "Mailing Street";
+        public static final String MAILING_CITY = "Mailing City";
+        public static final String MAILING_COUNTRY = "Mailing Country";
+        public static final String MAILING_ZIP = "Mailing Zip";
+
         public static final String TITLE = "Title";
         public static final String SALUTATION = "Salutation";
         public static final String DESCRIPTION = "Description";
         public static final String SALUTATION_NULL_VALUE = "-None-";
+        public static final String EMAIL1 = "Email";
+        public static final String EMAIL2 = "Secondary Email";
+        public static final String PHONE = "Phone";
+        public static final String OTHER_PHONE = "Other Phone";
+        public static final String HOME_PHONE = "Home Phone";
+        public static final String MOBILE = "Mobile";
+        public static final String SKYPEID = "Skype ID";
+
+        public static final String TWITTER = "Twitter";
     }
 }

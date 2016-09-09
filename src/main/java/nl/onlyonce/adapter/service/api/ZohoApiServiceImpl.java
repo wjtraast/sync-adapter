@@ -68,6 +68,21 @@ public class ZohoApiServiceImpl implements ZohoApiService {
 
     }
 
+    @Override
+    public void findContact(String lastname, String emailAddresss, String email2) {
+
+        try {
+
+
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+
+
+
+
+    }
+
     private String postRequest(final String url, final String xmlString) throws Exception {
         String targetURL = ZoHoApiConfiguration.ENDPOINT + url;
         PostMethod post = new PostMethod(targetURL);

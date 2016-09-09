@@ -46,10 +46,10 @@ public class ZohoServiceImpl implements ZohoService {
 
         if (message.getType() != null) {
             switch (message.getType().toLowerCase()) {
-                case "account":
+                case "ods":
                     processZohoAccount(message);
                     break;
-                case "contact":
+                case "pds":
                     processZohoContact(message);
                     break;
             }
@@ -60,6 +60,8 @@ public class ZohoServiceImpl implements ZohoService {
 
         try {
             ZohoAccount account = transform(message);
+
+
             zohoApiService.insertAccount(account);
             syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {
@@ -71,7 +73,13 @@ public class ZohoServiceImpl implements ZohoService {
     private void processZohoContact(final ZohoRequestMessage message) {
 
         try {
+           // zohoApiService.findContact(message.getLastname(), message.getEmail1(), message.getEmail2());
+
+
+
             ZohoContact contact = tranform(message, new Date());
+
+
             zohoApiService.insertContact(contact);
             syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {
@@ -114,12 +122,27 @@ public class ZohoServiceImpl implements ZohoService {
     static ZohoContact tranform(final ZohoRequestMessage message, Date date) {
         return ZohoContact.create()
                 .withField(ZohoFieldNames.Contact.SALUTATION, message.getSalutation(), ZohoFieldNames.Contact.SALUTATION_NULL_VALUE)
-                .withField(ZohoFieldNames.Contact.FIRSTNAME, message.getFirstname())
+                .withField(ZohoFieldNames.Contact.FIRSTNAME, message.combineFirstNameFields(message.getGender(), message.getFirstname()))
                 .withField(ZohoFieldNames.Contact.LASTNAME, message.getLastname())
                 .withField(ZohoFieldNames.Contact.DATE_OF_BIRTH, message.getDateOfBirth())
                 .withField(ZohoFieldNames.Contact.MAILING_STREET, message.getStreetname())
                 .withField(ZohoFieldNames.Contact.TITLE, message.combineTitleFields(message.getInitials(), message.getAcademicTitle()))
-                .withField(ZohoFieldNames.Contact.DESCRIPTION, message.getLastSyncDescription(date));
+                .withField(ZohoFieldNames.Contact.DESCRIPTION, message.getLastSyncDescription(date))
+                .withField(ZohoFieldNames.Contact.EMAIL1, message.getEmail1())
+                .withField(ZohoFieldNames.Contact.EMAIL2, message.getEmail2())
+                .withField(ZohoFieldNames.Contact.PHONE, message.getLandline1())
+                .withField(ZohoFieldNames.Contact.HOME_PHONE, message.getLandline2())
+                .withField(ZohoFieldNames.Contact.OTHER_PHONE, message.getLandline3())
+                .withField(ZohoFieldNames.Contact.MOBILE, message.getMobile1())
+                .withField(ZohoFieldNames.Contact.SKYPEID, message.getSkypeId())
+                .withField(ZohoFieldNames.Contact.TWITTER, message.getTwitter())
+
+                .withField(ZohoFieldNames.Contact.MAILING_STREET, message.getStreetname())
+                .withField(ZohoFieldNames.Contact.MAILING_CITY, message.getCity())
+                .withField(ZohoFieldNames.Contact.MAILING_COUNTRY, message.getCountry())
+                .withField(ZohoFieldNames.Contact.MAILING_ZIP, message.getPostalcode());
+
+
 
          /*
 

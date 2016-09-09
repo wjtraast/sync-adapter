@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 public class ZohoRequestMessage extends BaseRequestMessage {
 
-    private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+    private static SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
     private static SimpleDateFormat dateFullFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
     @JsonProperty
@@ -29,6 +29,8 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     private String firstname;
     @JsonProperty
     private String lastname;
+    @JsonProperty
+    private String gender;
     @JsonProperty
     private String salutation;
     @JsonProperty
@@ -77,6 +79,8 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String skypeId;
     @JsonProperty
+    private String twitter;
+    @JsonProperty
     private String Linkedin;
     @JsonProperty
     private String Website;
@@ -88,6 +92,9 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     }
 
     public Date getDateOfBirthAsDate() {
+        if (StringUtils.isEmpty(dateOfBirth)) {
+            return null;
+        }
         try {
             return dateFormatter.parse(dateOfBirth);
         } catch (ParseException e) {
@@ -141,5 +148,16 @@ public class ZohoRequestMessage extends BaseRequestMessage {
 
     public String getLastSyncDescription(Date date) {
         return "Last synced by Only Once at " + dateFullFormatter.format(date) +  "\nCard name: " + cardname;
+    }
+
+    public String combineFirstNameFields(String gender, String firstname) {
+        if (StringUtils.isEmpty(gender)) {
+            return firstname;
+        }
+        if (StringUtils.isEmpty(firstname)) {
+            return gender;
+        }
+        return gender + " " + firstname;
+
     }
 }
