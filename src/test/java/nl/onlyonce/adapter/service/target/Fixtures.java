@@ -28,7 +28,9 @@ public class Fixtures {
         message.setEmail1("test@test.nl");
         message.setEmail2("test@test.nl");
         message.setDateOfBirth("20/02/1972");
-        message.setStreetname("Kerkstraat");
+        message.setStreetname1("Kerkstraat");
+        message.setStreetname1("deel1");
+        message.setHousenumber("11A");
         message.setPostalcode("1101AA");
         message.setRegion("Noord Holland");
         message.setCity("Amsterdam");
@@ -67,7 +69,9 @@ public class Fixtures {
         message.setEmail1("test@test.nl");
         message.setEmail2("test@test.nl");
         message.setDateOfBirth("20/02/1972");
-        message.setStreetname("Kerkstraat");
+        message.setStreetname1("Kerkstraat");
+        message.setStreetname2("deel 2");
+        message.setHousenumber("11A");
         message.setPostalcode("1101AA");
         message.setRegion("Noord Holland");
         message.setCity("Amsterdam");
@@ -83,6 +87,8 @@ public class Fixtures {
         message.setSkypeId("gerbenvis");
         message.setLinkedin("http://www.linkedin/in/gerbenvis");
         message.setWebsite("http://www.onlyonce.nl");
+
+        message.addCustomField("Synced By Only Once", true);
         return message;
     }
 }

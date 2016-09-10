@@ -30,6 +30,8 @@ public class ZohoFieldNames {
         public static final String MAILING_CITY = "Mailing City";
         public static final String MAILING_COUNTRY = "Mailing Country";
         public static final String MAILING_ZIP = "Mailing Zip";
+        public static final String MAILING_REGION ="Mailing Region";
+
 
         public static final String TITLE = "Title";
         public static final String SALUTATION = "Salutation";
@@ -44,5 +46,9 @@ public class ZohoFieldNames {
         public static final String SKYPEID = "Skype ID";
 
         public static final String TWITTER = "Twitter";
+
+        public class Custom {
+            public static final String SYNCED_BY_ONLYONCE = "Synced By Only Once";
+        }
     }
 }

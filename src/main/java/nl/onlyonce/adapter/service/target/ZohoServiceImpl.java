@@ -58,6 +58,8 @@ public class ZohoServiceImpl implements ZohoService {
 
     private void processZohoAccount(final ZohoRequestMessage message) {
 
+
+
         try {
             ZohoAccount account = transform(message);
 
@@ -93,7 +95,7 @@ public class ZohoServiceImpl implements ZohoService {
         return ZohoAccount.create()
                 .withField(ZohoFieldNames.Account.FIRSTNAME, message.getFirstname())
                 .withField(ZohoFieldNames.Account.LASTNAME, message.getLastname())
-                .withField(ZohoFieldNames.Account.BILLING_STREET, message.getStreetname())
+                .withField(ZohoFieldNames.Account.BILLING_STREET, message.combineStreetNameFields(message.getStreetname1(), message.getStreetname2(), message.getHousenumber()))
                 .withField(ZohoFieldNames.Account.BILLING_CODE, message.getPostalcode())
                 .withField(ZohoFieldNames.Account.BILLING_STATE, message.getRegion())
                 .withField(ZohoFieldNames.Account.BILLING_COUNTRY, message.getCountry());
@@ -123,9 +125,9 @@ public class ZohoServiceImpl implements ZohoService {
         return ZohoContact.create()
                 .withField(ZohoFieldNames.Contact.SALUTATION, message.getSalutation(), ZohoFieldNames.Contact.SALUTATION_NULL_VALUE)
                 .withField(ZohoFieldNames.Contact.FIRSTNAME, message.combineFirstNameFields(message.getGender(), message.getFirstname()))
-                .withField(ZohoFieldNames.Contact.LASTNAME, message.getLastname())
+                .withField(ZohoFieldNames.Contact.LASTNAME, message.combineLastNameFields(message.getLastname(), message.getAcademicSuffix()))
                 .withField(ZohoFieldNames.Contact.DATE_OF_BIRTH, message.getDateOfBirth())
-                .withField(ZohoFieldNames.Contact.MAILING_STREET, message.getStreetname())
+                .withField(ZohoFieldNames.Contact.MAILING_STREET, message.combineStreetNameFields(message.getStreetname1(), message.getStreetname2(), message.getHousenumber()))
                 .withField(ZohoFieldNames.Contact.TITLE, message.combineTitleFields(message.getInitials(), message.getAcademicTitle()))
                 .withField(ZohoFieldNames.Contact.DESCRIPTION, message.getLastSyncDescription(date))
                 .withField(ZohoFieldNames.Contact.EMAIL1, message.getEmail1())
@@ -137,10 +139,14 @@ public class ZohoServiceImpl implements ZohoService {
                 .withField(ZohoFieldNames.Contact.SKYPEID, message.getSkypeId())
                 .withField(ZohoFieldNames.Contact.TWITTER, message.getTwitter())
 
-                .withField(ZohoFieldNames.Contact.MAILING_STREET, message.getStreetname())
                 .withField(ZohoFieldNames.Contact.MAILING_CITY, message.getCity())
                 .withField(ZohoFieldNames.Contact.MAILING_COUNTRY, message.getCountry())
-                .withField(ZohoFieldNames.Contact.MAILING_ZIP, message.getPostalcode());
+                .withField(ZohoFieldNames.Contact.MAILING_ZIP, message.getPostalcode())
+                .withField(ZohoFieldNames.Contact.MAILING_REGION, message.getRegion())
+
+                .withField(ZohoFieldNames.Contact.Custom.SYNCED_BY_ONLYONCE, "true");
+
+
 
 
 

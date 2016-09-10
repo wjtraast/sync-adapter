@@ -36,6 +36,8 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String academicTitle;
     @JsonProperty
+    private String academicSuffix;
+    @JsonProperty
     private String mobile1;
     @JsonProperty
     private String mobile2;
@@ -52,7 +54,13 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String email2;
     @JsonProperty
-    private String streetname;
+    private String streetname1;
+    @JsonProperty
+    private String streetname2;
+    @JsonProperty
+    private String housenumber;
+    @JsonProperty
+    private String floor;
     @JsonProperty
     private String postalcode;
     @JsonProperty
@@ -159,5 +167,37 @@ public class ZohoRequestMessage extends BaseRequestMessage {
         }
         return gender + " " + firstname;
 
+    }
+
+    public String combineLastNameFields(String lastname, String academicSuffix) {
+        if (StringUtils.isEmpty(academicSuffix)) {
+            return lastname;
+        }
+
+        return lastname + " " + academicSuffix;
+
+
+
+    }
+
+    public String combineStreetNameFields(String streetname1, String streetname2, String housenumber) {
+        String street1 = streetname1;
+        String street2 = streetname2;
+        String housenr = housenumber;
+
+
+        if (StringUtils.isEmpty(housenumber)) {
+            street1 = "";
+        }
+
+        if (StringUtils.isEmpty(streetname2)) {
+            street2 = "";
+        }
+
+        if (StringUtils.isEmpty(housenumber)) {
+            housenr = "";
+        }
+
+        return street1 + " " + street2 + " " + housenr;
     }
 }
