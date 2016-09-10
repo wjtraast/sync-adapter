@@ -21,9 +21,9 @@ public class ZohoRequestMessageTest {
     @Test
     public void testAccountZohoRequestMessage() throws Exception {
 
-        ZohoRequestMessage message = Fixtures.getAccountZohoRequestMessage();
-        String messageAsString = JsonUtil.convertToString(message);
-        //assertThat(messageAsString).isEqualTo(expectedValue);
-        System.out.println(messageAsString);
+//        ZohoRequestMessage message = Fixtures.getAccountZohoRequestMessage();
+//        String messageAsString = JsonUtil.convertToString(message);
+//        //assertThat(messageAsString).isEqualTo(expectedValue);
+//        System.out.println(messageAsString);
     }
 }
