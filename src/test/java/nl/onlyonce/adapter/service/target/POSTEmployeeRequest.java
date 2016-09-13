@@ -12,7 +12,7 @@ import org.apache.http.entity.ContentType;
 import java.io.IOException;
 import java.util.Base64;
 
-public class SendRequest
+public class POSTEmployeeRequest
 {
     public static void main(String[] args) {
         sendRequest();
