@@ -1,0 +1,405 @@
+<CREmployee id="55889">
+    <additionalInfo>
+        <NSDictionary>
+            <_4504>4501</_4504>
+        </NSDictionary>
+    </additionalInfo>
+    <adminSyncDate>2016-09-13 20:01:01</adminSyncDate>
+    <children>
+        <NSArray/>
+    </children>
+    <creationDate>2016-09-13 20:01:01</creationDate>
+    <deleted>0</deleted>
+    <employeeID>55889</employeeID>
+    <externalInfo>
+        <NSDictionary>
+        </NSDictionary>
+    </externalInfo>
+    <flags>1</flags>
+    <friWorkMinutes>480</friWorkMinutes>
+    <fullAddress/>
+    <homeFullAddress/>
+    <hoursPerWeek>40</hoursPerWeek>
+    <isConfidential>0</isConfidential>
+    <lastContactDate>2016-09-13 20:01:01</lastContactDate>
+    <lastName>Peters_abc</lastName>
+    <maritalStatus>
+        <NSDictionary>
+        </NSDictionary>
+    </maritalStatus>
+    <matchCountMO>0</matchCountMO>
+    <modificationDate>2016-09-13 20:01:01</modificationDate>
+    <monWorkMinutes>480</monWorkMinutes>
+    <thuWorkMinutes>480</thuWorkMinutes>
+    <timesheetTypeKey>1</timesheetTypeKey>
+    <tueWorkMinutes>480</tueWorkMinutes>
+    <wedWorkMinutes>480</wedWorkMinutes>
+    <toAdminHomeCountryNode>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toAdminHomeCountryNode>
+    <toAdminHomeProvinceNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toAdminHomeProvinceNode>
+    <toAvailableWithinNode>
+        <CRDataNode id="2343">
+        </CRDataNode>
+    </toAvailableWithinNode>
+    <toBirthCountryNode>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toBirthCountryNode>
+    <toBrancheLevel1>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toBrancheLevel1>
+    <toBrancheLevel2>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toBrancheLevel2>
+    <toCategoryNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toCategoryNode>
+    <toContractTypeNode>
+        <CRDataNode id="5679">
+        </CRDataNode>
+    </toContractTypeNode>
+    <toCountryNode>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toCountryNode>
+    <toCurrentSalaryCurrencyNode>
+        <CRDataNode id="2129">
+        </CRDataNode>
+    </toCurrentSalaryCurrencyNode>
+    <toCurrentSalaryPeriodNode>
+        <CRDataNode id="18">
+        </CRDataNode>
+    </toCurrentSalaryPeriodNode>
+    <toCurrentSalaryUnitNode>
+        <CRDataNode id="18">
+        </CRDataNode>
+    </toCurrentSalaryUnitNode>
+    <toDriverLicenceNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toDriverLicenceNode>
+    <toExperienceNode>
+        <CRDataNode id="23">
+        </CRDataNode>
+    </toExperienceNode>
+    <toFunction1Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction1Level1Node>
+    <toFunction1Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction1Level2Node>
+    <toFunction2Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction2Level1Node>
+    <toFunction2Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction2Level2Node>
+    <toFunction3Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction3Level1Node>
+    <toFunction3Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toFunction3Level2Node>
+    <toGenderNode>
+        <CRDataNode id="2003">
+        </CRDataNode>
+    </toGenderNode>
+    <toHomeCountryNode>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toHomeCountryNode>
+    <toHomeProvinceNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toHomeProvinceNode>
+    <toIdentificationCountryNode>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toIdentificationCountryNode>
+    <toIdentificationTypeNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toIdentificationTypeNode>
+    <toLanguageNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLanguageNode>
+    <toLevel1Function1>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel1Function1>
+    <toLevel1Function2>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel1Function2>
+    <toLevel1Function3>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel1Function3>
+    <toLevel2Function1>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel2Function1>
+    <toLevel2Function2>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel2Function2>
+    <toLevel2Function3>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toLevel2Function3>
+    <toMaritalStatusNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMaritalStatusNode>
+    <toMeansOfTransportNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMeansOfTransportNode>
+    <toMedicalInsuranceAgencyNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMedicalInsuranceAgencyNode>
+    <toMedicalInsuranceCompanyNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMedicalInsuranceCompanyNode>
+    <toMedicalInsuranceTypeNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMedicalInsuranceTypeNode>
+    <toMinSalaryCurrencyNode>
+        <CRDataNode id="2129">
+        </CRDataNode>
+    </toMinSalaryCurrencyNode>
+    <toMinSalaryPeriodNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMinSalaryPeriodNode>
+    <toMinSalaryUnitNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toMinSalaryUnitNode>
+    <toNationalityNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toNationalityNode>
+    <toOptional1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toOptional1Node>
+    <toPaymentModeNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPaymentModeNode>
+    <toPrefBranche1Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche1Level1Node>
+    <toPrefBranche1Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche1Level2Node>
+    <toPrefBranche2Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche2Level1Node>
+    <toPrefBranche2Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche2Level2Node>
+    <toPrefBranche3Level1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche3Level1Node>
+    <toPrefBranche3Level2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefBranche3Level2Node>
+    <toPrefContractTypeNode>
+        <CRDataNode id="5680">
+        </CRDataNode>
+    </toPrefContractTypeNode>
+    <toPrefCountry1Node>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toPrefCountry1Node>
+    <toPrefCountry2Node>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toPrefCountry2Node>
+    <toPrefCountry3Node>
+        <CRDataNode id="49">
+        </CRDataNode>
+    </toPrefCountry3Node>
+    <toPrefRegion1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefRegion1Node>
+    <toPrefRegion2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefRegion2Node>
+    <toPrefRegion3Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toPrefRegion3Node>
+    <toProductNode>
+        <CRDataNode id="2040">
+        </CRDataNode>
+    </toProductNode>
+    <toProductType1Node>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductType1Node>
+    <toProductType2Node>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductType2Node>
+    <toProductType3Node>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductType3Node>
+    <toProductTypeNode1>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductTypeNode1>
+    <toProductTypeNode2>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductTypeNode2>
+    <toProductTypeNode3>
+        <CRDataNode id="157">
+        </CRDataNode>
+    </toProductTypeNode3>
+    <toProvinceNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toProvinceNode>
+    <toSalaryScaleLevel1Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toSalaryScaleLevel1Node>
+    <toSalaryScaleLevel2Node>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toSalaryScaleLevel2Node>
+    <toStatusNode>
+        <CRDataNode id="87">
+        </CRDataNode>
+    </toStatusNode>
+    <toUser>
+        <CRUser id="95259">
+            <additionalInfo>
+                <NSDictionary>
+                    <_4504>4501</_4504>
+                </NSDictionary>
+            </additionalInfo>
+            <addressUseCompanyMailingAddress>0</addressUseCompanyMailingAddress>
+            <creationDate>2016-09-13 20:01:01</creationDate>
+            <deleted>0</deleted>
+            <emailNotificationPopup>0</emailNotificationPopup>
+            <forwardEmail>0</forwardEmail>
+            <homeFullAddress/>
+            <isActive>0</isActive>
+            <isEmailInConfidential>0</isEmailInConfidential>
+            <isEmailOutConfidential>0</isEmailOutConfidential>
+            <isLoginBlocked>0</isLoginBlocked>
+            <isMasterUser>0</isMasterUser>
+            <isNewUser>0</isNewUser>
+            <isTbaActive>0</isTbaActive>
+            <isTokenHomeActive>0</isTokenHomeActive>
+            <isTokenRoadActive>0</isTokenRoadActive>
+            <isTokenWorkActive>0</isTokenWorkActive>
+            <lastContactDate>2016-09-13 20:01:01</lastContactDate>
+            <lastName>Peters_abc</lastName>
+            <mailboxFlags>0</mailboxFlags>
+            <modificationDate>2016-09-13 20:01:01</modificationDate>
+            <password>EbEXTWBV</password>
+            <previewDelay>0</previewDelay>
+            <userID>95259</userID>
+            <userName>edGaJjPB</userName>
+            <visitAddressUseCompanyVisitAddress>0</visitAddressUseCompanyVisitAddress>
+            <wantsCookie>0</wantsCookie>
+            <toCountryNode>
+                <CRDataNode id="49">
+                </CRDataNode>
+            </toCountryNode>
+            <toFunctionNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toFunctionNode>
+            <toGenderNode>
+                <CRDataNode id="2003">
+                </CRDataNode>
+            </toGenderNode>
+            <toHomeCountryNode>
+                <CRDataNode id="49">
+                </CRDataNode>
+            </toHomeCountryNode>
+            <toHomeProvinceNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toHomeProvinceNode>
+            <toLanguageNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toLanguageNode>
+            <toProductNode>
+                <CRDataNode id="157">
+                </CRDataNode>
+            </toProductNode>
+            <toProvinceNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toProvinceNode>
+            <toSalutationNode>
+                <CRDataNode id="2283">
+                </CRDataNode>
+            </toSalutationNode>
+            <toSingleStatusNode>
+                <CRDataNode id="87">
+                </CRDataNode>
+            </toSingleStatusNode>
+            <toSmtpServerNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toSmtpServerNode>
+            <toStatusNode>
+                <CRDataNode id="87">
+                </CRDataNode>
+            </toStatusNode>
+            <toTrialPeriodUnitNode>
+                <CRDataNode id="0">
+                </CRDataNode>
+            </toTrialPeriodUnitNode>
+            <toUserRole>
+                <CRUserRole id="1">
+                </CRUserRole>
+            </toUserRole>
+        </CRUser>
+    </toUser>
+    <toWorkLevelNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toWorkLevelNode>
+    <toWorkUnitNode>
+        <CRDataNode id="0">
+        </CRDataNode>
+    </toWorkUnitNode>
+    <stableHash>1239093723</stableHash>
+</CREmployee>

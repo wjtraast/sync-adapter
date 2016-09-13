@@ -74,14 +74,47 @@ public class ZohoServiceImpl implements ZohoService {
 
     private void processZohoContact(final ZohoRequestMessage message) {
 
-        try {
-           // zohoApiService.findContact(message.getLastname(), message.getEmail1(), message.getEmail2());
+        String odsId = message.getOdsId();
 
+        try {
+
+            /*
+
+            Stappen voor het inserten/updaten van een contact.
+
+            1. Zoek contact by by email adres, en kijk of daar het oo cardid er tussen staat.
+            2. Update Contact
+            3. Als contact niet is gevonden, insert contact
+            4. update contact met linkOdsId
+            5. update contact met DelinkOdsId
+
+             */
+
+            /*
+            ZohoContact contact = zohoApiService.findContact(message.getCardId(), message.getEmail1());
+            if (contact == null) { // niet gevonden
+                ZohoContact contact = tranform(message, new Date());
+                zohoApiService.insertContact(contact);
+
+            }
+            if (!StringUtils.isEmpty(message.getLinkOds()) {
+                if (message.getLinkOds().equals("-1") {
+                 // verwijder de link tussen
+                   zohoApiService.delinkContactWithAccount(contact);
+
+                } else {
+
+                // bepaal of account bestaat in Zoho
+                // zoniet, overslaan
+                if (zohoApiService.accountExists(message.getOdsID())) {
+                    // add AccountId to the contact object
+                    zohoApiService.linkContactToAccount(contact, odsId)
+                } else {
+                    // account bestaat niet, dus nu even niets doen en loggen.
+             */
 
 
             ZohoContact contact = tranform(message, new Date());
-
-
             zohoApiService.insertContact(contact);
             syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {

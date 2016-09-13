@@ -45,6 +45,7 @@ public class Fixtures {
         message.setSkypeId("gerbenvis");
         message.setLinkedin("http://www.linkedin/in/gerbenvis");
         message.setWebsite("http://www.onlyonce.nl");
+
         return message;
     }
 

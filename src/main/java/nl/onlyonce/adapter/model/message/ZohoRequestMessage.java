@@ -94,6 +94,10 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     private String Website;
     private Object lastSyncDescription;
 
+    @JsonProperty
+    String OdsId;
+
+
 
     public ZohoRequestMessage() {
 

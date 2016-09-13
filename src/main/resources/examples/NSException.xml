@@ -1,0 +1,9 @@
+<NSException>
+    <name>EOUnknownKeyException</name>
+    <reason>Exception while executing method saveAction:
+        Exception while executing statement :
+        id target = [ec decodeObject:nil fromXMLElement:doc]
+        Exception while evaluating WebScript expression [ec decodeObject:nil fromXMLElement:doc]:
+        [&lt;CREmployee 0x406e018&gt; takeValue:forKey:]: attempt to assign value to unknown key 'firstname'</reason>
+    <userInfo/>
+</NSException>
