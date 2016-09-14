@@ -11,4 +11,7 @@ import lombok.Data;
 public class CarerixRequestMessage extends BaseRequestMessage {
 
 
+    public boolean validate() {
+        return true;
+    }
 }

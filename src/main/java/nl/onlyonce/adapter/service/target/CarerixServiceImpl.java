@@ -1,5 +1,6 @@
 package nl.onlyonce.adapter.service.target;
 
+import com.carerix.api.CREmployee;
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
 import nl.onlyonce.adapter.service.api.CarerixApiService;
@@ -19,8 +20,10 @@ public class CarerixServiceImpl implements CarerixService {
     @Override
     public void processMessage(CarerixRequestMessage message) {
         log.info("CarerixServiceImpl : processMessage CarerixRequestMessage");
-        apiService.addEmployee();
-
+        CREmployee employee = new CREmployee();
+        employee.setFirstName(message.getFirstname());
+        employee.setLastName(message.getLastname());
+        apiService.addEmployee(employee);
 
     }
 }

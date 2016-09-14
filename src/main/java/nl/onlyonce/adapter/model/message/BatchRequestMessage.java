@@ -2,7 +2,6 @@ package nl.onlyonce.adapter.model.message;
 
 import lombok.Builder;
 import lombok.Data;
-import nl.onlyonce.adapter.model.MetaData;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,12 +15,9 @@ import java.util.List;
 @Builder
 public class BatchRequestMessage extends BaseRequestMessage {
 
-    private MetaData metaData;
     private String messageId;
     private List<CarerixRequestMessage> carerixMessages;
     private List<ZohoRequestMessage> zohoMessages;
-
-
 
     public List<CarerixRequestMessage> getCarerixRequests() {
 

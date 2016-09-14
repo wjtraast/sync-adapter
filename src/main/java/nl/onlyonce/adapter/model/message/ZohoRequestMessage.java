@@ -26,10 +26,6 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String initials;
     @JsonProperty
-    private String firstname;
-    @JsonProperty
-    private String lastname;
-    @JsonProperty
     private String gender;
     @JsonProperty
     private String salutation;
@@ -137,7 +133,7 @@ public class ZohoRequestMessage extends BaseRequestMessage {
             return false;
         }
 
-        if (isPds() && StringUtils.isEmpty(firstname) || StringUtils.isEmpty(lastname)) {
+        if (isPds() && StringUtils.isEmpty(getFirstname()) || StringUtils.isEmpty(getLastname())) {
             return false;
         }
         return false;

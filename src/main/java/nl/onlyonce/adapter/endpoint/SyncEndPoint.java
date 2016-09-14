@@ -50,12 +50,12 @@ public class SyncEndPoint {
     }
 
     @RequestMapping(value = "/sync", method = RequestMethod.GET)
-    String syncGet() {
+    String testSync() {
         return "running";
     }
 
 
-    @RequestMapping(value = "/sync/zoho", method = RequestMethod.POST)
+    @RequestMapping(value = "/sync-zoho", method = RequestMethod.POST)
     void syncZoho(@RequestBody ZohoRequestMessage message, HttpServletResponse response) throws Exception {
 
         message.setId(UUID.randomUUID().toString());
@@ -63,9 +63,28 @@ public class SyncEndPoint {
         validateMessage(message, response);
         syncMessageStoreService.save(message.getId(), MessageType.ZOHO_REQUEST_MESSAGE, JsonUtil.convertToString(message));
         zohoRequestQueueProviderService.addMessage(message);
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+    }
+
+    @RequestMapping(value = "/sync-carerix", method = RequestMethod.POST)
+    void syncCarerix(@RequestBody CarerixRequestMessage message, HttpServletResponse response) throws Exception {
+
+        message.setId(UUID.randomUUID().toString());
+
+        validateMessage(message, response);
+        syncMessageStoreService.save(message.getId(), MessageType.CARERIX_REQUEST_MESSAGE, JsonUtil.convertToString(message));
+        carerixRequestQueueProviderService.addMessage(message);
+        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+
     }
 
     private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {
+        if (message.validate()) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+
+    private void validateMessage(CarerixRequestMessage message, HttpServletResponse response) {
         if (message.validate()) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }

@@ -330,6 +330,7 @@
       <xs:element type="xs:string" name="matchCountMO"/>
       <xs:element type="xs:string" name="modificationDate"/>
       <xs:element type="xs:string" name="monWorkMinutes"/>
+      <xs:element type="xs:string" name="notes"/>
       <xs:element type="xs:string" name="thuWorkMinutes"/>
       <xs:element type="xs:string" name="timesheetTypeKey"/>
       <xs:element type="xs:string" name="tueWorkMinutes"/>

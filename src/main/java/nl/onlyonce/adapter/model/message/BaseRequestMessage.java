@@ -13,10 +13,17 @@ import java.util.Map;
 public class BaseRequestMessage implements Serializable {
 
 
-    String id; // messageId
+    String id; // internal messageId
 
     @JsonProperty
+    private String firstname;
+    @JsonProperty
+    private String lastname;
+    @JsonProperty
+    private String cardId;
+    @JsonProperty
     protected String cardname;
+
     Map<String, String> customFields;
 
     public void addCustomField(String fieldName, boolean booleanValue) {

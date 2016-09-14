@@ -1,9 +1,15 @@
 package nl.onlyonce.adapter.service.api;
 
+import com.carerix.api.CREmployee;
 import lombok.extern.java.Log;
-import nl.onlyonce.adapter.model.Credentials;
+import org.apache.http.client.fluent.Request;
+import org.apache.http.entity.ContentType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.Base64;
+
+import static nl.onlyonce.adapter.AppConfig.CARERIX_TOKEN;
+import static nl.onlyonce.adapter.AppConfig.CARERIX_USERNAME;
 
 /**
  * @author: Gerben
@@ -13,20 +19,31 @@ import org.springframework.web.client.RestTemplate;
 @Log
 public class CarerixApiServiceImpl implements CarerixApiService {
 
-    private final Credentials credentials;
+    @Override
+    public void addEmployee(CREmployee employee) {
 
-    public CarerixApiServiceImpl() {
+        try {
+            postRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, CarerixModelHelper.convertEmployee(employee));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        credentials = Credentials.builder().username("Developer").password("9H7pNdDC").build();
+
     }
 
+    private void postRequest(String endPoint, String data) throws Exception {
 
-    @Override
-    public void addEmployee() {
+        Request.Post(CarerixApiConfiguration.DOMAIN + endPoint)
+                .addHeader("Authorization", "Basic " + getAuthorization())
+                .addHeader("Content-Type", "application/xml")
+                .bodyString(data, ContentType.DEFAULT_TEXT)
+                .execute().returnContent();
 
-        log.info("calling CarerixAPI with addEmployee");
-        RestTemplate restTemplate = new RestTemplate();
+    }
 
+    private String getAuthorization(){
+        String authString = CARERIX_USERNAME + ":" + CARERIX_TOKEN;
+        return new String(Base64.getEncoder().encode(authString.getBytes()));
 
     }
 

@@ -175,6 +175,7 @@
                                 <xsdOption>
                                     <xsd>src/main/resources/schemas/CREmployee.xsd</xsd>
                                     <packagename>com.carerix.api</packagename>
+                                    <bindingFile>src/main/resources/schemas/jaxb-bindings.xml</bindingFile>
                                 </xsdOption>
                                 <xsdOption>
                                     <xsd>src/main/resources/schemas/NSException.xsd</xsd>
