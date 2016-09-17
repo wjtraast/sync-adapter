@@ -9,9 +9,31 @@
             <jxb:class name="CREmployee"/>
         </jxb:bindings>
 
-        <jxb:bindings node="//xs:complexType[@name='AdditionalInfoType']">
-            <jxb:class name="AdditionalInfo"/>
+        <jxb:bindings node="//xs:complexType[@name='CRUserType']">
+            <jxb:class name="CRUser"/>
         </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='toUserType']">
+            <jxb:class name="ToUser"/>
+        </jxb:bindings>
+
+
+
+        <jxb:bindings node="//xs:complexType[@name='toGenderNodeType']">
+            <jxb:class name="ToGenderNode"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='CRDataNodeType']">
+            <jxb:class name="CRDataNode"/>
+        </jxb:bindings>
+
+
+        <!-- rename the value element -->
+        <bindings node="//xs:complexType[@name='CRDataNode']">
+            <bindings node=".//xs:attribute[@name='Value']">
+                <property name="ValueAttribute"/>
+            </bindings>
+        </bindings>
     </jxb:bindings>
 
 </jxb:bindings>

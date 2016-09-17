@@ -20,6 +20,47 @@ public class BaseRequestMessage implements Serializable {
     @JsonProperty
     private String lastname;
     @JsonProperty
+    private String dateOfBirth;
+    @JsonProperty
+    private String initials;
+    @JsonProperty
+    private String gender;
+
+
+
+    @JsonProperty
+    private String mobile1;
+    @JsonProperty
+    private String mobile2;
+    @JsonProperty
+    private String mobile3;
+    @JsonProperty
+    private String landline1;
+    @JsonProperty
+    private String landline2;
+    @JsonProperty
+    private String landline3;
+    @JsonProperty
+    private String email1;
+    @JsonProperty
+    private String email2;
+
+    @JsonProperty
+    private String city;
+
+    @JsonProperty
+    private String postalCode;
+
+    @JsonProperty
+    private String houseNumber;
+
+    @JsonProperty
+    private String streetname1;
+    @JsonProperty
+    private String streetname2;
+
+
+    @JsonProperty
     private String cardId;
     @JsonProperty
     protected String cardname;

@@ -317,7 +317,17 @@
       <xs:element type="xs:string" name="deleted"/>
       <xs:element type="xs:string" name="employeeID"/>
       <xs:element type="externalInfoType" name="externalInfo"/>
+      <xs:element type="xs:string" name="lastName"/>
       <xs:element type="xs:string" name="firstName"/>
+      <xs:element type="xs:string" name="initials"/>
+      <xs:element type="xs:string" name="birthDate"/>
+      <xs:element type="xs:string" name="emailAddress"/>
+      <xs:element type="xs:string" name="phoneNumber"/>
+      <xs:element type="xs:string" name="mobileNumber"/>
+      <xs:element type="xs:string" name="street"/>
+      <xs:element type="xs:string" name="houseNumber"/>
+      <xs:element type="xs:string" name="postalCode"/>
+      <xs:element type="xs:string" name="city"/>
       <xs:element type="xs:string" name="flags"/>
       <xs:element type="xs:string" name="friWorkMinutes"/>
       <xs:element type="xs:string" name="fullAddress"/>
@@ -325,7 +335,6 @@
       <xs:element type="xs:string" name="hoursPerWeek"/>
       <xs:element type="xs:string" name="isConfidential"/>
       <xs:element type="xs:string" name="lastContactDate"/>
-      <xs:element type="xs:string" name="lastName"/>
       <xs:element type="maritalStatusType" name="maritalStatus"/>
       <xs:element type="xs:string" name="matchCountMO"/>
       <xs:element type="xs:string" name="modificationDate"/>

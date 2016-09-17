@@ -30,8 +30,8 @@ public class Fixtures {
         message.setDateOfBirth("20/02/1972");
         message.setStreetname1("Kerkstraat");
         message.setStreetname1("deel1");
-        message.setHousenumber("11A");
-        message.setPostalcode("1101AA");
+        message.setHouseNumber("11A");
+        message.setPostalCode("1101AA");
         message.setRegion("Noord Holland");
         message.setCity("Amsterdam");
         message.setCountry("Nederland");
@@ -72,8 +72,8 @@ public class Fixtures {
         message.setDateOfBirth("20/02/1972");
         message.setStreetname1("Kerkstraat");
         message.setStreetname2("deel 2");
-        message.setHousenumber("11A");
-        message.setPostalcode("1101AA");
+        message.setHouseNumber("11A");
+        message.setPostalCode("1101AA");
         message.setRegion("Noord Holland");
         message.setCity("Amsterdam");
         message.setCountry("Nederland");

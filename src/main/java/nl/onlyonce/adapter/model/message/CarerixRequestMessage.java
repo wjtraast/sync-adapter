@@ -10,8 +10,15 @@ import lombok.Data;
 @Data
 public class CarerixRequestMessage extends BaseRequestMessage {
 
+    public CarerixRequestMessage() {
+
+    }
+
+
 
     public boolean validate() {
         return true;
+//        return (!StringUtils.isEmpty(getFirstname()) ||
+//                !StringUtils.isEmpty(getLastname()));
     }
 }

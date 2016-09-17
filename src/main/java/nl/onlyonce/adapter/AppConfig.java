@@ -9,4 +9,5 @@ public class AppConfig {
     public static final String CARERIX_USERNAME = "publictest";
 
 
+    public static final String CARERIX_USER_ID = "95175";
 }

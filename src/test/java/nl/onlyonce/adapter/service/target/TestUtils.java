@@ -1,7 +1,6 @@
 package nl.onlyonce.adapter.service.target;
 
 import com.carerix.api.CREmployeeType;
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -21,20 +20,10 @@ public class TestUtils {
 
     public static String convertEmployeeToString(CREmployeeType type) {
         try {
-
-            NamespacePrefixMapper mapper = new NamespacePrefixMapper() {
-
-                @Override
-                public String getPreferredPrefix(String namespaceUri, String suggestion, boolean requirePrefix) {
-                    return "";
-                }
-            };
-
             JAXBContext jaxbContext = JAXBContext.newInstance(type.getClass());
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", mapper);            // format the XML output
 
             QName qName = new QName("com.carerix.api", "CREmployeeType");
             JAXBElement<CREmployeeType> root = new JAXBElement<CREmployeeType>(qName, CREmployeeType.class, type);
@@ -57,4 +46,19 @@ public class TestUtils {
         }
         return null;
     }
+
+//    public static CREmployee convertStringToEmployee(String value) {
+//        try {
+//            JAXBContext jaxbContext = JAXBContext.newInstance(CREmployee.class);
+//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//            StringReader reader = new StringReader(value);
+//            return (CREmployee) unmarshaller.unmarshal(reader);
+//
+//
+//
+//        } catch (JAXBException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

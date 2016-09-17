@@ -22,47 +22,19 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String type;
     @JsonProperty
-    private String dateOfBirth;
-    @JsonProperty
-    private String initials;
-    @JsonProperty
-    private String gender;
-    @JsonProperty
     private String salutation;
     @JsonProperty
     private String academicTitle;
     @JsonProperty
     private String academicSuffix;
-    @JsonProperty
-    private String mobile1;
-    @JsonProperty
-    private String mobile2;
-    @JsonProperty
-    private String mobile3;
-    @JsonProperty
-    private String landline1;
-    @JsonProperty
-    private String landline2;
-    @JsonProperty
-    private String landline3;
-    @JsonProperty
-    private String email1;
-    @JsonProperty
-    private String email2;
-    @JsonProperty
-    private String streetname1;
-    @JsonProperty
-    private String streetname2;
-    @JsonProperty
-    private String housenumber;
+
+
     @JsonProperty
     private String floor;
-    @JsonProperty
-    private String postalcode;
+
     @JsonProperty
     private String region;
-    @JsonProperty
-    private String city;
+
     @JsonProperty
     private String country;
     @JsonProperty
@@ -100,11 +72,11 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     }
 
     public Date getDateOfBirthAsDate() {
-        if (StringUtils.isEmpty(dateOfBirth)) {
+        if (StringUtils.isEmpty(getDateOfBirth())) {
             return null;
         }
         try {
-            return dateFormatter.parse(dateOfBirth);
+            return dateFormatter.parse(getDateOfBirth());
         } catch (ParseException e) {
             return null;
         }

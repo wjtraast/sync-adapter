@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:jxb="http://java.sun.com/xml/ns/jaxb"  jxb:version="2.1">
+  <xs:element name="CREmployee" type="CREmployeeType"/>
+  <xs:complexType name="ownerType">
+    <xs:sequence>
+      <xs:element type="CRUserType" name="CRUser"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toGenderNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toAttachmentDataType">
+    <xs:sequence>
+      <xs:element type="CRAttachmentDataType" name="CRAttachmentData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachmentsType">
+    <xs:sequence>
+      <xs:element type="CRAttachmentType" name="CRAttachment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRUserType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="lastName" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="toCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProvinceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRDataNodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="key" use="optional"/>
+        <xs:attribute type="xs:string" name="value" use="optional">
+          <xs:annotation>
+              <xs:appinfo>
+                  <jxb:property name="valueAttribute"/>
+              </xs:appinfo>
+          </xs:annotation>
+         </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="toUserType">
+    <xs:sequence>
+      <xs:element type="CRUserType" name="CRUser"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CREmployeeType">
+    <xs:sequence>
+      <xs:element type="toUserType" name="toUser"/>
+      <xs:element type="ownerType" name="owner"/>
+      <xs:element type="xs:string" name="lastName"/>
+      <xs:element type="xs:string" name="firstName"/>
+      <xs:element type="xs:string" name="initials"/>
+      <xs:element type="toGenderNodeType" name="toGenderNode"/>
+      <xs:element type="xs:string" name="birthDate"/>
+      <xs:element type="xs:string" name="emailAddress"/>
+      <xs:element type="xs:string" name="phoneNumber"/>
+      <xs:element type="xs:string" name="mobileNumber"/>
+      <xs:element type="xs:string" name="street"/>
+      <xs:element type="xs:string" name="houseNumber"/>
+      <xs:element type="xs:string" name="postalCode"/>
+      <xs:element type="xs:string" name="city"/>
+      <xs:element type="toCountryNodeType" name="toCountryNode"/>
+      <xs:element type="toProvinceNodeType" name="toProvinceNode"/>
+      <xs:element type="attachmentsType" name="attachments"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRAttachmentDataType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="content"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRAttachmentType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="filePath"/>
+      <xs:element type="toAttachmentDataType" name="toAttachmentData"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

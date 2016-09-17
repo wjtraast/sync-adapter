@@ -15,7 +15,17 @@
         <NSDictionary>
         </NSDictionary>
     </externalInfo>
-    <firstName>Dirk</firstName>
+    <lastName>Doe</lastName>
+    <firstName>John</firstName>
+    <initials>J.</initials>
+    <birthDate>1999-11-30 00:00:00</birthDate>
+    <emailAddress>jdoe@example.com</emailAddress>
+    <phoneNumber>012-345 678</phoneNumber>
+    <mobileNumber>06-543 210</mobileNumber>
+    <street>Somestreet</street>
+    <houseNumber>13</houseNumber>
+    <postalCode>1234 AB</postalCode>
+    <city>Amsterdam</city>
     <flags>1</flags>
     <friWorkMinutes>480</friWorkMinutes>
     <fullAddress/>
@@ -23,7 +33,6 @@
     <hoursPerWeek>40</hoursPerWeek>
     <isConfidential>0</isConfidential>
     <lastContactDate>2016-09-14 18:55:20</lastContactDate>
-    <lastName>Van der Broek</lastName>
     <maritalStatus>
         <NSDictionary>
         </NSDictionary>

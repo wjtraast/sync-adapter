@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="array" type="arrayType"/>
+  <xs:complexType name="arrayType">
+    <xs:sequence>
+      <xs:element type="CREmployeeType" name="CREmployee" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="count"/>
+  </xs:complexType>
+  <xs:complexType name="CREmployeeType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="emailAddress" minOccurs="0"/>
+      <xs:element name="employeeID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="55898"/>
+            <xs:enumeration value="55897"/>
+            <xs:enumeration value="55896"/>
+            <xs:enumeration value="55895"/>
+            <xs:enumeration value="55894"/>
+            <xs:enumeration value="55893"/>
+            <xs:enumeration value="55892"/>
+            <xs:enumeration value="55891"/>
+            <xs:enumeration value="55890"/>
+            <xs:enumeration value="55889"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="firstName" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Dirk"/>
+            <xs:enumeration value="Jan"/>
+            <xs:enumeration value="Peter"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="lastName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Van de Adapter"/>
+            <xs:enumeration value="Van der Adapter"/>
+            <xs:enumeration value="Van der Broek"/>
+            <xs:enumeration value="Jansen"/>
+            <xs:enumeration value="Peters_abc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sortName">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Van de Adapter, Dirk"/>
+            <xs:enumeration value="Van der Adapter, Dirk"/>
+            <xs:enumeration value="Van der Broek, Dirk"/>
+            <xs:enumeration value="Jansen, Jan"/>
+            <xs:enumeration value="Peters_abc, Peter"/>
+            <xs:enumeration value="Peters_abc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+</xs:schema>

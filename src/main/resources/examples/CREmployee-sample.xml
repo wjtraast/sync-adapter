@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CREmployee>
+
+    <toUser>
+        <CRUser>
+            <lastName>Verheij</lastName>
+        </CRUser>
+    </toUser>
+    <owner>
+        <CRUser id="95175" />
+    </owner>
+
+    <lastName>Doe</lastName>
+    <firstName>John</firstName>
+    <initials>J.</initials>
+    <toGenderNode>
+        <CRDataNode id="891"></CRDataNode>
+    </toGenderNode>
+    <birthDate>1999-11-30 00:00:00</birthDate>
+    <emailAddress>jdoe@example.com</emailAddress>
+    <phoneNumber>012-345 678</phoneNumber>
+    <mobileNumber>06-543 210</mobileNumber>
+    <street>Somestreet</street>
+    <houseNumber>13</houseNumber>
+    <postalCode>1234 AB</postalCode>
+    <city>Amsterdam</city>
+    <toCountryNode>
+        <CRDataNode key="values.value" value="Nederland"/>
+    </toCountryNode>
+    <toProvinceNode>
+        <CRDataNode id="4072"></CRDataNode>
+    </toProvinceNode>
+    <attachments>
+        <CRAttachment>
+            <filePath>CV_J_Doe.doc</filePath>
+            <toAttachmentData>
+                <CRAttachmentData>
+                    <content>...</content>
+                </CRAttachmentData>
+            </toAttachmentData>
+        </CRAttachment>
+    </attachments>
+</CREmployee>

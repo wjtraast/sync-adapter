@@ -1,18 +1,33 @@
 package nl.onlyonce.adapter.service.api;
 
 import com.carerix.api.CREmployee;
+import lombok.extern.java.Log;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.*;
 import javax.xml.namespace.QName;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 /**
  * @author: Gerben
  */
+@Log
 public class CarerixModelHelper {
 
+
+    public static CREmployee convertEmployee(String result) {
+
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(CREmployee.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            StringReader reader = new StringReader(result);
+            return (CREmployee) unmarshaller.unmarshal(reader);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static String convertEmployee(CREmployee employee) {
 
@@ -29,7 +44,7 @@ public class CarerixModelHelper {
 
 
         } catch (Exception ex) {
-
+            log.info(ex.getMessage());
         }
         return null;
     }
