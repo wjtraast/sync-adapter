@@ -3,10 +3,12 @@ package nl.onlyonce.adapter.service.api;
 import com.carerix.api.CREmployee;
 import com.carerix.api.CRUser;
 import lombok.extern.java.Log;
+import nl.onlyonce.adapter.service.utils.XMLUtils;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.w3c.dom.Document;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -31,11 +33,19 @@ public class CarerixApiServiceImpl implements CarerixApiService {
 
         try {
             String result = postRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, CarerixModelHelper.convertEmployee(employee));
-                return CarerixModelHelper.convertEmployee(result);
+            Document employeeDocument = XMLUtils.parseXml(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void updateGender(String employeeId, String gender) throws Exception {
+
+        if (!StringUtils.isEmpty(employeeId) && !StringUtils.isEmpty(gender)) {
+            String data = CarerixModelHelper.addGenderToEmployee(employeeId, gender);
+            postRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, data);
+        }
     }
 
     private String postRequest(String endPoint, String data) throws Exception {
@@ -93,12 +103,24 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     }
 
     @Override
+    public String getEmployeeAsString(String employeeId) {
+        try {
+            return getRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, "/" + employeeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public CREmployee updateEmployee(final String id, final CREmployee employee) {
         try {
             String data = CarerixModelHelper.convertEmployee(employee);
 
             String result = putRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE + "/" + id ,data);
-            return CarerixModelHelper.convertEmployee(result);
+
+         //   String dataNodeResult = putRequest(CarerixApiConfiguration.Endpoints.CRDATANODE + "/" + id ,data);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,7 +132,7 @@ public class CarerixApiServiceImpl implements CarerixApiService {
 
         try {
             String result = Request.Get(CarerixApiConfiguration.DOMAIN +  CarerixApiConfiguration.Endpoints.CREMPLOYEE +
-            "?qualifier=notes%20like%20%27*cardid%3D"+ cardId + "*%27")
+            "?qualifier=notes%20like%20%27*ref%3D"+ cardId + "*%27")
                     .addHeader("Authorization", "Basic " + getAuthorization())
                     .addHeader("Content-Type", "application/xml")
                     .execute().returnContent().asString();

@@ -1,9 +1,6 @@
 package nl.onlyonce.adapter.service.target;
 
 import nl.onlyonce.adapter.service.api.CarerixApiService;
-import nl.onlyonce.adapter.service.api.CarerixApiServiceImpl;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,14 +14,14 @@ public class CarerixApiServiceImplTest {
 
     private CarerixApiService service;
 
-
-    @Test
-    public void testSearch() {
-
-        service = new CarerixApiServiceImpl();
-
-        String employeeId = service.findEmployee("12124124");
-        Assert.assertEquals("55905", employeeId);
-    }
+//
+//    @Test
+//    public void testSearch() {
+//
+//        service = new CarerixApiServiceImpl();
+//
+//        String employeeId = service.findEmployee("12124124");
+//        Assert.assertEquals("55905", employeeId);
+//    }
 
 }

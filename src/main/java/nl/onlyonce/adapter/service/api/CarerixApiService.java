@@ -12,6 +12,9 @@ public interface CarerixApiService {
 
     CREmployee getEmployee(String employeeId);
 
+    String getEmployeeAsString(String employeeId);
+
+
     CREmployee updateEmployee(String id, CREmployee employee);
 
 

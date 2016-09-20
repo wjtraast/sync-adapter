@@ -1,0 +1,18 @@
+<CRDataNode id="49">
+    <creationDate>2002-04-16 14:36:00</creationDate>
+    <dataNodeID>49</dataNodeID>
+    <deleted>0</deleted>
+    <exportCode>SP</exportCode>
+    <isDefault>1</isDefault>
+    <isHidden>0</isHidden>
+    <isSystem>0</isSystem>
+    <modificationDate>2015-04-13 14:22:50</modificationDate>
+    <notActive>0</notActive>
+    <notes>NL, Netherlands</notes>
+    <sortOrder>5</sortOrder>
+    <value>Netherlands</value>
+    <type>
+        <CRNodeType id="11">
+        </CRNodeType>
+    </type>
+</CRDataNode>

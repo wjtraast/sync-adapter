@@ -1,9 +1,12 @@
 package nl.onlyonce.adapter.service.target;
 
+import com.carerix.api.CRDataNode;
 import com.carerix.api.CREmployee;
+import com.carerix.api.ToGenderNode;
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
 import nl.onlyonce.adapter.service.api.CarerixApiService;
+import nl.onlyonce.adapter.service.api.CarerixModelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,7 @@ public class CarerixServiceImpl implements CarerixService {
         String employeeId = apiService.findEmployee(message.getCardId());
         CREmployee employee = createEmployee(message);
         if (employeeId == null) {
-            apiService.addEmployee(employee);
+            CREmployee savedEmployee = apiService.addEmployee(employee);
         } else {
             apiService.updateEmployee(employeeId, employee);
         }
@@ -46,21 +49,21 @@ public class CarerixServiceImpl implements CarerixService {
         employee.setPhoneNumber(message.getLandline1());
         employee.setPostalCode(message.getPostalCode());
         employee.setStreet(message.getStreetname1());
+        employee.setNotes("<!-- do not edit this line !! ref=" + message.getCardId() + " -->");
 
-//            ToGenderNode genderNode = new ToGenderNode();
-//            CRDataNode crDataNode = new CRDataNode();
-//            crDataNode.setId("2003");
-//            genderNode.setCRDataNode(crDataNode);
-//            employee.setToGenderNode(genderNode);
+        ToGenderNode toGenderNode = new ToGenderNode();
+        CRDataNode dataNode = new CRDataNode();
+        dataNode.setId(CarerixModelHelper.GENDER_DATA_NODE_ID);
+        dataNode.setValue(message.getGender());
+        toGenderNode.setCRDataNode(dataNode);
+        employee.setToGenderNode(toGenderNode);
 
-//            CRUser crUser = new CRUser();
-//            crUser.setId(AppConfig.CARERIX_USER_ID);
-//
-//            Owner owner = new Owner();
-//            owner.setCRUser(crUser);
-//
-//            employee.setOwner(owner);
         return employee;
+    }
+
+    private void updateGender(String gender) {
+       // apiService.updateGender(gender);
+
     }
 
 

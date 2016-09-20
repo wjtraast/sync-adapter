@@ -1,7 +1,11 @@
 package nl.onlyonce.adapter.service.api;
 
+import com.carerix.api.CRDataNode;
 import com.carerix.api.CREmployee;
+import com.carerix.api.ToGenderNode;
 import lombok.extern.java.Log;
+import nl.onlyonce.adapter.model.carerix.CarerixModel;
+import org.w3c.dom.Document;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
@@ -14,6 +18,8 @@ import java.io.StringWriter;
 @Log
 public class CarerixModelHelper {
 
+
+    public static String GENDER_DATA_NODE_ID = "2003";
 
     public static CREmployee convertEmployee(String result) {
 
@@ -53,4 +59,26 @@ public class CarerixModelHelper {
         return data.replace("ns2:", "").replace(" xmlns:ns2=\"com.carerix.api\"", "");
     }
 
+    public static String getEmployeeId(Document document) {
+        return document.getElementsByTagName(CarerixModel.ELEMENTS.CREMPLOYEE).item(0).getAttributes().getNamedItem("id").getNodeValue();
+    }
+
+    public static String addGenderToEmployee(String employeeId, String gender) {
+
+
+        /*
+          <notes>vrouwelijk,v,vrouwelijke,female,vrouw,F,Female</notes>
+
+         */
+
+        CREmployee employee = new CREmployee();
+        employee.setId(employeeId);
+        ToGenderNode toGenderNode = new ToGenderNode();
+        CRDataNode dataNode = new CRDataNode();
+        dataNode.setValue(gender);
+        toGenderNode.setCRDataNode(dataNode);
+        employee.setToGenderNode(toGenderNode);
+        String result = convertEmployee(employee);
+        return result;
+    }
 }

@@ -12,5 +12,6 @@ public class CarerixApiConfiguration {
 
         public static final String CREMPLOYEE = "/CREmployee";
 
+        public static final String CRDATANODE = "/CRDataNode";
     }
 }
