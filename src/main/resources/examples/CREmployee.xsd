@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CREmployee" type="CREmployeeType"/>
+  <xs:complexType name="toProductTypeNode1Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductType2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="additionalInfoType">
+    <xs:sequence>
+      <xs:element type="NSDictionaryType" name="NSDictionary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLevel1Function3Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunction3Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toCurrentSalaryPeriodNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLanguageNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toNationalityNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefRegion2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toBirthCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunction1Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche2Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NSDictionaryType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="_4504"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toUserRoleType">
+    <xs:sequence>
+      <xs:element type="CRUserRoleType" name="CRUserRole"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductTypeNode3Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProvinceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRUserType">
+    <xs:sequence>
+      <xs:element type="additionalInfoType" name="additionalInfo"/>
+      <xs:element type="xs:string" name="addressUseCompanyMailingAddress"/>
+      <xs:element type="xs:string" name="creationDate"/>
+      <xs:element type="xs:string" name="deleted"/>
+      <xs:element type="xs:string" name="emailNotificationPopup"/>
+      <xs:element type="xs:string" name="firstName"/>
+      <xs:element type="xs:string" name="forwardEmail"/>
+      <xs:element type="xs:string" name="homeFullAddress"/>
+      <xs:element type="xs:string" name="isActive"/>
+      <xs:element type="xs:string" name="isEmailInConfidential"/>
+      <xs:element type="xs:string" name="isEmailOutConfidential"/>
+      <xs:element type="xs:string" name="isLoginBlocked"/>
+      <xs:element type="xs:string" name="isMasterUser"/>
+      <xs:element type="xs:string" name="isNewUser"/>
+      <xs:element type="xs:string" name="isTbaActive"/>
+      <xs:element type="xs:string" name="isTokenHomeActive"/>
+      <xs:element type="xs:string" name="isTokenRoadActive"/>
+      <xs:element type="xs:string" name="isTokenWorkActive"/>
+      <xs:element type="xs:string" name="lastContactDate"/>
+      <xs:element type="xs:string" name="lastName"/>
+      <xs:element type="xs:string" name="mailboxFlags"/>
+      <xs:element type="xs:string" name="modificationDate"/>
+      <xs:element type="xs:string" name="password"/>
+      <xs:element type="xs:string" name="previewDelay"/>
+      <xs:element type="xs:string" name="userID"/>
+      <xs:element type="xs:string" name="userName"/>
+      <xs:element type="xs:string" name="visitAddressUseCompanyVisitAddress"/>
+      <xs:element type="xs:string" name="wantsCookie"/>
+      <xs:element type="toCountryNodeType" name="toCountryNode"/>
+      <xs:element type="toFunctionNodeType" name="toFunctionNode"/>
+      <xs:element type="toGenderNodeType" name="toGenderNode"/>
+      <xs:element type="toHomeCountryNodeType" name="toHomeCountryNode"/>
+      <xs:element type="toHomeProvinceNodeType" name="toHomeProvinceNode"/>
+      <xs:element type="toLanguageNodeType" name="toLanguageNode"/>
+      <xs:element type="toProductNodeType" name="toProductNode"/>
+      <xs:element type="toProvinceNodeType" name="toProvinceNode"/>
+      <xs:element type="toSalutationNodeType" name="toSalutationNode"/>
+      <xs:element type="toSingleStatusNodeType" name="toSingleStatusNode"/>
+      <xs:element type="toSmtpServerNodeType" name="toSmtpServerNode"/>
+      <xs:element type="toStatusNodeType" name="toStatusNode"/>
+      <xs:element type="toTrialPeriodUnitNodeType" name="toTrialPeriodUnitNode"/>
+      <xs:element type="toUserRoleType" name="toUserRole"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+  </xs:complexType>
+  <xs:complexType name="toCategoryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toUserType">
+    <xs:sequence>
+      <xs:element type="CRUserType" name="CRUser"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMedicalInsuranceTypeNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toCurrentSalaryCurrencyNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefCountry1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunction2Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefCountry3NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche1Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductTypeNode2Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toSalaryScaleLevel1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunction3Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toGenderNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductType1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toSalutationNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toAdminHomeCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toStatusNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toProductType3NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche3Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefRegion3NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toSingleStatusNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toCurrentSalaryUnitNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLevel2Function3Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toOptional1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche2Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="externalInfoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="NSDictionary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunctionNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toWorkLevelNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toExperienceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefRegion1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toAvailableWithinNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMaritalStatusNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toHomeProvinceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMeansOfTransportNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toContractTypeNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toSmtpServerNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CREmployeeType">
+    <xs:sequence>
+      <xs:element type="additionalInfoType" name="additionalInfo"/>
+      <xs:element type="xs:string" name="adminSyncDate"/>
+      <xs:element type="childrenType" name="children"/>
+      <xs:element type="xs:string" name="creationDate"/>
+      <xs:element type="xs:string" name="deleted"/>
+      <xs:element type="xs:string" name="employeeID"/>
+      <xs:element type="externalInfoType" name="externalInfo"/>
+      <xs:element type="xs:string" name="lastName"/>
+      <xs:element type="xs:string" name="firstName"/>
+      <xs:element type="xs:string" name="initials"/>
+      <xs:element type="xs:string" name="birthDate"/>
+      <xs:element type="xs:string" name="emailAddress"/>
+      <xs:element type="xs:string" name="phoneNumber"/>
+      <xs:element type="xs:string" name="mobileNumber"/>
+      <xs:element type="xs:string" name="street"/>
+      <xs:element type="xs:string" name="houseNumber"/>
+      <xs:element type="xs:string" name="postalCode"/>
+      <xs:element type="xs:string" name="city"/>
+      <xs:element type="xs:string" name="flags"/>
+      <xs:element type="xs:string" name="friWorkMinutes"/>
+      <xs:element type="xs:string" name="fullAddress"/>
+      <xs:element type="xs:string" name="homeFullAddress"/>
+      <xs:element type="xs:string" name="hoursPerWeek"/>
+      <xs:element type="xs:string" name="isConfidential"/>
+      <xs:element type="xs:string" name="lastContactDate"/>
+      <xs:element type="maritalStatusType" name="maritalStatus"/>
+      <xs:element type="xs:string" name="matchCountMO"/>
+      <xs:element type="xs:string" name="modificationDate"/>
+      <xs:element type="xs:string" name="monWorkMinutes"/>
+      <xs:element type="xs:string" name="notes"/>
+      <xs:element type="xs:string" name="thuWorkMinutes"/>
+      <xs:element type="xs:string" name="timesheetTypeKey"/>
+      <xs:element type="xs:string" name="tueWorkMinutes"/>
+      <xs:element type="xs:string" name="wedWorkMinutes"/>
+      <xs:element type="toAdminHomeCountryNodeType" name="toAdminHomeCountryNode"/>
+      <xs:element type="toAdminHomeProvinceNodeType" name="toAdminHomeProvinceNode"/>
+      <xs:element type="toAvailableWithinNodeType" name="toAvailableWithinNode"/>
+      <xs:element type="toBirthCountryNodeType" name="toBirthCountryNode"/>
+      <xs:element type="toBrancheLevel1Type" name="toBrancheLevel1"/>
+      <xs:element type="toBrancheLevel2Type" name="toBrancheLevel2"/>
+      <xs:element type="toCategoryNodeType" name="toCategoryNode"/>
+      <xs:element type="toContractTypeNodeType" name="toContractTypeNode"/>
+      <xs:element type="toCountryNodeType" name="toCountryNode"/>
+      <xs:element type="toCurrentSalaryCurrencyNodeType" name="toCurrentSalaryCurrencyNode"/>
+      <xs:element type="toCurrentSalaryPeriodNodeType" name="toCurrentSalaryPeriodNode"/>
+      <xs:element type="toCurrentSalaryUnitNodeType" name="toCurrentSalaryUnitNode"/>
+      <xs:element type="toDriverLicenceNodeType" name="toDriverLicenceNode"/>
+      <xs:element type="toExperienceNodeType" name="toExperienceNode"/>
+      <xs:element type="toFunction1Level1NodeType" name="toFunction1Level1Node"/>
+      <xs:element type="toFunction1Level2NodeType" name="toFunction1Level2Node"/>
+      <xs:element type="toFunction2Level1NodeType" name="toFunction2Level1Node"/>
+      <xs:element type="toFunction2Level2NodeType" name="toFunction2Level2Node"/>
+      <xs:element type="toFunction3Level1NodeType" name="toFunction3Level1Node"/>
+      <xs:element type="toFunction3Level2NodeType" name="toFunction3Level2Node"/>
+      <xs:element type="toGenderNodeType" name="toGenderNode"/>
+      <xs:element type="toHomeCountryNodeType" name="toHomeCountryNode"/>
+      <xs:element type="toHomeProvinceNodeType" name="toHomeProvinceNode"/>
+      <xs:element type="toIdentificationCountryNodeType" name="toIdentificationCountryNode"/>
+      <xs:element type="toIdentificationTypeNodeType" name="toIdentificationTypeNode"/>
+      <xs:element type="toLanguageNodeType" name="toLanguageNode"/>
+      <xs:element type="toLevel1Function1Type" name="toLevel1Function1"/>
+      <xs:element type="toLevel1Function2Type" name="toLevel1Function2"/>
+      <xs:element type="toLevel1Function3Type" name="toLevel1Function3"/>
+      <xs:element type="toLevel2Function1Type" name="toLevel2Function1"/>
+      <xs:element type="toLevel2Function2Type" name="toLevel2Function2"/>
+      <xs:element type="toLevel2Function3Type" name="toLevel2Function3"/>
+      <xs:element type="toMaritalStatusNodeType" name="toMaritalStatusNode"/>
+      <xs:element type="toMeansOfTransportNodeType" name="toMeansOfTransportNode"/>
+      <xs:element type="toMedicalInsuranceAgencyNodeType" name="toMedicalInsuranceAgencyNode"/>
+      <xs:element type="toMedicalInsuranceCompanyNodeType" name="toMedicalInsuranceCompanyNode"/>
+      <xs:element type="toMedicalInsuranceTypeNodeType" name="toMedicalInsuranceTypeNode"/>
+      <xs:element type="toMinSalaryCurrencyNodeType" name="toMinSalaryCurrencyNode"/>
+      <xs:element type="toMinSalaryPeriodNodeType" name="toMinSalaryPeriodNode"/>
+      <xs:element type="toMinSalaryUnitNodeType" name="toMinSalaryUnitNode"/>
+      <xs:element type="toNationalityNodeType" name="toNationalityNode"/>
+      <xs:element type="toOptional1NodeType" name="toOptional1Node"/>
+      <xs:element type="toPaymentModeNodeType" name="toPaymentModeNode"/>
+      <xs:element type="toPrefBranche1Level1NodeType" name="toPrefBranche1Level1Node"/>
+      <xs:element type="toPrefBranche1Level2NodeType" name="toPrefBranche1Level2Node"/>
+      <xs:element type="toPrefBranche2Level1NodeType" name="toPrefBranche2Level1Node"/>
+      <xs:element type="toPrefBranche2Level2NodeType" name="toPrefBranche2Level2Node"/>
+      <xs:element type="toPrefBranche3Level1NodeType" name="toPrefBranche3Level1Node"/>
+      <xs:element type="toPrefBranche3Level2NodeType" name="toPrefBranche3Level2Node"/>
+      <xs:element type="toPrefContractTypeNodeType" name="toPrefContractTypeNode"/>
+      <xs:element type="toPrefCountry1NodeType" name="toPrefCountry1Node"/>
+      <xs:element type="toPrefCountry2NodeType" name="toPrefCountry2Node"/>
+      <xs:element type="toPrefCountry3NodeType" name="toPrefCountry3Node"/>
+      <xs:element type="toPrefRegion1NodeType" name="toPrefRegion1Node"/>
+      <xs:element type="toPrefRegion2NodeType" name="toPrefRegion2Node"/>
+      <xs:element type="toPrefRegion3NodeType" name="toPrefRegion3Node"/>
+      <xs:element type="toProductNodeType" name="toProductNode"/>
+      <xs:element type="toProductType1NodeType" name="toProductType1Node"/>
+      <xs:element type="toProductType2NodeType" name="toProductType2Node"/>
+      <xs:element type="toProductType3NodeType" name="toProductType3Node"/>
+      <xs:element type="toProductTypeNode1Type" name="toProductTypeNode1"/>
+      <xs:element type="toProductTypeNode2Type" name="toProductTypeNode2"/>
+      <xs:element type="toProductTypeNode3Type" name="toProductTypeNode3"/>
+      <xs:element type="toProvinceNodeType" name="toProvinceNode"/>
+      <xs:element type="toSalaryScaleLevel1NodeType" name="toSalaryScaleLevel1Node"/>
+      <xs:element type="toSalaryScaleLevel2NodeType" name="toSalaryScaleLevel2Node"/>
+      <xs:element type="toStatusNodeType" name="toStatusNode"/>
+      <xs:element type="toUserType" name="toUser"/>
+      <xs:element type="toWorkLevelNodeType" name="toWorkLevelNode"/>
+      <xs:element type="toWorkUnitNodeType" name="toWorkUnitNode"/>
+      <xs:element type="xs:string" name="stableHash"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+  </xs:complexType>
+  <xs:complexType name="toFunction1Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toDriverLicenceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLevel2Function1Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMinSalaryCurrencyNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toWorkUnitNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMinSalaryUnitNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toAdminHomeProvinceNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMedicalInsuranceCompanyNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toFunction2Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toBrancheLevel1Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toIdentificationTypeNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefContractTypeNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toBrancheLevel2Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLevel1Function1Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRDataNodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="maritalStatusType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="NSDictionary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toIdentificationCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMinSalaryPeriodNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CRUserRoleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="toLevel2Function2Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toTrialPeriodUnitNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toLevel1Function2Type">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toHomeCountryNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toSalaryScaleLevel2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="childrenType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="NSArray"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche3Level2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefCountry2NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPrefBranche1Level1NodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toMedicalInsuranceAgencyNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toPaymentModeNodeType">
+    <xs:sequence>
+      <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
