@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
 import nl.onlyonce.adapter.service.api.CarerixApiService;
 import nl.onlyonce.adapter.service.api.CarerixModelHelper;
+import nl.onlyonce.adapter.util.DateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +58,15 @@ public class CarerixServiceImpl implements CarerixService {
         dataNode.setValue(message.getGender());
         toGenderNode.setCRDataNode(dataNode);
         employee.setToGenderNode(toGenderNode);
+
+
+        String dateFormat = "yyyy-MM-dd";
+        if (DateValidator.isValid(message.getAvailableFromDate(), dateFormat)) {
+            employee.setAvailableFromDate(message.getAvailableFromDate() + " 00:00:00");
+            employee.setAvailableDate(message.getAvailableFromDate() + " 00:00:00");
+        } else {
+            log.info(message.getAvailableFromDate() + " does not have this format : " + dateFormat);
+        }
 
         return employee;
     }

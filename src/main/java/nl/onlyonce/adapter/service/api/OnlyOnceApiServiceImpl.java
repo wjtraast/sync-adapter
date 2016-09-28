@@ -14,8 +14,6 @@ import java.util.List;
 @Service
 public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
 
-
-
     @Override
     public List<Activity> getActivities(final TargetType type) {
         RestTemplate restTemplate = new RestTemplate();

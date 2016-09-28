@@ -1,18 +1,22 @@
 package nl.onlyonce.adapter.model.message;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
  * @author: Gerben
  */
-@Builder
+//@Builder
 @Data
 public class CarerixRequestMessage extends BaseRequestMessage {
 
     public CarerixRequestMessage() {
 
     }
+
+
+    @JsonProperty
+    private String availableFromDate;
 
 
 

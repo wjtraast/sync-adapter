@@ -312,6 +312,8 @@
     <xs:sequence>
       <xs:element type="additionalInfoType" name="additionalInfo"/>
       <xs:element type="xs:string" name="adminSyncDate"/>
+      <xs:element type="xs:string" name="availableDate"/>
+      <xs:element type="xs:string" name="availableFromDate"/>
       <xs:element type="childrenType" name="children"/>
       <xs:element type="xs:string" name="creationDate"/>
       <xs:element type="xs:string" name="deleted"/>
