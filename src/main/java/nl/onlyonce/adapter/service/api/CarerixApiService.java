@@ -10,19 +10,19 @@ import org.w3c.dom.Document;
  */
 public interface CarerixApiService {
 
-    Document addEmployee(CREmployee employee);
+    Document addEmployee(CREmployee employee) throws Exception;
 
-    Document updateEmployee(String id, CREmployee employee);
+    Document updateEmployee(String id, CREmployee employee) throws Exception;
 
 
-    String findEmployee(String cardId);
+    String findEmployee(String cardId) throws Exception;
 
 
     String findIdForValue(CarerixNodeType type, String value);
 
 
-    void updateUser(String userId, CRUser user);
+    void updateUser(String userId, CRUser user) throws Exception;
 
-    Document getEmployee(String employeeId);
+    Document getEmployee(String employeeId) throws Exception;
 
 }

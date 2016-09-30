@@ -30,15 +30,10 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     private static final java.lang.String MATCH = "<array count=\"1\">";
 
     @Override
-    public Document addEmployee(CREmployee employee) {
+    public Document addEmployee(CREmployee employee) throws Exception {
 
-        try {
-            String result = postRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, CarerixModelHelper.convertEmployee(employee));
-            return XMLUtils.parseXml(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        String result = postRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE, CarerixModelHelper.convertEmployee(employee));
+        return XMLUtils.parseXml(result);
     }
 
     private String postRequest(String endPoint, String data) throws Exception {
@@ -83,19 +78,14 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     }
 
     @Override
-    public Document updateEmployee(final String id, final CREmployee employee) {
-        try {
-            String data = CarerixModelHelper.convertEmployee(employee);
-            String result = putRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE + "/" + id ,data);
-            return XMLUtils.parseXml(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Document updateEmployee(final String id, final CREmployee employee) throws Exception {
+        String data = CarerixModelHelper.convertEmployee(employee);
+        String result = putRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE + "/" + id ,data);
+        return XMLUtils.parseXml(result);
     }
 
     @Override
-    public String findEmployee(final String cardId) {
+    public String findEmployee(final String cardId) throws Exception {
 
         try {
             String result = Request.Get(CarerixApiConfiguration.DOMAIN + CarerixApiConfiguration.Endpoints.CREMPLOYEE +
@@ -135,24 +125,15 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     }
 
     @Override
-    public void updateUser(final String userId, CRUser user) {
-        try {
-            String data = CarerixModelHelper.convertUser(user);
-            String result = putRequest(CarerixApiConfiguration.Endpoints.CRUSER + "/" + userId ,data);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void updateUser(final String userId, CRUser user) throws Exception {
+        String data = CarerixModelHelper.convertUser(user);
+        putRequest(CarerixApiConfiguration.Endpoints.CRUSER + "/" + userId ,data);
     }
 
     @Override
-    public Document getEmployee(String employeeId) {
-        try {
-            String result = getRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE + "/" + employeeId);
-            return XMLUtils.parseXml(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Document getEmployee(String employeeId) throws Exception {
+        String result = getRequest(CarerixApiConfiguration.Endpoints.CREMPLOYEE + "/" + employeeId);
+        return XMLUtils.parseXml(result);
     }
 
     private String findNodeId(String result, String value) {

@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.carerix.CarerixNodeType;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
 import nl.onlyonce.adapter.model.message.ResumeWrapper;
+import nl.onlyonce.adapter.service.SyncMessageStoreService;
 import nl.onlyonce.adapter.service.api.CarerixApiService;
 import nl.onlyonce.adapter.service.api.CarerixModelHelper;
 import nl.onlyonce.adapter.util.DateValidator;
@@ -25,19 +26,28 @@ public class CarerixServiceImpl implements CarerixService {
     @Autowired
     CarerixApiService apiService;
 
+    @Autowired
+    SyncMessageStoreService syncMessageStoreService;
+
     @Override
     public void processMessage(CarerixRequestMessage message) {
         log.info("CarerixServiceImpl : processMessage CarerixRequestMessage");
-        Document result;
-        String employeeId = apiService.findEmployee(message.getCardId());
-        CREmployee employee = createEmployee(message);
-        if (employeeId == null) {
-            result = apiService.addEmployee(employee);
-        } else {
-            apiService.updateEmployee(employeeId, employee);
-            result = apiService.getEmployee(employeeId);
+        try {
+            Document result;
+            String employeeId = null;
+            employeeId = apiService.findEmployee(message.getCardId());
+            CREmployee employee = createEmployee(message);
+            if (employeeId == null) {
+                result = apiService.addEmployee(employee);
+            } else {
+                apiService.updateEmployee(employeeId, employee);
+                result = apiService.getEmployee(employeeId);
+            }
+            apiService.updateUser(getUserId(result), createUser(message));
+            syncMessageStoreService.markAsProcessed(message.getId());
+        } catch (Exception e) {
+            syncMessageStoreService.markAsFailed(message.getId(), e.getMessage());
         }
-        apiService.updateUser(getUserId(result), createUser(message));
     }
 
     private String getUserId(Document result) {
