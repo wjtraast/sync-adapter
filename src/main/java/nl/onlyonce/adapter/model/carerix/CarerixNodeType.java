@@ -7,7 +7,7 @@ public enum CarerixNodeType {
 
    // https://api.carerix.com/CRDataNode/list-by?type=Opzegtermijn
 
-    Opzegtermijn, Geslacht;
+    Opzegtermijn, Geslacht, Salarisperiode;
 
 
 

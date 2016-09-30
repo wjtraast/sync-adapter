@@ -187,7 +187,6 @@
                                     <xsd>src/main/resources/schemas/NSException.xsd</xsd>
                                     <packagename>com.carerix.api</packagename>
                                 </xsdOption>
-
                             </xsdOptions>
                         </configuration>
                     </execution>

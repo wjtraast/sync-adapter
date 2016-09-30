@@ -1,8 +1,7 @@
 package nl.onlyonce.adapter.service.api;
 
-import com.carerix.api.CRDataNode;
 import com.carerix.api.CREmployee;
-import com.carerix.api.ToGenderNode;
+import com.carerix.api.CRUser;
 import lombok.extern.java.Log;
 import nl.onlyonce.adapter.model.carerix.CarerixModel;
 import org.w3c.dom.Document;
@@ -18,8 +17,6 @@ import java.io.StringWriter;
 @Log
 public class CarerixModelHelper {
 
-
-    public static String GENDER_DATA_NODE_ID = "2003";
 
     public static CREmployee convertEmployee(String result) {
 
@@ -63,25 +60,6 @@ public class CarerixModelHelper {
         return document.getElementsByTagName(CarerixModel.ELEMENTS.CREMPLOYEE).item(0).getAttributes().getNamedItem("id").getNodeValue();
     }
 
-    public static String addGenderToEmployee(String employeeId, String gender) {
-
-
-        /*
-          <notes>vrouwelijk,v,vrouwelijke,female,vrouw,F,Female</notes>
-
-         */
-
-        CREmployee employee = new CREmployee();
-        employee.setId(employeeId);
-        ToGenderNode toGenderNode = new ToGenderNode();
-        CRDataNode dataNode = new CRDataNode();
-        dataNode.setValue(gender);
-        toGenderNode.setCRDataNode(dataNode);
-        employee.setToGenderNode(toGenderNode);
-        String result = convertEmployee(employee);
-        return result;
-    }
-
     public static String toGender(String gender) {
         if ("Male".equalsIgnoreCase(gender)) {
             return "Man";
@@ -89,8 +67,22 @@ public class CarerixModelHelper {
         if ("Female".equalsIgnoreCase(gender)) {
             return "Vrouw";
         }
-
         return null;
+    }
 
+    public static String convertUser(CRUser user) {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(user.getClass());
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            QName qName = new QName("com.carerix.api", "CRUser");
+            JAXBElement<CRUser> root = new JAXBElement<>(qName, CRUser.class, user);
+            StringWriter sw = new StringWriter();
+            jaxbMarshaller.marshal(root, sw);
+            return stripNamespaces(sw.toString());
+        } catch (Exception ex) {
+            log.info(ex.getMessage());
+        }
+        return null;
     }
 }

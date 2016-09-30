@@ -4,6 +4,7 @@
         xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
         version="2.1">
 
+
     <jxb:bindings schemaLocation="CREmployee.xsd">
         <jxb:bindings node="//xs:complexType[@name='CREmployeeType']">
             <jxb:class name="CREmployee"/>
@@ -45,6 +46,10 @@
 
         <jxb:bindings node="//xs:complexType[@name='CRAttachmentDataType']">
             <jxb:class name="CRAttachmentData"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='toCurrentSalaryPeriodNodeType']">
+            <jxb:class name="toCurrentSalaryPeriodNode"/>
         </jxb:bindings>
 
         <!-- rename the value element -->

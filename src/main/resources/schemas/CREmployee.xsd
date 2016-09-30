@@ -112,6 +112,7 @@
       <xs:element type="xs:string" name="isTokenRoadActive"/>
       <xs:element type="xs:string" name="isTokenWorkActive"/>
       <xs:element type="xs:string" name="lastContactDate"/>
+      <xs:element type="xs:string" name="jobTitle"/>
       <xs:element type="xs:string" name="lastName"/>
       <xs:element type="xs:string" name="mailboxFlags"/>
       <xs:element type="xs:string" name="modificationDate"/>

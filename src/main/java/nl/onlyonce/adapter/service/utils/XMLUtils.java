@@ -14,10 +14,11 @@ public class XMLUtils {
 
     public static Document parseXml(String xml) {
 
+        String cleanXml = xml.replace("\n","").replace("\r","").replace("\t","");
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             InputSource src = new InputSource();
-            src.setCharacterStream(new StringReader(xml));
+            src.setCharacterStream(new StringReader(cleanXml));
             Document doc = builder.parse(src);
             return doc;
         } catch (Exception ex) {

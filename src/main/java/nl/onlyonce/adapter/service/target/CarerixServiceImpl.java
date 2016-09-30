@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import org.w3c.dom.Document;
 
 
 /**
@@ -27,14 +28,26 @@ public class CarerixServiceImpl implements CarerixService {
     @Override
     public void processMessage(CarerixRequestMessage message) {
         log.info("CarerixServiceImpl : processMessage CarerixRequestMessage");
-
+        Document result;
         String employeeId = apiService.findEmployee(message.getCardId());
         CREmployee employee = createEmployee(message);
         if (employeeId == null) {
-            CREmployee savedEmployee = apiService.addEmployee(employee);
+            result = apiService.addEmployee(employee);
         } else {
             apiService.updateEmployee(employeeId, employee);
+            result = apiService.getEmployee(employeeId);
         }
+        apiService.updateUser(getUserId(result), createUser(message));
+    }
+
+    private String getUserId(Document result) {
+        return result.getElementsByTagName("toUser").item(0).getChildNodes().item(0).getAttributes().getNamedItem("id").getNodeValue();
+    }
+
+    private CRUser createUser(CarerixRequestMessage message) {
+        CRUser user = new CRUser();
+        user.setJobTitle(message.getJobTitle());
+        return user;
 
     }
 
@@ -55,6 +68,14 @@ public class CarerixServiceImpl implements CarerixService {
         employee.setNotes("<!-- do not edit this line !! ref=" + message.getCardId() + " -->");
         employee.setCurrentSalary(message.getCurrentSalary());
 
+
+        String salaryPeriodId = apiService.findIdForValue(CarerixNodeType.Salarisperiode, "per jaar");
+
+        ToCurrentSalaryPeriodNode toCurrentSalaryPeriodNode = new ToCurrentSalaryPeriodNode();
+        CRDataNode periodDataNode = new CRDataNode();
+        periodDataNode.setId(salaryPeriodId);
+        toCurrentSalaryPeriodNode.setCRDataNode(periodDataNode);
+        employee.setToCurrentSalaryPeriodNode(toCurrentSalaryPeriodNode);
 
         String genderId = apiService.findIdForValue(CarerixNodeType.Geslacht, CarerixModelHelper.toGender(message.getGender()));
 
