@@ -81,4 +81,16 @@ public class CarerixModelHelper {
         String result = convertEmployee(employee);
         return result;
     }
+
+    public static String toGender(String gender) {
+        if ("Male".equalsIgnoreCase(gender)) {
+            return "Man";
+        }
+        if ("Female".equalsIgnoreCase(gender)) {
+            return "Vrouw";
+        }
+
+        return null;
+
+    }
 }

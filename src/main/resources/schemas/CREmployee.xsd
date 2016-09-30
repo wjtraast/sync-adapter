@@ -51,6 +51,11 @@
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="CRAttachmentDataType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="content"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="toBirthCountryNodeType">
     <xs:sequence>
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
@@ -183,6 +188,12 @@
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="CRAttachmentType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="filePath"/>
+      <xs:element type="toAttachmentDataType" name="toAttachmentData"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="toFunction3Level1NodeType">
     <xs:sequence>
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
@@ -196,6 +207,11 @@
   <xs:complexType name="toProductType1NodeType">
     <xs:sequence>
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toAttachmentDataType">
+    <xs:sequence>
+      <xs:element type="CRAttachmentDataType" name="CRAttachmentData"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="toSalutationNodeType">
@@ -310,12 +326,14 @@
   </xs:complexType>
   <xs:complexType name="CREmployeeType">
     <xs:sequence>
+      <xs:element type="attachmentsType" name="attachments"/>
       <xs:element type="additionalInfoType" name="additionalInfo"/>
       <xs:element type="xs:string" name="adminSyncDate"/>
       <xs:element type="xs:string" name="availableDate"/>
       <xs:element type="xs:string" name="availableFromDate"/>
       <xs:element type="childrenType" name="children"/>
       <xs:element type="xs:string" name="creationDate"/>
+      <xs:element type="xs:string" name="currentSalary"/>
       <xs:element type="xs:string" name="deleted"/>
       <xs:element type="xs:string" name="employeeID"/>
       <xs:element type="externalInfoType" name="externalInfo"/>
@@ -448,6 +466,11 @@
   <xs:complexType name="toMinSalaryUnitNodeType">
     <xs:sequence>
       <xs:element type="CRDataNodeType" name="CRDataNode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachmentsType">
+    <xs:sequence>
+      <xs:element type="CRAttachmentType" name="CRAttachment" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="toAdminHomeProvinceNodeType">

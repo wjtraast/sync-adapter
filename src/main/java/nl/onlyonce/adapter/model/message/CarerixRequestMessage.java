@@ -3,6 +3,8 @@ package nl.onlyonce.adapter.model.message;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author: Gerben
  */
@@ -18,6 +20,22 @@ public class CarerixRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String availableFromDate;
 
+    @JsonProperty
+    private String currentSalary;
+
+    @JsonProperty
+    private String note1;
+
+    @JsonProperty
+    private String note2;
+
+    @JsonProperty
+    private String jobTitle;
+
+    @JsonProperty(value = "resumes")
+    private List<ResumeWrapper> resumes;
+
+
 
 
     public boolean validate() {
@@ -26,3 +44,4 @@ public class CarerixRequestMessage extends BaseRequestMessage {
 //                !StringUtils.isEmpty(getLastname()));
     }
 }
+

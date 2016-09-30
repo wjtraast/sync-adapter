@@ -1,4 +1,25 @@
 <CREmployee id="55893">
+
+    <attachments>
+        <CRAttachment>
+            <filePath>mijn-eigen-cv-bla.txt</filePath>
+            <toAttachmentData>
+                <CRAttachmentData>
+                    <content>dGVzdCBpZXRz</content>
+                </CRAttachmentData>
+            </toAttachmentData>
+        </CRAttachment>
+        <CRAttachment>
+            <filePath>mijn-eigen-cv-bla.txt</filePath>
+            <toAttachmentData>
+                <CRAttachmentData>
+                    <content>dGVzdCBpZXRz</content>
+                </CRAttachmentData>
+            </toAttachmentData>
+        </CRAttachment>
+    </attachments>
+
+
     <additionalInfo>
         <NSDictionary>
             <_4504>4501</_4504>
@@ -11,6 +32,7 @@
         <NSArray/>
     </children>
     <creationDate>2016-09-14 18:55:20</creationDate>
+    <currentSalary>133.12</currentSalary>
     <deleted>0</deleted>
     <employeeID>55893</employeeID>
     <externalInfo>

@@ -2,6 +2,7 @@ package nl.onlyonce.adapter.service.api;
 
 import com.carerix.api.CREmployee;
 import com.carerix.api.CRUser;
+import nl.onlyonce.adapter.model.carerix.CarerixNodeType;
 
 /**
  * @author: Gerben
@@ -27,6 +28,8 @@ public interface CarerixApiService {
     CRUser getUser(String userId);
 
     String getLanguage(String nodeId);
+
+    String findIdForValue(CarerixNodeType type, String value);
 
 
 

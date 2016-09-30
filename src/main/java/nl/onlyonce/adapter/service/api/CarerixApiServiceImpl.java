@@ -3,6 +3,7 @@ package nl.onlyonce.adapter.service.api;
 import com.carerix.api.CREmployee;
 import com.carerix.api.CRUser;
 import lombok.extern.java.Log;
+import nl.onlyonce.adapter.model.carerix.CarerixNodeType;
 import nl.onlyonce.adapter.service.utils.XMLUtils;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
@@ -131,7 +132,7 @@ public class CarerixApiServiceImpl implements CarerixApiService {
     public String findEmployee(final String cardId) {
 
         try {
-            String result = Request.Get(CarerixApiConfiguration.DOMAIN +  CarerixApiConfiguration.Endpoints.CREMPLOYEE +
+            String result = Request.Get(CarerixApiConfiguration.DOMAIN + CarerixApiConfiguration.Endpoints.CREMPLOYEE +
             "?qualifier=notes%20like%20%27*ref%3D"+ cardId + "*%27")
                     .addHeader("Authorization", "Basic " + getAuthorization())
                     .addHeader("Content-Type", "application/xml")
@@ -167,6 +168,50 @@ public class CarerixApiServiceImpl implements CarerixApiService {
 
     @Override
     public String getLanguage(String nodeId) {
+        return null;
+    }
+
+    @Override
+    public String findIdForValue(CarerixNodeType type, String value) {
+
+        try {
+            // https://api.carerix.com/CRDataNode/list-by?type=Opzegtermijn
+
+            String result = Request.Get(CarerixApiConfiguration.DOMAIN + CarerixApiConfiguration.Endpoints.CRDATANODE +
+                    "/list-by?language=Dutch&type=" + type.toString())
+                    .addHeader("Authorization", "Basic " + getAuthorization())
+                    .addHeader("Content-Type", "application/xml")
+                    .execute().returnContent().asString();
+        return findNodeId(result, value);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    private String findNodeId(String result, String value) {
+
+        value = value.replace("\\n", "");
+        value = value.replace("\\r", "");
+        value = value.replace("\\t", "");
+        Document doc = XMLUtils.parseXml(result);
+
+
+      //  ((DeferredDocumentImpl) doc).item(0).getChildNodes().item(3).getChildNodes().item(19).getFirstChild().getNodeValue()
+
+        for (int i = 0; i < doc.getChildNodes().item(0).getChildNodes().getLength(); i ++) {
+            for (int j =0; j<doc.getChildNodes().item(0).getChildNodes().item(i).getChildNodes().getLength(); j ++) {
+                if (doc.getChildNodes().item(0).getChildNodes().item(i).getChildNodes().item(j).getFirstChild() != null) {
+
+                    String nodeName = doc.getChildNodes().item(0).getChildNodes().item(i).getChildNodes().item(j).getNodeName();
+                    if ("value".equals(nodeName)) {
+                        String nodeValue = doc.getChildNodes().item(0).getChildNodes().item(i).getChildNodes().item(j).getFirstChild().getNodeValue();
+                        if (value.equalsIgnoreCase(nodeValue)) {
+                            return doc.getChildNodes().item(0).getChildNodes().item(i).getAttributes().getNamedItem("id").getNodeValue();
+                        }
+                    }
+                }
+           }
+        }
         return null;
     }
 

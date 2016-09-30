@@ -27,6 +27,25 @@
             <jxb:class name="CRDataNode"/>
         </jxb:bindings>
 
+        <jxb:bindings node="//xs:complexType[@name='toAvailableWithinNodeType']">
+            <jxb:class name="ToAvailableWithinNode"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='toAttachmentDataType']">
+            <jxb:class name="toAttachmentData"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='attachmentsType']">
+            <jxb:class name="attachments"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='CRAttachmentType']">
+            <jxb:class name="CRAttachment"/>
+        </jxb:bindings>
+
+        <jxb:bindings node="//xs:complexType[@name='CRAttachmentDataType']">
+            <jxb:class name="CRAttachmentData"/>
+        </jxb:bindings>
 
         <!-- rename the value element -->
         <bindings node="//xs:complexType[@name='CRDataNode']">
