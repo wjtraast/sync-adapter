@@ -68,24 +68,25 @@ public class SyncEndPoint {
 
     @RequestMapping(value = "/sync-carerix", method = RequestMethod.POST)
     void syncCarerix(@RequestBody CarerixRequestMessage message, HttpServletResponse response) throws Exception {
-
         message.setId(UUID.randomUUID().toString());
-
         validateMessage(message, response);
-
         syncMessageStoreService.save(message.getId(), MessageType.CARERIX_REQUEST_MESSAGE, JsonUtil.convertToString(message));
         carerixRequestQueueProviderService.addMessage(message);
-        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
 
     }
 
-    @RequestMapping(value = "/sync-carerix", method = RequestMethod.OPTIONS)
-    void syncCarerixOption(HttpServletResponse response) throws Exception {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers","Accept, Content-Type, Origin");
-    }
+//    @CrossOrigin(
+//            origins = "*",
+//            methods = {RequestMethod.POST, RequestMethod.OPTIONS},
+//            allowedHeaders = {"Accept", "Content-Type", "Origin"}
+//    )
+//    @RequestMapping(value = "/sync-carerix", method = RequestMethod.OPTIONS)
+//    void syncCarerixOption(HttpServletResponse response) throws Exception {
+//        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Methods", "POST OPTIONS");
+//        response.setHeader("Access-Control-Allow-Headers","Accept, Content-Type, Origin");
+//    }
 
     private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {
         if (message.validate()) {
