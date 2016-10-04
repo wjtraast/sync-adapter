@@ -83,6 +83,8 @@ public class SyncEndPoint {
     @RequestMapping(value = "/sync-carerix", method = RequestMethod.OPTIONS)
     void syncCarerixOption(HttpServletResponse response) throws Exception {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        response.setHeader("Access-Control-Request-Headers","Content-Type");
     }
 
     private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {
