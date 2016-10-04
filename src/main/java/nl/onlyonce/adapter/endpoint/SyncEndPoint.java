@@ -75,8 +75,14 @@ public class SyncEndPoint {
 
         syncMessageStoreService.save(message.getId(), MessageType.CARERIX_REQUEST_MESSAGE, JsonUtil.convertToString(message));
         carerixRequestQueueProviderService.addMessage(message);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
 
+    }
+
+    @RequestMapping(value = "/sync-carerix", method = RequestMethod.OPTIONS)
+    void syncCarerixOption(HttpServletResponse response) throws Exception {
+        response.setHeader("Access-Control-Allow-Origin", "*");
     }
 
     private void validateMessage(ZohoRequestMessage message, HttpServletResponse response) {

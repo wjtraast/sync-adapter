@@ -138,13 +138,7 @@ public class CarerixApiServiceImpl implements CarerixApiService {
 
     private String findNodeId(String result, String value) {
 
-        value = value.replace("\\n", "");
-        value = value.replace("\\r", "");
-        value = value.replace("\\t", "");
         Document doc = XMLUtils.parseXml(result);
-
-
-      //  ((DeferredDocumentImpl) doc).item(0).getChildNodes().item(3).getChildNodes().item(19).getFirstChild().getNodeValue()
 
         for (int i = 0; i < doc.getChildNodes().item(0).getChildNodes().getLength(); i ++) {
             for (int j =0; j<doc.getChildNodes().item(0).getChildNodes().item(i).getChildNodes().getLength(); j ++) {
