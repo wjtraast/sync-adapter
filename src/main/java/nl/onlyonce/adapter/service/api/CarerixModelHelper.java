@@ -70,6 +70,7 @@ public class CarerixModelHelper {
         if ("Undetermined".equalsIgnoreCase(gender)) {
             return "Onbekend";
         }
+        return null;
     }
 
     public static String convertUser(CRUser user) {
