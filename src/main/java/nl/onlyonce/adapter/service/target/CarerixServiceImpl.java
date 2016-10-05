@@ -15,6 +15,10 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Document;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * @author: Gerben
@@ -68,7 +72,7 @@ public class CarerixServiceImpl implements CarerixService {
         employee.setInitials(message.getInitials());
         employee.setEmailAddress(message.getEmail1());
         // komt binnen als dd-MM-yyyy
-        employee.setBirthDate(message.getDateOfBirth() + " 00:00:00");
+        employee.setBirthDate(convertDate(message.getDateOfBirth());
         employee.setCity(message.getCity());
         employee.setHouseNumber(message.getHouseNumber());
         employee.setInitials(message.getInitials());
@@ -99,12 +103,15 @@ public class CarerixServiceImpl implements CarerixService {
             employee.setToGenderNode(toGenderNode);
         }
 
-        String dateFormat = "yyyy-MM-dd";
-        if (DateValidator.isValid(message.getAvailableFromDate(), dateFormat)) {
-            employee.setAvailableFromDate(message.getAvailableFromDate() + " 00:00:00");
-            employee.setAvailableDate(message.getAvailableFromDate() + " 00:00:00");
+        if (DateValidator.isValid(message.getAvailableFromDate(), "dd-MM-yyyy")) {
+
+            String date = convertDate(message.getAvailableFromDate());
+            if (date != null) {
+                employee.setAvailableFromDate(date);
+                employee.setAvailableDate(date);
+            }
         } else {
-            log.info(message.getAvailableFromDate() + " does not have this format : " + dateFormat);
+            log.info(message.getAvailableFromDate() + " does not have this format : " + "dd-MM-yyyy");
         }
 
 //        String availabilityId = apiService.findIdForValue(CarerixNodeType.Opzegtermijn, message.getAvailability());
@@ -132,6 +139,20 @@ public class CarerixServiceImpl implements CarerixService {
         }
 
         return employee;
+    }
+
+    private String convertDate(String dateString) {
+
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = inputFormat.parse(dateString);
+
+            SimpleDateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd");
+            return outputformat.format(date) + " 00:00:00";
+        } catch (ParseException e) {
+            return null;
+        }
+
     }
 
     private CRAttachment createCRAttachment(ResumeWrapper resume) {
