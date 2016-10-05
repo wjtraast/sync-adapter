@@ -67,6 +67,7 @@ public class CarerixServiceImpl implements CarerixService {
         employee.setLastName(message.getLastname());
         employee.setInitials(message.getInitials());
         employee.setEmailAddress(message.getEmail1());
+        // komt binnen als dd-MM-yyyy
         employee.setBirthDate(message.getDateOfBirth() + " 00:00:00");
         employee.setCity(message.getCity());
         employee.setHouseNumber(message.getHouseNumber());
@@ -87,13 +88,16 @@ public class CarerixServiceImpl implements CarerixService {
         toCurrentSalaryPeriodNode.setCRDataNode(periodDataNode);
         employee.setToCurrentSalaryPeriodNode(toCurrentSalaryPeriodNode);
 
-        String genderId = apiService.findIdForValue(CarerixNodeType.Geslacht, CarerixModelHelper.toGender(message.getGender()));
+        String genderValue = CarerixModelHelper.toGender(message.getGender());
+        if (genderValue != null) {
+            String genderId = apiService.findIdForValue(CarerixNodeType.Geslacht, genderValue);
 
-        ToGenderNode toGenderNode = new ToGenderNode();
-        CRDataNode dataNode = new CRDataNode();
-        dataNode.setId(genderId);
-        toGenderNode.setCRDataNode(dataNode);
-        employee.setToGenderNode(toGenderNode);
+            ToGenderNode toGenderNode = new ToGenderNode();
+            CRDataNode dataNode = new CRDataNode();
+            dataNode.setId(genderId);
+            toGenderNode.setCRDataNode(dataNode);
+            employee.setToGenderNode(toGenderNode);
+        }
 
         String dateFormat = "yyyy-MM-dd";
         if (DateValidator.isValid(message.getAvailableFromDate(), dateFormat)) {
