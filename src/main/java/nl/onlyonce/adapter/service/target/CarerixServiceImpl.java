@@ -72,7 +72,7 @@ public class CarerixServiceImpl implements CarerixService {
         employee.setInitials(message.getInitials());
         employee.setEmailAddress(message.getEmail1());
         // komt binnen als dd-MM-yyyy
-        employee.setBirthDate(convertDate(message.getDateOfBirth());
+        employee.setBirthDate(convertDate(message.getDateOfBirth()));
         employee.setCity(message.getCity());
         employee.setHouseNumber(message.getHouseNumber());
         employee.setInitials(message.getInitials());
