@@ -72,7 +72,7 @@ public class SyncEndPoint {
         validateMessage(message, response);
         syncMessageStoreService.save(message.getId(), MessageType.CARERIX_REQUEST_MESSAGE, JsonUtil.convertToString(message));
         carerixRequestQueueProviderService.addMessage(message);
-        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+        response.setStatus(HttpServletResponse.SC_OK);
 
     }
 
