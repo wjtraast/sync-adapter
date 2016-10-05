@@ -143,15 +143,19 @@ public class CarerixServiceImpl implements CarerixService {
 
     private String convertDate(String dateString) {
 
-        try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
-            Date date = inputFormat.parse(dateString);
+        if (dateString != null) {
 
-            SimpleDateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd");
-            return outputformat.format(date) + " 00:00:00";
-        } catch (ParseException e) {
-            return null;
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = inputFormat.parse(dateString);
+
+                SimpleDateFormat outputformat = new SimpleDateFormat("yyyy-MM-dd");
+                return outputformat.format(date) + " 00:00:00";
+            } catch (ParseException e) {
+                return null;
+            }
         }
+        return null;
 
     }
 
