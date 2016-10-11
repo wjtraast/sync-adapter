@@ -1,1 +1,1 @@
-ssh -i gerbenvis.pem ubuntu@54.229.85.21
+ssh -i gerbenvis.pem ubuntu@54.171.202.18
