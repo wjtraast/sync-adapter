@@ -1,0 +1,355 @@
+{
+  "id": "2fda46fc-1bd7-470a-8d06-85736b286c9d",
+  "name": "Flexworker card",
+  "ownerId": "291d2906-2509-4112-ba09-40af62f00dc4",
+  "type": "SHAREABLE_CARD",
+  "predefined": true,
+  "predefinedType": "PERSONAL_FLEXWORKER",
+  "model": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "components": [
+
+              ],
+              "definitionName": "first_name_field",
+              "value": "Henri",
+              "type": "STRING",
+              "valueId": "621cdacc-967e-4b40-b725-8a70f8307f72",
+              "label": "First name"
+            },
+            {
+              "components": [
+
+              ],
+              "definitionName": "last_name_field",
+              "value": "Kuiper",
+              "type": "STRING",
+              "valueId": "1944b0a5-988d-4a11-b065-dccad8ef4508",
+              "label": "Last name"
+            },
+            {
+              "components": [
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "personal_picture_field",
+                  "fileMetaData": {
+                    "attachedToData": false,
+                    "avatar": false,
+                    "binary": true,
+                    "data": null,
+                    "dataId": "437489d0-68a1-4299-a718-520d43fe5810",
+                    "dataType": "ENCRYPTED_DATA",
+                    "dateCreated": 1464901622338,
+                    "defaultPreview": null,
+                    "description": null,
+                    "errors": {
+                      "errors": [
+
+                      ]
+                    },
+                    "id": "a04c3dfb-a930-43b2-9dbd-0ff5ac9e931d",
+                    "keyWords": null,
+                    "mimeType": "image/jpeg",
+                    "name": "IMG_4381.JPG",
+                    "owner": {
+                      "accountId": "922d4e36-b8e5-46d8-a045-a9309bd25fb0",
+                      "avatarId": "ffe8337f-399a-4b48-8b03-f447d3c10818",
+                      "bookmarks": [
+
+                      ],
+                      "createdDate": 1460233870929,
+                      "errors": {
+                        "errors": [
+
+                        ]
+                      },
+                      "firstName": "Henri",
+                      "id": "291d2906-2509-4112-ba09-40af62f00dc4",
+                      "incomingSharesCounter": 8,
+                      "lastName": "Kuiper",
+                      "middleName": null,
+                      "name": "Henri Kuiper",
+                      "onlyOnceId": 1001,
+                      "outgoingSharesCounter": 5,
+                      "profileType": "PERSONAL",
+                      "settings": null,
+                      "sharedDataSets": [
+
+                      ],
+                      "tags": null,
+                      "type": "PERSONAL",
+                      "viewsCounter": 11705
+                    },
+                    "size": 417745
+                  },
+                  "value": "a04c3dfb-a930-43b2-9dbd-0ff5ac9e931d",
+                  "type": "IMAGE",
+                  "valueId": "8691ac37-4e63-4f92-9329-9246032e8fa1",
+                  "label": "Picture"
+                }
+              ],
+              "definitionName": "personal_pictures_wrapper_group",
+              "value": "personal_pictures_wrapper_group",
+              "type": "ARRAY",
+              "valueId": "3412baa6-dc4c-4a84-84c0-4817c24b18e1",
+              "label": "Profile pictures"
+            }
+          ],
+          "definitionName": "personal_information_group",
+          "value": "Personal information",
+          "type": "GROUP",
+          "valueId": "96158273-b352-4f8b-90ba-5052dfe35631",
+          "label": "Personal information"
+        },
+        {
+          "components": [
+            {
+              "components": [
+
+              ],
+              "definitionName": "date_of_birth_field",
+              "value": "12-12-2010",
+              "type": "DATE",
+              "valueId": "edc33817-f9fb-4bff-9717-4f8e3d87b7a6",
+              "label": "Date of birth"
+            },
+            {
+              "components": [
+
+              ],
+              "definitionName": "birth_place_field",
+              "value": "Thuis",
+              "type": "STRING",
+              "valueId": "b9204aff-ef5f-425c-bc82-b7782ef9304a",
+              "label": "Place of birth"
+            }
+          ],
+          "definitionName": "personal_information_details_group",
+          "value": "personal_information_details_group",
+          "type": "GROUP",
+          "valueId": "55ab1bb8-ca92-4e8a-9557-0cf4bcc185a4",
+          "label": "Personal information details"
+        },
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "employerName": "DeadPool LTD",
+                  "employerAdminProfileId": "291d2906-2509-4112-ba09-40af62f00dc4",
+                  "components": [
+
+                  ],
+                  "employerAdminOnlyOnceId": "1001",
+                  "definitionName": "job_employer_field",
+                  "employerProfileId": "f5068a57-8801-4a93-be2a-2d6cf9cc5583",
+                  "value": "1003",
+                  "employerAdminName": "Henri Kuiper",
+                  "type": "OO_LINK",
+                  "valueId": "eb067e1d-0ab9-4e79-8e05-2268cad1cb8e",
+                  "label": "Employer",
+                  "employerOnlyOnceId": "1003"
+                }
+              ],
+              "definitionName": "jobs_group",
+              "value": "<enter job name>",
+              "type": "GROUP",
+              "valueId": "d1c430e6-c98c-4ce5-b2d0-6b50bf7dbcc5",
+              "label": "<enter job name>"
+            }
+          ],
+          "definitionName": "jobs_group_wrapper",
+          "value": "jobs_group_wrapper",
+          "type": "ARRAY",
+          "valueId": "68fa3c32-ea48-44a2-8c5d-4dea9435c151",
+          "label": "Jobs"
+        },
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "flex_worker_category_group_field",
+                  "value": "Auditing, Reviews",
+                  "type": "DICTIONARY_MULTISELECT",
+                  "valueId": "cd504d9a-1186-49fd-9ca1-47c35de15ed2",
+                  "label": "Categories"
+                },
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "looking_for_job_field",
+                  "value": "COOL WORK",
+                  "type": "TEXT",
+                  "valueId": "da75f6c8-c912-4eb4-ad1b-69bdb1855b84",
+                  "label": "Looking for"
+                },
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "talents_field",
+                  "value": "COOL STUFF",
+                  "type": "TEXT",
+                  "valueId": "a12b8bf4-03b1-4d41-9c6e-63dc694c2c0e",
+                  "label": "Talents, strenghts"
+                },
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "flex_availability_from_field",
+                  "value": "01-06-2016",
+                  "type": "DATE",
+                  "valueId": "7ab65f85-c637-4fd9-8c49-7f3cffbac472",
+                  "label": "Flex availability from"
+                },
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "flex_availability_to_field",
+                  "value": "01-06-2016",
+                  "type": "DATE",
+                  "valueId": "459f1943-8b46-4b6b-bcfc-a55b6f5ca1cf",
+                  "label": "Regular availability from"
+                },
+                {
+                  "components": [
+
+                  ],
+                  "definitionName": "hours_per_week_field",
+                  "value": "40",
+                  "type": "STRING",
+                  "valueId": "d8cbe21b-d1a1-4301-86f5-122925079a8c",
+                  "label": "Max hours / per week"
+                }
+              ],
+              "definitionName": "flex_worker_data_group",
+              "value": "<enter flex work name>",
+              "type": "GROUP",
+              "valueId": "546fd9d3-c729-4b3c-8434-879255904ac7",
+              "label": "<enter flex work name>"
+            }
+          ],
+          "definitionName": "flex_workers_group",
+          "value": "flex_workers_group",
+          "type": "ARRAY",
+          "valueId": "753204fc-0954-4aa0-948a-3877c185688d",
+          "label": "Flex worker data"
+        },
+        {
+          "components": [
+            {
+              "components": [
+
+              ],
+              "definitionName": "communication_email1_field",
+              "value": "henri@zdevops.com",
+              "type": "EMAIL",
+              "valueId": "89431ce9-b860-4d81-88da-938d19851030",
+              "label": "Private e-mail"
+            }
+          ],
+          "definitionName": "communication_channels_group",
+          "value": "Communication channels",
+          "type": "GROUP",
+          "valueId": "c9b3ba13-7c2d-41e5-a5d4-86911956e8d1",
+          "label": "Communication channels"
+        },
+        {
+          "components": [
+            {
+              "components": [
+
+              ],
+              "definitionName": "primary_facebook_field",
+              "value": "g",
+              "type": "WEB_PROFILE",
+              "valueId": "b8c3b40f-ce4a-4976-a551-0b38595490c8",
+              "label": "Facebook profile"
+            },
+            {
+              "components": [
+
+              ],
+              "definitionName": "primary_linkedin_field",
+              "value": "f",
+              "type": "WEB_PROFILE",
+              "valueId": "79701c6b-946f-401b-b706-10d7ef828091",
+              "label": "LinkedIn profile"
+            },
+            {
+              "components": [
+
+              ],
+              "definitionName": "primary_website_field",
+              "value": "http://8.8.8.8",
+              "type": "URL",
+              "valueId": "2489e561-9f47-4d67-b07c-7ca9682fa798",
+              "label": "Website 1"
+            },
+            {
+              "components": [
+
+              ],
+              "definitionName": "primary_twitter_field",
+              "value": "@henrikuiper",
+              "type": "TWITTER",
+              "valueId": "cb2e438f-9804-47a0-8afb-95f196390f04",
+              "label": "Twitter username"
+            }
+          ],
+          "definitionName": "social_media_group",
+          "value": "social_media_group",
+          "type": "GROUP",
+          "valueId": "9695e713-f35e-4ac8-9da5-e2cdc418612c",
+          "label": "Web presence"
+        }
+      ],
+      "definitionName": "pds_group",
+      "value": "pds_group",
+      "type": "GROUP",
+      "valueId": "3e155080-75d3-40ba-8832-acd72c4701e5"
+    }
+  ],
+  "permanentFields": [
+    "first_name_field",
+    "middle_name_field",
+    "last_name_field",
+    "gender_field",
+    "date_of_birth_field",
+    "birth_place_field",
+    "birth_country_field",
+    "flex_worker_category_group_field",
+    "looking_for_job_field",
+    "talents_field",
+    "skills_field",
+    "flex_availability_from_field",
+    "flex_availability_to_field",
+    "hours_per_week_field",
+    "working_days_per_week_field",
+    "indicative_hourly_rate_field",
+    "minimum_hourly_rate_field",
+    "indicative_annual_salary_field",
+    "span_of_control_field",
+    "maximum_travel_distance_field",
+    "willing_to_work_aboard_field",
+    "flex_worker_note1_field",
+    "flex_worker_note2_field",
+    "vog_statement_field",
+    "var_statement_field",
+    "resume_field",
+    "flex_worker_attachment_field",
+    "communication_email2_field"
+  ]
+}

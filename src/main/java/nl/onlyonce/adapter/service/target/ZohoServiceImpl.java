@@ -58,12 +58,8 @@ public class ZohoServiceImpl implements ZohoService {
 
     private void processZohoAccount(final ZohoRequestMessage message) {
 
-
-
         try {
             ZohoAccount account = transform(message);
-
-
             zohoApiService.insertAccount(account);
             syncMessageStoreService.markAsProcessed(message.getId());
         } catch (ZohoApiException | HttpException e) {
@@ -177,7 +173,7 @@ public class ZohoServiceImpl implements ZohoService {
                 .withField(ZohoFieldNames.Contact.MAILING_ZIP, message.getPostalCode())
                 .withField(ZohoFieldNames.Contact.MAILING_REGION, message.getRegion())
 
-                .withField(ZohoFieldNames.Contact.Custom.SYNCED_BY_ONLYONCE, "true");
+                .withField(ZohoFieldNames.Contact.Custom.ONLY_ONCE_CARD_ID,  message.getCardId());
 
 
 

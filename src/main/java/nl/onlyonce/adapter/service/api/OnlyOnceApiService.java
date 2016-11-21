@@ -1,7 +1,6 @@
 package nl.onlyonce.adapter.service.api;
 
-import nl.onlyonce.adapter.model.Activity;
-import nl.onlyonce.adapter.model.type.TargetType;
+import org.json.simple.JSONObject;
 
 import java.util.List;
 
@@ -10,6 +9,8 @@ import java.util.List;
  */
 public interface OnlyOnceApiService {
 
-     List<Activity> getActivities(TargetType type);
+     List<JSONObject> getCards() throws Exception;
 
+
+    JSONObject getCard(String profileId, String cardId, String token) throws Exception;
 }

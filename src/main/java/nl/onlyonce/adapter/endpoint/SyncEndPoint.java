@@ -5,10 +5,12 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import nl.onlyonce.adapter.model.data.MessageType;
 import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
+import nl.onlyonce.adapter.model.message.SyncRequestMessage;
 import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 import nl.onlyonce.adapter.service.SyncMessageStoreService;
 import nl.onlyonce.adapter.service.batch.BatchRequestService;
 import nl.onlyonce.adapter.service.queue.CarerixRequestQueueProviderService;
+import nl.onlyonce.adapter.service.queue.SyncRequestQueueProviderService;
 import nl.onlyonce.adapter.service.queue.ZohoRequestQueueProviderService;
 import nl.onlyonce.adapter.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class SyncEndPoint {
     @Autowired
     CarerixRequestQueueProviderService carerixRequestQueueProviderService;
 
+    @Autowired
+    SyncRequestQueueProviderService syncRequestQueueProviderService;
+
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "/sync", nickname = "syncPost")
     @ApiResponses(value = {
@@ -49,9 +54,17 @@ public class SyncEndPoint {
         return null;
     }
 
-    @RequestMapping(value = "/sync", method = RequestMethod.GET)
-    String testSync() {
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
+    String status() {
         return "running";
+    }
+
+    @RequestMapping(value = "/sync", method = RequestMethod.GET)
+    void sync(HttpServletResponse response) {
+
+        SyncRequestMessage syncRequestMessage = new SyncRequestMessage();
+        syncRequestQueueProviderService.addMessage(syncRequestMessage);
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
 
@@ -63,7 +76,7 @@ public class SyncEndPoint {
         validateMessage(message, response);
         syncMessageStoreService.save(message.getId(), MessageType.ZOHO_REQUEST_MESSAGE, JsonUtil.convertToString(message));
         zohoRequestQueueProviderService.addMessage(message);
-        response.setStatus(HttpServletResponse.SC_ACCEPTED);
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     @RequestMapping(value = "/sync-carerix", method = RequestMethod.POST)

@@ -22,7 +22,7 @@ import java.io.StringWriter;
 @Log
 public class ZohoApiServiceImpl implements ZohoApiService {
 
-    private static final String TOKEN = "4c988532184e4a039ede895c7383c450";
+    private static final String ZOHO_API_TOKEN = "4c988532184e4a039ede895c7383c450";
 
     @Override
     public void insertContact(final ZohoContact contact) throws RuntimeException, ZohoApiException {
@@ -86,7 +86,7 @@ public class ZohoApiServiceImpl implements ZohoApiService {
     private String postRequest(final String url, final String xmlString) throws Exception {
         String targetURL = ZoHoApiConfiguration.ENDPOINT + url;
         PostMethod post = new PostMethod(targetURL);
-        post.setParameter("authtoken", TOKEN);
+        post.setParameter("authtoken", ZOHO_API_TOKEN);
         post.setParameter("scope", ZoHoApiConfiguration.SCOPE);
         post.setParameter("newFormat", ZoHoApiConfiguration.NEWFORMAT);
         post.setParameter("xmlData", xmlString);
