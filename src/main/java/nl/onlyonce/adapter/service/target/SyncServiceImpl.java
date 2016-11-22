@@ -60,11 +60,6 @@ public class SyncServiceImpl implements SyncService {
 
 
         }
-
-
-
-
-
     }
 
     private ZohoRequestMessage buildZohoRequesMessage(JSONObject card) {
@@ -110,28 +105,41 @@ public class SyncServiceImpl implements SyncService {
             }
         }
 
-        /*
-                cardMap.put("gender_field", null);
-        cardMap.put("first_name_field", null);
-        cardMap.put("middle_name_field", null);
-        cardMap.put("last_name_field", null);
-        cardMap.put("date_of_birth_field", null);
-        cardMap.put("flex_availability_from_field", null);
-        cardMap.put("flex_availability_to_field", null);
-        cardMap.put("hours_per_week_field", null);
-        cardMap.put("communication_email1_field", null);
-        cardMap.put("primary_linkedin_field", null);
-        cardMap.put("primary_website_field", null);
-        cardMap.put("skills_field", null);
-        cardMap.put("primary_website_field", null);
-        cardMap.put("primary_website_field", null);
-        cardMap.put("primary_website_field", null);
-         */
-
+        message.setGender((String) cardMap.get("gender_field"));
         message.setFirstname((String) cardMap.get("first_name_field"));
         message.setLastname((String) cardMap.get("last_name_field"));
+        message.setInitials((String) cardMap.get("initials_field"));
         message.setDateOfBirth((String) cardMap.get("date_of_birth_field"));
+
+        message.setStreetname1((String) cardMap.get("street_name_field"));
+        message.setPostalCode((String) cardMap.get("postal_code_field"));
+        message.setRegion((String) cardMap.get("region_field"));
+        message.setCity((String) cardMap.get("city_field"));
+        message.setCountry((String) cardMap.get("country_field"));
+
+        message.setAcademicTitle((String) cardMap.get("academic_title_field"));
+        message.setJobPosition((String) cardMap.get("job_position_field"));
+        message.setFlexAvailabilityFrom((String) cardMap.get("flex_availability_from_field"));
+        message.setFlexAvailabilityTo((String) cardMap.get("flex_availability_to_field"));
+//        message.setCustomFields((String) cardMap.get("hours_per_week_field"));
+        message.setHourlyRate((String) cardMap.get("indicative_hourly_rate_field"));
+        message.setMinHourRate((String) cardMap.get("minimum_hourly_rate_field"));
+        message.setSkills((String) cardMap.get("skills_field"));
+
+        message.setMobile1((String) cardMap.get("communication_mobtel1_field"));
+        message.setMobile2((String) cardMap.get("communication_mobtel2_field"));
+        message.setMobile3((String) cardMap.get("communication_mobtel3_field"));
+        message.setLandline1((String) cardMap.get("communication_landline1_field"));
+        message.setLandline2((String) cardMap.get("communication_landline2_field"));
+        message.setLandline3((String) cardMap.get("communication_landline3_field"));
         message.setEmail1((String) cardMap.get("communication_email1_field"));
+        message.setEmail2((String) cardMap.get("communication_email2_field"));
+        message.setSkypeId((String) cardMap.get("communication_skype_field"));
+
+        message.setLinkedin((String) cardMap.get("primary_linkedin_field"));
+        message.setWebsite((String) cardMap.get("primary_website_field"));
+
+
         message.setCardId((String) card.get("id"));
 
         return message;
@@ -145,16 +153,7 @@ public class SyncServiceImpl implements SyncService {
             group communication_channels
             group web_presence
             group meta_data
-
-
-
              */
-
-
-
-
-
-
     }
 
     private void updateCardField(Map<String, String> cardFieldMap, Map cardMap, JSONObject pdsComponent) {
@@ -177,21 +176,39 @@ public class SyncServiceImpl implements SyncService {
         cardMap.put("first_name_field", null);
         cardMap.put("middle_name_field", null);
         cardMap.put("last_name_field", null);
+        cardMap.put("initials_field", null);
         cardMap.put("date_of_birth_field", null);
+
+        cardMap.put("street_name_field", null);
+        cardMap.put("postal_code_field", null);
+        cardMap.put("region_field", null);
+        cardMap.put("city_field", null);
+        cardMap.put("country_field", null);
+
+        cardMap.put("academic_title_field", null);
+        cardMap.put("job_position_field", null);
+
         cardMap.put("flex_availability_from_field", null);
         cardMap.put("flex_availability_to_field", null);
         cardMap.put("hours_per_week_field", null);
+        cardMap.put("indicative_hourly_rate_field", null);
+        cardMap.put("minimum_hourly_rate_field", null);
+        cardMap.put("skills_field", null);
+
+        cardMap.put("communication_mobtel1_field", null);
+        cardMap.put("communication_mobtel2_field", null);
+        cardMap.put("communication_mobtel3_field", null);
+        cardMap.put("communication_landline1_field", null);
+        cardMap.put("communication_landline2_field", null);
+        cardMap.put("communication_landline3_field", null);
         cardMap.put("communication_email1_field", null);
+        cardMap.put("communication_email2_field", null);
+        cardMap.put("communication_skype_field", null);
+
         cardMap.put("primary_linkedin_field", null);
         cardMap.put("primary_website_field", null);
-        cardMap.put("skills_field", null);
-        cardMap.put("primary_website_field", null);
-
-
 
         return cardMap;
-
-
     }
 
         /*
@@ -223,7 +240,4 @@ public class SyncServiceImpl implements SyncService {
   "linkOds":"-1"
 
          */
-
-
-
 }
