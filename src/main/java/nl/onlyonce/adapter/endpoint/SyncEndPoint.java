@@ -60,9 +60,10 @@ public class SyncEndPoint {
     }
 
     @RequestMapping(value = "/sync", method = RequestMethod.GET)
-    void sync(HttpServletResponse response) {
+    void sync(@RequestParam String type, HttpServletResponse response) {
 
         SyncRequestMessage syncRequestMessage = new SyncRequestMessage();
+        syncRequestMessage.syncZoho = "zoho".equalsIgnoreCase(type) == true ? true : false;
         syncRequestQueueProviderService.addMessage(syncRequestMessage);
         response.setStatus(HttpServletResponse.SC_OK);
     }

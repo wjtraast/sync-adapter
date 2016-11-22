@@ -15,6 +15,10 @@ public class FieldList {
 
     Long rowNumber;
 
+    public FieldList() {
+
+    }
+
     public FieldList(Long rowNumber) {
         fields = new ArrayList<>();
         this.rowNumber = rowNumber;
@@ -23,6 +27,10 @@ public class FieldList {
     @XmlElement(name = "FL")
     public List<ZohoField> getFields(){
         return fields;
+    }
+
+    public void setFields(List<ZohoField> fields){
+        this.fields = fields;
     }
 
     @XmlAttribute(name="no")
@@ -37,6 +45,17 @@ public class FieldList {
     public void addField(String label, String value) {
         ZohoField zohoField = new ZohoField(label, value);
         this.getFields().add(zohoField);
+
+    }
+
+    public ZohoField getFieldByName(String fieldname) {
+
+        for (ZohoField field : fields) {
+            if (field.getLabel().equalsIgnoreCase(fieldname)) {
+                return field;
+            }
+        }
+        return null;
 
     }
 }

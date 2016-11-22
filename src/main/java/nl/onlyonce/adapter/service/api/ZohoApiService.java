@@ -14,5 +14,7 @@ public interface ZohoApiService {
 
     void insertAccount(ZohoAccount account) throws HttpException, ZohoApiException;
 
-    void findContact(String lastname, String emailAddresss, String email2);
+    ZohoContact findContact(String emailAddress, String cardId) throws HttpException, ZohoApiException;
+
+    void updateContact(ZohoContact contact) throws HttpException, ZohoApiException;
 }

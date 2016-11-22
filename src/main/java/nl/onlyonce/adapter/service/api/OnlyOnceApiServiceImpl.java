@@ -1,11 +1,13 @@
 package nl.onlyonce.adapter.service.api;
 
+import nl.onlyonce.adapter.ApplicationProperties;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,8 +21,11 @@ import java.util.Map;
 public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
 
 
-    final String endPoint = "https://apibeta.onlyonce.com";  // @ TODO via properties file
-    final String secretKey = "OPklop90()!";
+    @Autowired
+    ApplicationProperties applicationConfiguration;
+
+//    final String endPoint = "https://apibeta.onlyonce.com";  // @ TODO via properties file
+//    final String secretKey = "OPklop90()!";
 
     /*
 
@@ -64,7 +69,7 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
         }
 
         List<JSONObject> personalCards = new ArrayList<>();
-        getAccess(profileId, token, secretKey);
+        getAccess(profileId, token, applicationConfiguration.getOnlyonceApiSecretKey());
         for (String cardId : ids) {
             JSONObject personalCard = getCard(profileId, cardId, token);
             personalCards.add(personalCard);
@@ -84,7 +89,7 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
     }
 
     private void getAccess(String id, String token, String secretKey) throws Exception {
-        Response result = Request.Post(OnlyOnceApiConfiguration.DOMAIN + OnlyOnceApiConfiguration.Endpoints.PROFILES + "/" + id + "/access")
+        Response result = Request.Post(applicationConfiguration.getOnlyOnceApiUrl() + OnlyOnceApiConfiguration.Endpoints.PROFILES + "/" + id + "/access")
                 .addHeader("Secret-Key", secretKey)
                 .addHeader("Authorization", token)
                 .addHeader("Content-Type", "application/json")
@@ -114,11 +119,11 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
     private String getAuthToken() throws Exception {
 
         JSONObject obj = new JSONObject();
-        obj.put("username", "wjtraast@gmail.com");
-        obj.put("password", "OPklop90()!");
+        obj.put("username", applicationConfiguration.getOnlyOnceApiUsername());
+        obj.put("password", applicationConfiguration.getOnlyOnceApiPassword());
         obj.toJSONString();
 
-        String authToken = Request.Post(OnlyOnceApiConfiguration.DOMAIN + OnlyOnceApiConfiguration.Endpoints.SIGNIN)
+        String authToken = Request.Post(applicationConfiguration.getOnlyOnceApiUrl()  + OnlyOnceApiConfiguration.Endpoints.SIGNIN)
                 .addHeader("Content-Type", "application/json")
                 .bodyString(obj.toJSONString(), ContentType.DEFAULT_TEXT)
                 .execute().returnResponse().getHeaders("Authorization")[0].getValue();
@@ -127,7 +132,7 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
     }
 
     private String getRequest(String endPoint, String token) throws Exception {
-        String result = Request.Get(OnlyOnceApiConfiguration.DOMAIN + endPoint)
+        String result = Request.Get(applicationConfiguration.getOnlyOnceApiUrl()  + endPoint)
                 .addHeader("Authorization", token)
                 .addHeader("Content-Type", "application/json")
                 .execute().returnContent().toString();

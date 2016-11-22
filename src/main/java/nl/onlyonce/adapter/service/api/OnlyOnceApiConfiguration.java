@@ -5,7 +5,9 @@ package nl.onlyonce.adapter.service.api;
  */
 public class OnlyOnceApiConfiguration {
 
-    public static final String DOMAIN = "https://apibeta.onlyonce.com/v2";
+
+
+    //public static final String DOMAIN = "https://apibeta.onlyonce.com/v2";
 
 
     public class Endpoints {

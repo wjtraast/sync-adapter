@@ -12,6 +12,7 @@ import nl.onlyonce.adapter.service.api.ZohoApiService;
 import org.apache.commons.httpclient.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -70,10 +71,8 @@ public class ZohoServiceImpl implements ZohoService {
 
     private void processZohoContact(final ZohoRequestMessage message) {
 
-        String odsId = message.getOdsId();
 
         try {
-
             /*
 
             Stappen voor het inserten/updaten van een contact.
@@ -86,33 +85,40 @@ public class ZohoServiceImpl implements ZohoService {
 
              */
 
-            /*
-            ZohoContact contact = zohoApiService.findContact(message.getCardId(), message.getEmail1());
-            if (contact == null) { // niet gevonden
-                ZohoContact contact = tranform(message, new Date());
-                zohoApiService.insertContact(contact);
+            if (!StringUtils.isEmpty(message.getEmail1())) {
+                ZohoContact contact = zohoApiService.findContact(message.getEmail1(), message.getCardId());
+                if (contact == null) { // niet gevonden
+                    ZohoContact contactToInsert = tranform(message, new Date());
+                    zohoApiService.insertContact(contactToInsert);
 
+                } else {
+
+                /*
+
+                if (!StringUtils.isEmpty(message.getLinkOds()) {
+                    if (message.getLinkOds().equals("-1") {
+                     // verwijder de link tussen
+                       zohoApiService.delinkContactWithAccount(contact);
+
+                    } else {
+
+                    // bepaal of account bestaat in Zoho
+                    // zoniet, overslaan
+                    if (zohoApiService.accountExists(message.getOdsID())) {
+                        // add AccountId to the contact object
+                        zohoApiService.linkContactToAccount(contact, odsId)
+                    } else {
+                        // account bestaat niet, dus nu even niets doen en loggen.
+                 */
+
+
+                    ZohoContact contactToUpdate = tranform(message, new Date());
+                    String id = contact.getFieldList().getFieldByName(ZohoFieldNames.Contact.CONTACTID).getValue();
+                    contactToUpdate.getFieldList().addField(ZohoFieldNames.Contact.CONTACTID, id);
+                    zohoApiService.updateContact(contactToUpdate);
+                }
             }
-            if (!StringUtils.isEmpty(message.getLinkOds()) {
-                if (message.getLinkOds().equals("-1") {
-                 // verwijder de link tussen
-                   zohoApiService.delinkContactWithAccount(contact);
-
-                } else {
-
-                // bepaal of account bestaat in Zoho
-                // zoniet, overslaan
-                if (zohoApiService.accountExists(message.getOdsID())) {
-                    // add AccountId to the contact object
-                    zohoApiService.linkContactToAccount(contact, odsId)
-                } else {
-                    // account bestaat niet, dus nu even niets doen en loggen.
-             */
-
-
-            ZohoContact contact = tranform(message, new Date());
-            zohoApiService.insertContact(contact);
-            syncMessageStoreService.markAsProcessed(message.getId());
+            syncMessageStoreService.markAsFailed(message.getId(), "no email available");
         } catch (ZohoApiException | HttpException e) {
             log.info(e.getMessage());// must be error logging !
             syncMessageStoreService.markAsFailed(message.getId(), e.getMessage());
@@ -173,7 +179,7 @@ public class ZohoServiceImpl implements ZohoService {
                 .withField(ZohoFieldNames.Contact.MAILING_ZIP, message.getPostalCode())
                 .withField(ZohoFieldNames.Contact.MAILING_REGION, message.getRegion())
 
-                .withField(ZohoFieldNames.Contact.Custom.ONLY_ONCE_CARD_ID,  message.getCardId());
+                .withField(ZohoFieldNames.Contact.Custom.CONTACTCF1,  message.getCardId());
 
 
 

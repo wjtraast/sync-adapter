@@ -21,6 +21,8 @@ public class ZohoFieldNames {
      */
 
     public class Contact {
+
+        public static final String CONTACTID = "CONTACTID";
         public static final String FIRSTNAME = "First Name";
         public static final String LASTNAME = "Last Name";
         public static final String DATE_OF_BIRTH = "Date of Birth";
@@ -49,7 +51,7 @@ public class ZohoFieldNames {
 
         public class Custom {
             public static final String SYNCED_BY_ONLYONCE = "Synced By Only Once";
-            public static final String ONLY_ONCE_CARD_ID = "Only Once Card ID";
+            public static final String CONTACTCF1 = "Only Once Card ID";
         }
     }
 }
