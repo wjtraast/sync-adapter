@@ -127,7 +127,7 @@ public class ZohoRequestMessage extends BaseRequestMessage {
     }
 
     public String getLastSyncDescription(Date date) {
-        return "Last synced by Only Once at " + dateFullFormatter.format(date) +  "\nCard name: " + cardname;
+        return "Last synced by Only Once at " + dateFullFormatter.format(date);
     }
 
     public String combineFirstNameFields(String gender, String firstname) {

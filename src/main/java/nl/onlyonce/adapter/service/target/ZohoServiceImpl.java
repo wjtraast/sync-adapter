@@ -159,7 +159,7 @@ public class ZohoServiceImpl implements ZohoService {
     static ZohoContact tranform(final ZohoRequestMessage message, Date date) {
         return ZohoContact.create()
                 .withField(ZohoFieldNames.Contact.SALUTATION, message.getSalutation(), ZohoFieldNames.Contact.SALUTATION_NULL_VALUE)
-                .withField(ZohoFieldNames.Contact.FIRSTNAME, message.combineFirstNameFields(message.getGender(), message.getFirstname()))
+                .withField(ZohoFieldNames.Contact.FIRSTNAME, message.getFirstname())
                 .withField(ZohoFieldNames.Contact.LASTNAME, message.combineLastNameFields(message.getLastname(), message.getAcademicSuffix()))
                 .withField(ZohoFieldNames.Contact.DATE_OF_BIRTH, message.getDateOfBirth())
                 .withField(ZohoFieldNames.Contact.MAILING_STREET, message.combineStreetNameFields(message.getStreetname1(), message.getStreetname2(), message.getHouseNumber()))
