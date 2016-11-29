@@ -4,7 +4,6 @@ import com.carerix.api.CREmployeeType;
 import nl.onlyonce.adapter.model.carerix.CarerixModel;
 import nl.onlyonce.adapter.service.utils.XMLUtils;
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
 import org.w3c.dom.Document;
 
 /**
@@ -12,7 +11,7 @@ import org.w3c.dom.Document;
  */
 public class CarerixDataTests {
 
-    @Test
+   // @Test
     public void testCREmployeeTypeToString() throws Exception {
 
         CREmployeeType type = new CREmployeeType();
@@ -25,7 +24,7 @@ public class CarerixDataTests {
 
     }
 
-    @Test
+   // @Test
     public void testParseEmployee() throws Exception {
 
 

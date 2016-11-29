@@ -2,14 +2,13 @@ package nl.onlyonce.adapter.service.target;
 
 import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 import nl.onlyonce.adapter.util.JsonUtil;
-import org.junit.Test;
 
 /**
  * @author: Gerben
  */
 public class ZohoRequestMessageTest {
 
-    @Test
+    //@Test
     public void testContactZohoRequestMessage() throws Exception {
 
         ZohoRequestMessage message = Fixtures.getContactZohoRequestMessage();
@@ -18,7 +17,7 @@ public class ZohoRequestMessageTest {
         System.out.println(messageAsString);
     }
 
-    @Test
+    //@Test
     public void testAccountZohoRequestMessage() throws Exception {
 
 //        ZohoRequestMessage message = Fixtures.getAccountZohoRequestMessage();
