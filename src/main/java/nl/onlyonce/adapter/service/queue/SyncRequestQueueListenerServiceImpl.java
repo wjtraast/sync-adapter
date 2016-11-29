@@ -20,8 +20,6 @@ public class SyncRequestQueueListenerServiceImpl implements SyncRequestQueueList
     @Autowired
     SyncService syncService;
 
-
-
     @JmsListener(destination = "SyncRequestQueue")
     public void receiveMessage(SyncRequestMessage message) {
         log.info("request received ");

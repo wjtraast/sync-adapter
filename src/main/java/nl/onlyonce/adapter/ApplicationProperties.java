@@ -28,4 +28,12 @@ public class ApplicationProperties {
 
     @Value("${zoho.url}")
     private String zohoUrl;
+
+    @Value("${carerix.token}")
+    private String carerixToken;
+
+    @Value("${carerix.username}")
+    private String carerixUsername;
+
+
 }

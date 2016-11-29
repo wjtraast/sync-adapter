@@ -3,10 +3,12 @@ package nl.onlyonce.adapter.service.api;
 import com.carerix.api.CREmployee;
 import com.carerix.api.CRUser;
 import lombok.extern.java.Log;
+import nl.onlyonce.adapter.ApplicationProperties;
 import nl.onlyonce.adapter.model.carerix.CarerixNodeType;
 import nl.onlyonce.adapter.service.utils.XMLUtils;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Document;
@@ -15,9 +17,6 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static nl.onlyonce.adapter.AppConfig.CARERIX_TOKEN;
-import static nl.onlyonce.adapter.AppConfig.CARERIX_USERNAME;
 
 /**
  * @author: Gerben
@@ -28,6 +27,9 @@ import static nl.onlyonce.adapter.AppConfig.CARERIX_USERNAME;
 public class CarerixApiServiceImpl implements CarerixApiService {
 
     private static final java.lang.String MATCH = "<array count=\"1\">";
+
+    @Autowired
+    ApplicationProperties applicationProperties;
 
     @Override
     public Document addEmployee(CREmployee employee) throws Exception {
@@ -72,7 +74,7 @@ public class CarerixApiServiceImpl implements CarerixApiService {
 
 
     private String getAuthorization(){
-        String authString = CARERIX_USERNAME + ":" + CARERIX_TOKEN;
+        String authString = applicationProperties.getCarerixUsername() + ":" + applicationProperties.getCarerixToken();
         return new String(Base64.getEncoder().encode(authString.getBytes()));
 
     }

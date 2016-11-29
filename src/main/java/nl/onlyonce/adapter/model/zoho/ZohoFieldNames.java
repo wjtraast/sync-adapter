@@ -54,4 +54,11 @@ public class ZohoFieldNames {
             public static final String CONTACTCF1 = "Only Once Card ID";
         }
     }
+
+    public class Attachment {
+        public static final String ID = "id";
+        public static final String FILE_NAME = "File Name";
+
+
+    }
 }

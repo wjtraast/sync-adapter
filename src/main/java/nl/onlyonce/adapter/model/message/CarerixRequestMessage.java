@@ -3,8 +3,6 @@ package nl.onlyonce.adapter.model.message;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.List;
-
 /**
  * @author: Gerben
  */
@@ -32,8 +30,8 @@ public class CarerixRequestMessage extends BaseRequestMessage {
     @JsonProperty
     private String jobTitle;
 
-    @JsonProperty(value = "resumes")
-    private List<ResumeWrapper> resumes;
+//    @JsonProperty(value = "resumes")
+//    private List<ResumeWrapper> resumes;
 
 
 

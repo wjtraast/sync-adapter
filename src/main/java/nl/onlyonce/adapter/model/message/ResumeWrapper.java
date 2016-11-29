@@ -13,8 +13,12 @@ import java.io.Serializable;
 public class ResumeWrapper implements Serializable {
 
     @JsonProperty
+    String id;
+
+    @JsonProperty
     String filename;
 
     @JsonProperty(value="file-content")
     String fileContent;
+
 }

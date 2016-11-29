@@ -64,6 +64,7 @@ public class SyncEndPoint {
 
         SyncRequestMessage syncRequestMessage = new SyncRequestMessage();
         syncRequestMessage.syncZoho = "zoho".equalsIgnoreCase(type) == true ? true : false;
+        syncRequestMessage.syncCarerix = "carerix".equalsIgnoreCase(type) == true ? true : false;
         syncRequestQueueProviderService.addMessage(syncRequestMessage);
         response.setStatus(HttpServletResponse.SC_OK);
     }

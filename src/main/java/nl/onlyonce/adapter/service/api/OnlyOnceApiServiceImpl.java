@@ -1,18 +1,20 @@
 package nl.onlyonce.adapter.service.api;
 
 import nl.onlyonce.adapter.ApplicationProperties;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
+import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: Gerben
@@ -24,39 +26,14 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
     @Autowired
     ApplicationProperties applicationConfiguration;
 
-//    final String endPoint = "https://apibeta.onlyonce.com";  // @ TODO via properties file
-//    final String secretKey = "OPklop90()!";
-
-    /*
-
-    1.       For list all card use /profiles/{your profile id}/cards?scope=ACCEPTED Then you’ll get all cards that were shared with you.
-
-2.       Filter response data on your side by field "predefinedType".
-
-3.       Call /profiles/{your profile id}/access with Secret-Key header
-
-4.       Then use /profiles/{your profile id}/cards/{id of card from step two}
-
-
-
-    http://ooapidocs.herokuapp.com/all
-    https://apibeta.onlyonce.com
-
-    1. Api call naar OO via PAW uitwerken
-    2. APi call naar OO in java
-    3. berichten samenstellen voor Zoho
-    4. Properties file gebruiken
-    5. Deployment op server
-
-
-     */
-
     @Override
     public List<JSONObject> getCards() throws Exception {
 
         String token = getAuthToken();
         String profileId = getMyProfileId(token);
         JSONObject cards = getAcceptedCards(profileId, token);
+
+
         JSONArray cardsArray = (JSONArray) cards.get("content");
 
         List<String> ids = new ArrayList<>();
@@ -74,7 +51,6 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
             JSONObject personalCard = getCard(profileId, cardId, token);
             personalCards.add(personalCard);
         }
-
         return personalCards;
 
    }
@@ -88,13 +64,32 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
 
     }
 
+    @Override
+    public Map<String, String> getResumes(List<String> ids) throws Exception {
+       //  /profiles/{profileId}/files/{fileMetadataId}/download[GET]
+
+        Map<String, String> returnMap = new HashMap<>();
+
+        String token = getAuthToken();
+        String profileId = getMyProfileId(token);
+        getAccess(profileId, token, applicationConfiguration.getOnlyonceApiSecretKey());
+        for (String id : ids) {
+            byte[] content = getRequestWithByteArray(OnlyOnceApiConfiguration.Endpoints.PROFILES + "/" + profileId + "/files/" + id + "/download", token);
+            String encoded = Base64.getEncoder().encodeToString(content);
+            returnMap.put(id, encoded);
+        }
+
+        return returnMap;
+
+
+    }
+
     private void getAccess(String id, String token, String secretKey) throws Exception {
         Response result = Request.Post(applicationConfiguration.getOnlyOnceApiUrl() + OnlyOnceApiConfiguration.Endpoints.PROFILES + "/" + id + "/access")
                 .addHeader("Secret-Key", secretKey)
                 .addHeader("Authorization", token)
                 .addHeader("Content-Type", "application/json")
                 .execute();
-      //  return result.returnResponse().getHeaders("Authorization")[0].getValue();
     }
 
     private JSONObject getAcceptedCards(String id, String token) throws Exception {
@@ -123,10 +118,14 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
         obj.put("password", applicationConfiguration.getOnlyOnceApiPassword());
         obj.toJSONString();
 
-        String authToken = Request.Post(applicationConfiguration.getOnlyOnceApiUrl()  + OnlyOnceApiConfiguration.Endpoints.SIGNIN)
+        HttpResponse response = Request.Post(applicationConfiguration.getOnlyOnceApiUrl()  + OnlyOnceApiConfiguration.Endpoints.SIGNIN)
                 .addHeader("Content-Type", "application/json")
                 .bodyString(obj.toJSONString(), ContentType.DEFAULT_TEXT)
-                .execute().returnResponse().getHeaders("Authorization")[0].getValue();
+                .execute().returnResponse();
+
+        Header[] headers = response.getHeaders("Authorization");
+        String authToken = headers[0].getValue();
+
         return authToken;
 
     }
@@ -137,6 +136,14 @@ public class OnlyOnceApiServiceImpl implements OnlyOnceApiService {
                 .addHeader("Content-Type", "application/json")
                 .execute().returnContent().toString();
         return result;
+    }
+
+    private byte[] getRequestWithByteArray(String endPoint, String token) throws Exception {
+        HttpEntity result = Request.Get(applicationConfiguration.getOnlyOnceApiUrl()  + endPoint)
+                .addHeader("Authorization", token)
+                .addHeader("Content-Type", "application/json")
+                .execute().returnResponse().getEntity();
+        return EntityUtils.toByteArray(result);
     }
 
 

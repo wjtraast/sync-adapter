@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,6 +20,8 @@ public class BaseRequestMessage implements Serializable {
     private String firstname;
     @JsonProperty
     private String lastname;
+    @JsonProperty
+    private String middlename;
     @JsonProperty
     private String dateOfBirth;
     @JsonProperty
@@ -66,6 +69,10 @@ public class BaseRequestMessage implements Serializable {
     protected String cardname;
 
     Map<String, String> customFields;
+
+    @JsonProperty(value = "resumes")
+    private List<ResumeWrapper> resumes;
+
 
     public void addCustomField(String fieldName, boolean booleanValue) {
         customFields.put(fieldName, booleanValue ? "true" : "false");

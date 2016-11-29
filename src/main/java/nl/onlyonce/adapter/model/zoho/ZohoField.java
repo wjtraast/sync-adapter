@@ -3,12 +3,13 @@ package nl.onlyonce.adapter.model.zoho;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
+import java.io.Serializable;
 
 /**
  * @author: Gerben
  */
 
-public class ZohoField {
+public class ZohoField implements Serializable {
 
     private String label;
     private String value;

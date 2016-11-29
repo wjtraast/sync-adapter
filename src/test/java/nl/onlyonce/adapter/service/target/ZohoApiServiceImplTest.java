@@ -24,7 +24,7 @@ public class ZohoApiServiceImplTest {
     @Test
     public void testFindContact() throws Exception {
 
-        //service = new ZohoApiServiceImpl();
+        service = new ZohoApiServiceImpl();
 
         ZohoContact contact = service.findContact("test@test66.nl", "123");
         System.out.println(contact);
@@ -53,13 +53,12 @@ public class ZohoApiServiceImplTest {
     @Test
     public void testUpdateContact() throws Exception {
 
-        service = new ZohoApiServiceImpl();
-
         ZohoContact contact = service.findContact("test@test66.nl", "123");
 
         contact.getFieldList().getFieldByName(ZohoFieldNames.Contact.LASTNAME).setValue("habbyhab");
         service.updateContact(contact);
 
     }
+
 
 }

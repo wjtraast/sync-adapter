@@ -1,19 +1,20 @@
 package nl.onlyonce.adapter.service.target;
 
+import com.jayway.jsonpath.JsonPath;
 import lombok.extern.java.Log;
+import nl.onlyonce.adapter.model.message.CarerixRequestMessage;
+import nl.onlyonce.adapter.model.message.ResumeWrapper;
 import nl.onlyonce.adapter.model.message.SyncRequestMessage;
 import nl.onlyonce.adapter.model.message.ZohoRequestMessage;
 import nl.onlyonce.adapter.service.api.OnlyOnceApiService;
+import nl.onlyonce.adapter.service.queue.CarerixRequestQueueProviderService;
 import nl.onlyonce.adapter.service.queue.ZohoRequestQueueProviderService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: Gerben
@@ -29,81 +30,153 @@ public class SyncServiceImpl implements SyncService {
     @Autowired
     ZohoRequestQueueProviderService zohoRequestQueueProviderService;
 
+    @Autowired
+    CarerixRequestQueueProviderService carerixRequestQueueProviderService;
+
+
 
 
     @Override
     public void processMessage(SyncRequestMessage message) {
-
-        List<ZohoRequestMessage> zohoRequestMessageList = new ArrayList<>();
 
         if (message.syncZoho) {
 
             try {
                 List<ZohoRequestMessage> messages = new ArrayList<>();
                 List<JSONObject> cards = onlyOnceApiService.getCards();
-                for (JSONObject object : cards)  {
+                for (JSONObject card : cards)  {
 
-                    ZohoRequestMessage zohoRequestMessage = buildZohoRequesMessage(object);
+                    ZohoRequestMessage zohoRequestMessage = buildZohoRequesMessage(card);
+                    List<ResumeWrapper> resumes = getResumes(card);
+                    zohoRequestMessage.setResumes(resumes);
                     messages.add(zohoRequestMessage);
                 }
+
+
 
                 for (ZohoRequestMessage zohoRequestMessage : messages) {
                     zohoRequestQueueProviderService.addMessage(zohoRequestMessage);
                 }
-
-
             } catch (Exception e) {
-
                 e.printStackTrace();
 
             }
+        } else if (message.syncCarerix) {
 
+            try {
+                List<CarerixRequestMessage> messages = new ArrayList<>();
+                List<JSONObject> cards = onlyOnceApiService.getCards();
+                for (JSONObject card : cards)  {
 
+                    CarerixRequestMessage carerixRequestMessage = buildCarerixRequestMessage(card);
+                    List<ResumeWrapper> resumes = getResumes(card);
+                    carerixRequestMessage.setResumes(resumes);
+                    messages.add(carerixRequestMessage);
+                }
+
+                for (CarerixRequestMessage zohoRequestMessage : messages) {
+                    carerixRequestQueueProviderService.addMessage(zohoRequestMessage);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    private List<ResumeWrapper> getResumes(final JSONObject card) throws Exception {
+
+        List<ResumeWrapper> returnValue = new ArrayList<>();
+        net.minidev.json.JSONArray fileMetaDatas = (net.minidev.json.JSONArray) JsonPath.parse(card.toString()).read("$..fileMetaData", Object.class);
+        if (fileMetaDatas != null) {
+            List<String> ids = new ArrayList<>();
+            for (int i = 0; i < fileMetaDatas.size(); i++) {
+                Map fileMetaData = (Map) fileMetaDatas.get(i);
+                String id = (String) fileMetaData.get("id");
+                ids.add(id);
+            }
+
+            Map<String, String> documentMap = onlyOnceApiService.getResumes(ids);
+            for (int i = 0; i < fileMetaDatas.size(); i++) {
+                Map fileMetaData = (Map) fileMetaDatas.get(i);
+                String id = (String) fileMetaData.get("id");
+
+                String fileName = (String) fileMetaData.get("name");
+                ResumeWrapper wrapper = new ResumeWrapper();
+                wrapper.setFilename(fileName);
+                wrapper.setId(id);
+                String content = documentMap.get(id);
+                wrapper.setFileContent(content);
+                returnValue.add(wrapper);
+            }
+        }
+        return returnValue;
+    }
+
+
+    private CarerixRequestMessage buildCarerixRequestMessage(JSONObject card) {
+
+        /*
+        {
+  "cardname": "My FlexWorker Card",
+  "cardId":"341A46D2-AAC4-458F-AF97-D62AFA4A0945",
+  "firstname": "John",
+  "lastname": "Visser05",
+  "initials": "J J",
+  "email1": "someemail@asdfasdfasdf.nl",
+  "landline1": "0204444444",
+  "mobile1": "065555555",
+  "streetname1": "Street",
+  "houseNumber": "122",
+  "city": "SomeCity",
+  "dateOfBirth": "18-12-1970",
+  "postalCode": "9999BB",
+  "availableFromDate":"17-12-2016",
+  "gender":"Male",
+  "currentSalary":"150.13",
+  "note1":"asdfadf",
+  "note2":"sdfasdfasdf",
+  "jobTitle":"Software engineer yeah",
+   "resumes":[
+   {"filename":"1111.txt","file-content":"dGVzdCBpZXRz"},
+   {"filename":"2222.txt","file-content":"dGVzdCBpZXRz"},
+   {"filename":"3333.txt","file-content":"dGVzdCBpZXRz"}]
+}
+         */
+
+        Map cardMap = updateCardFields(card);
+
+        CarerixRequestMessage message = new CarerixRequestMessage();
+
+        message.setGender((String) cardMap.get("gender_field"));
+        message.setFirstname((String) cardMap.get("first_name_field"));
+        message.setLastname((String) cardMap.get("last_name_field"));
+        message.setInitials((String) cardMap.get("initials_field"));
+        message.setDateOfBirth((String) cardMap.get("date_of_birth_field"));
+
+        message.setStreetname1((String) cardMap.get("street_name_field"));
+        message.setPostalCode((String) cardMap.get("postal_code_field"));
+        message.setCity((String) cardMap.get("city_field"));
+      //  message.setJobTitle();
+        message.setAvailableFromDate((String) cardMap.get("flex_availability_from_field"));
+
+        message.setMobile1((String) cardMap.get("communication_mobtel1_field"));
+        message.setLandline1((String) cardMap.get("communication_landline1_field"));
+        message.setEmail1((String) cardMap.get("communication_email1_field"));
+
+        message.setCardId((String) card.get("id"));
+
+
+        return message;
+
     }
 
     private ZohoRequestMessage buildZohoRequesMessage(JSONObject card) {
 
-        Map<String, String> cardFieldMap = populateCardMap();
-        Map cardMap = (Map) card;
+        Map cardMap = updateCardFields(card);
+
 
         ZohoRequestMessage message = new ZohoRequestMessage();
         message.setType("pds");
-
-        JSONArray model = (JSONArray) cardMap.get("model");
-        JSONObject personalDataStore = (JSONObject) model.get(0);
-        JSONArray pdsComponents = (JSONArray) personalDataStore.get("components");
-
-        for (int i =0; i < pdsComponents.size() ; i ++) {
-            JSONObject pdfComponent = (JSONObject) pdsComponents.get(i);
-
-
-            if (pdfComponent.get("definitionName").equals("personal_information_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("personal_information_details_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("jobs_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("flex_workers_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("addresses_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("communication_channels_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("web_presence_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            } else if (pdfComponent.get("definitionName").equals("meta_data_group")) {
-                updateCardField(cardFieldMap, cardMap, pdfComponent);
-
-            }
-        }
 
         message.setGender((String) cardMap.get("gender_field"));
         message.setFirstname((String) cardMap.get("first_name_field"));
@@ -156,6 +229,54 @@ public class SyncServiceImpl implements SyncService {
              */
     }
 
+    private Map updateCardFields(Map card) {
+        Map<String, String> cardFieldMap = populateCardMap();
+        Map cardMap = card;
+
+
+        JSONArray model = (JSONArray) cardMap.get("model");
+        JSONObject personalDataStore = (JSONObject) model.get(0);
+        JSONArray pdsComponents = (JSONArray) personalDataStore.get("components");
+
+        /*
+        Hier moet nog ergens de attachment uit card worden gehaald en in het bericht worden gestop.
+         */
+
+
+        for (int i =0; i < pdsComponents.size() ; i ++) {
+            JSONObject pdfComponent = (JSONObject) pdsComponents.get(i);
+
+
+            if (pdfComponent.get("definitionName").equals("personal_information_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("personal_information_details_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("jobs_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("flex_workers_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("addresses_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("communication_channels_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("web_presence_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            } else if (pdfComponent.get("definitionName").equals("meta_data_group")) {
+                updateCardField(cardFieldMap, cardMap, pdfComponent);
+
+            }
+
+        }
+        return cardMap;
+    }
+
     private void updateCardField(Map<String, String> cardFieldMap, Map cardMap, JSONObject pdsComponent) {
         JSONArray groupComps = (JSONArray) pdsComponent.get("components");
         for (int i = 0; i < groupComps.size(); i ++) {
@@ -165,9 +286,11 @@ public class SyncServiceImpl implements SyncService {
                     String value = (String) groupComp.get("value");
                     cardMap.put(key, value);
                 }
-            }
+          }
         }
     }
+
+
 
     private Map<String, String> populateCardMap() {
         Map<String, String> cardMap = new HashMap<>();
@@ -207,6 +330,7 @@ public class SyncServiceImpl implements SyncService {
 
         cardMap.put("primary_linkedin_field", null);
         cardMap.put("primary_website_field", null);
+
 
         return cardMap;
     }

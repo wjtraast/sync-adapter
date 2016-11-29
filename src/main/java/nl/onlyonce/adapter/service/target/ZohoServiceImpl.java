@@ -90,6 +90,7 @@ public class ZohoServiceImpl implements ZohoService {
                 if (contact == null) { // niet gevonden
                     ZohoContact contactToInsert = tranform(message, new Date());
                     zohoApiService.insertContact(contactToInsert);
+                   // zpzohoApiService.addCustomeFieldsTocontact
 
                 } else {
 
@@ -116,6 +117,8 @@ public class ZohoServiceImpl implements ZohoService {
                     String id = contact.getFieldList().getFieldByName(ZohoFieldNames.Contact.CONTACTID).getValue();
                     contactToUpdate.getFieldList().addField(ZohoFieldNames.Contact.CONTACTID, id);
                     zohoApiService.updateContact(contactToUpdate);
+                    zohoApiService.updateAttachments(id, message.getResumes());
+
                 }
             }
             syncMessageStoreService.markAsFailed(message.getId(), "no email available");
@@ -160,7 +163,7 @@ public class ZohoServiceImpl implements ZohoService {
         return ZohoContact.create()
                 .withField(ZohoFieldNames.Contact.SALUTATION, message.getSalutation(), ZohoFieldNames.Contact.SALUTATION_NULL_VALUE)
                 .withField(ZohoFieldNames.Contact.FIRSTNAME, message.getFirstname())
-                .withField(ZohoFieldNames.Contact.LASTNAME, message.combineLastNameFields(message.getLastname(), message.getAcademicSuffix()))
+                .withField(ZohoFieldNames.Contact.LASTNAME, message.combineLastNameFields(message.getLastname(), message.getMiddlename(), message.getAcademicSuffix()))
                 .withField(ZohoFieldNames.Contact.DATE_OF_BIRTH, message.getDateOfBirth())
                 .withField(ZohoFieldNames.Contact.MAILING_STREET, message.combineStreetNameFields(message.getStreetname1(), message.getStreetname2(), message.getHouseNumber()))
                 .withField(ZohoFieldNames.Contact.TITLE, message.combineTitleFields(message.getInitials(), message.getAcademicTitle()))

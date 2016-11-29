@@ -17,11 +17,18 @@ public class ZoHoApiConfiguration {
             public static final String SEARCH_RECORDS  = "/Contacts/searchRecords";
             public static final String GET_SEARCH_RECORSDS_BY_PDC  = "/Contacts/getSearchRecordsByPDC";
 
+            public static final String UPLOAD_FILE = "/Contacts/uploadFile";
+            public static final String DELETE_FILE = "/Contacts/deleteFile";
+
         }
 
         public class Account {
             public static final String INSERT_RECORDS  = "/Accounts/insertRecords";
 
+        }
+
+        public class Attachment {
+            public static final String GET_RELATED_RECORDS = "/Attachments/getRelatedRecords";
         }
     }
 }

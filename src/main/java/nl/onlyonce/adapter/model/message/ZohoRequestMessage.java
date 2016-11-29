@@ -141,12 +141,16 @@ public class ZohoRequestMessage extends BaseRequestMessage {
 
     }
 
-    public String combineLastNameFields(String lastname, String academicSuffix) {
+    public String combineLastNameFields(String lastname, String middlename, String academicSuffix) {
         if (StringUtils.isEmpty(academicSuffix)) {
             return lastname;
         }
 
-        return lastname + " " + academicSuffix;
+        if (StringUtils.isEmpty(middlename)) {
+            return lastname + " " + academicSuffix;
+        }
+
+        return lastname + " " + middlename + " " + academicSuffix;
 
 
 
